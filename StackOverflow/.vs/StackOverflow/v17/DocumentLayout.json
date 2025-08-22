@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflow\\StackOverflow.csproj|c:\\users\\srdjan\\desktop\\projects\\stack overflow\\stackoverflow\\stackoverflow\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflow\\StackOverflow.csproj|solutionrelative:stackoverflow\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflow\\StackOverflow.csproj|c:\\users\\srdjan\\desktop\\projects\\stack overflow\\stackoverflow\\stackoverflow\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflow\\StackOverflow.csproj|solutionrelative:stackoverflow\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\StackOverflow\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "StackOverflow\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\StackOverflow\\Properties\\launchSettings.json",
+              "RelativeToolTip": "StackOverflow\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-22T21:52:29.893Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\StackOverflow\\Program.cs",
+              "RelativeDocumentMoniker": "StackOverflow\\Program.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\StackOverflow\\Program.cs",
+              "RelativeToolTip": "StackOverflow\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-22T21:46:58.691Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

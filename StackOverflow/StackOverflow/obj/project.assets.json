@@ -478,23 +478,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\SRDJAN\\.nuget\\packages\\": {},
-    "E:\\Vidual studio 2019 Shared components, tools\\NuGetPackages": {}
+    "C:\\Users\\Ana\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\StackOverflow\\StackOverflow.csproj",
+      "projectUniqueName": "C:\\Users\\Ana\\Documents\\Faks\\4. god\\Cloud\\StackOverflow-RCA\\StackOverflow\\StackOverflow\\StackOverflow.csproj",
       "projectName": "StackOverflow",
-      "projectPath": "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\StackOverflow\\StackOverflow.csproj",
-      "packagesPath": "C:\\Users\\SRDJAN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\StackOverflow\\obj\\",
+      "projectPath": "C:\\Users\\Ana\\Documents\\Faks\\4. god\\Cloud\\StackOverflow-RCA\\StackOverflow\\StackOverflow\\StackOverflow.csproj",
+      "packagesPath": "C:\\Users\\Ana\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ana\\Documents\\Faks\\4. god\\Cloud\\StackOverflow-RCA\\StackOverflow\\StackOverflow\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "E:\\Vidual studio 2019 Shared components, tools\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\SRDJAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ana\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

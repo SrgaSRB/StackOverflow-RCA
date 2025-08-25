@@ -3,6 +3,17 @@
   "WorkspaceRootPath": "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflow\\StackOverflow.csproj|c:\\users\\srdjan\\desktop\\projects\\stack overflow\\stackoverflow\\stackoverflow\\models\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflow\\StackOverflow.csproj|solutionrelative:stackoverflow\\models\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflow\\StackOverflow.csproj|c:\\users\\srdjan\\desktop\\projects\\stack overflow\\stackoverflow\\stackoverflow\\models\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflow\\StackOverflow.csproj|solutionrelative:stackoverflow\\models\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\8.0.300\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.TargetFrameworkInference.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflow\\StackOverflow.csproj|c:\\users\\srdjan\\desktop\\projects\\stack overflow\\stackoverflow\\stackoverflow\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflow\\StackOverflow.csproj|solutionrelative:stackoverflow\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -18,11 +29,48 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Question.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\StackOverflow\\Models\\Question.cs",
+              "RelativeDocumentMoniker": "StackOverflow\\Models\\Question.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\StackOverflow\\Models\\Question.cs",
+              "RelativeToolTip": "StackOverflow\\Models\\Question.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T22:10:42Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Entity.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\StackOverflow\\Models\\Entity.cs",
+              "RelativeDocumentMoniker": "StackOverflow\\Models\\Entity.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\StackOverflow\\Models\\Entity.cs",
+              "RelativeToolTip": "StackOverflow\\Models\\Entity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T22:10:36.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Microsoft.NET.TargetFrameworkInference.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.TargetFrameworkInference.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\8.0.300\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.TargetFrameworkInference.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.TargetFrameworkInference.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\8.0.300\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.TargetFrameworkInference.targets",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-08-23T21:00:57.905Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\StackOverflow\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "StackOverflow\\Properties\\launchSettings.json",
@@ -30,21 +78,19 @@
               "RelativeToolTip": "StackOverflow\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-22T21:52:29.893Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-22T21:52:29.893Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\StackOverflow\\Program.cs",
               "RelativeDocumentMoniker": "StackOverflow\\Program.cs",
               "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\StackOverflow\\Program.cs",
               "RelativeToolTip": "StackOverflow\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAXAAAAAAAAAA==",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-22T21:46:58.691Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-22T21:46:58.691Z"
             }
           ]
         }

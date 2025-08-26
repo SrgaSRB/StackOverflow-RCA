@@ -2,6 +2,11 @@ namespace StackOverflow.Models
 {
     public class Question : Entity
     {
+        public Question()
+        {
+            PartitionKey = "QUESTION";
+        }
+
         public required string Title { get; set; }
         public required string Description { get; set; }
         public string? PictureUrl { get; set; }

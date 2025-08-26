@@ -1,28 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\StackOverflow\\StackOverflow.csproj": {}
+    "C:\\Users\\Ana\\Documents\\Faks\\4. god\\Cloud\\StackOverflow-RCA\\StackOverflow\\StackOverflow\\StackOverflow.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\StackOverflow\\StackOverflow.csproj": {
+    "C:\\Users\\Ana\\Documents\\Faks\\4. god\\Cloud\\StackOverflow-RCA\\StackOverflow\\StackOverflow\\StackOverflow.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\StackOverflow\\StackOverflow.csproj",
+        "projectUniqueName": "C:\\Users\\Ana\\Documents\\Faks\\4. god\\Cloud\\StackOverflow-RCA\\StackOverflow\\StackOverflow\\StackOverflow.csproj",
         "projectName": "StackOverflow",
-        "projectPath": "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\StackOverflow\\StackOverflow.csproj",
-        "packagesPath": "C:\\Users\\SRDJAN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SRDJAN\\Desktop\\Projects\\Stack Overflow\\StackOverflow\\StackOverflow\\obj\\",
+        "projectPath": "C:\\Users\\Ana\\Documents\\Faks\\4. god\\Cloud\\StackOverflow-RCA\\StackOverflow\\StackOverflow\\StackOverflow.csproj",
+        "packagesPath": "C:\\Users\\Ana\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ana\\Documents\\Faks\\4. god\\Cloud\\StackOverflow-RCA\\StackOverflow\\StackOverflow\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "E:\\Vidual studio 2019 Shared components, tools\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\SRDJAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Ana\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net9.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -30,8 +30,8 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net9.0": {
-            "targetAlias": "net9.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -48,12 +48,16 @@
         "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
+            "Azure.Data.Tables": {
+              "target": "Package",
+              "version": "[12.8.3, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
-              "version": "[9.0.8, )"
+              "version": "[8.0.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -71,6 +75,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.19, 8.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.19, 8.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.19, 8.0.19]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.19, 8.0.19]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"

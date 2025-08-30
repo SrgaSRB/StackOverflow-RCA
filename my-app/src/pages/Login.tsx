@@ -1,36 +1,62 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  try {
-    const response = await fetch('http://localhost:5167/api/users/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    });
-    if (response.ok) {
-      const user = await response.json();
-      localStorage.setItem('user', JSON.stringify(user));
-      window.location.href = '/dashboard';
-    } else {
-      const errorMsg = await response.text();
-      alert(errorMsg || 'Login failed');
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:5167/api/users/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      
+      if (response.ok) {
+        const user = await response.json();
+        
+        console.log('User received from login:', user);
+        
+        // Handle both RowKey and rowKey properties
+        const userId = user.RowKey || user.rowKey || user.id;
+        console.log('User ID:', userId);
+        
+        // Ensure we have a valid user ID
+        if (user && userId) {
+          // Normalize the user object to have consistent property names
+          const normalizedUser = {
+            ...user,
+            id: userId,
+            RowKey: userId,
+            rowKey: userId
+          };
+          
+          localStorage.setItem('user', JSON.stringify(normalizedUser));
+          console.log('User saved to localStorage');
+          navigate('/dashboard');
+        } else {
+          console.error('User object missing ID:', user);
+          alert('Login failed: User data incomplete');
+        }
+      } else {
+        const errorMsg = await response.text();
+        console.error('Login failed:', errorMsg);
+        alert(errorMsg || 'Login failed');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      alert('Login failed - network error');
     }
-  } catch (error) {
-    alert('Login failed');
-  }
-};
+  };
 
   return (
     <section className="login-section">

@@ -38,3 +38,7 @@ C:\Users\Ana\Documents\Faks\4. god\Cloud\StackOverflow-RCA\StackOverflow\StackOv
 C:\Users\Ana\Documents\Faks\4. god\Cloud\StackOverflow-RCA\StackOverflow\StackOverflow\obj\Debug\net8.0\StackOverflow.pdb
 C:\Users\Ana\Documents\Faks\4. god\Cloud\StackOverflow-RCA\StackOverflow\StackOverflow\obj\Debug\net8.0\StackOverflow.genruntimeconfig.cache
 C:\Users\Ana\Documents\Faks\4. god\Cloud\StackOverflow-RCA\StackOverflow\StackOverflow\obj\Debug\net8.0\ref\StackOverflow.dll
+C:\Users\Ana\Documents\Faks\4. god\Cloud\StackOverflow-RCA\StackOverflow\StackOverflow\bin\Debug\net8.0\Azure.Storage.Blobs.dll
+C:\Users\Ana\Documents\Faks\4. god\Cloud\StackOverflow-RCA\StackOverflow\StackOverflow\bin\Debug\net8.0\Azure.Storage.Common.dll
+C:\Users\Ana\Documents\Faks\4. god\Cloud\StackOverflow-RCA\StackOverflow\StackOverflow\bin\Debug\net8.0\System.ClientModel.dll
+C:\Users\Ana\Documents\Faks\4. god\Cloud\StackOverflow-RCA\StackOverflow\StackOverflow\bin\Debug\net8.0\System.IO.Hashing.dll

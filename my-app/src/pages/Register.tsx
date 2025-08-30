@@ -26,14 +26,30 @@ const Register = () => {
       alert('Passwords do not match!');
       return;
     }
+    // Pripremi payload bez confirmPassword
+    const { confirmPassword, ...payload } = formData;
+
     try {
       const response = await fetch('http://localhost:5167/api/users/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(payload)
       });
       if (response.ok) {
-        alert('Registration successful!');
+        const user = await response.json();
+        const userId = user.RowKey || user.rowKey || user.id;
+        if (user && userId) {
+          const normalizedUser = {
+            ...user,
+            id: userId,
+            RowKey: userId,
+            rowKey: userId
+          };
+          localStorage.setItem('user', JSON.stringify(normalizedUser));
+          alert('Registration successful!');
+        } else {
+          alert('Registration failed: User data incomplete');
+        }
         setFormData({
           firstName: '',
           lastName: '',
@@ -47,7 +63,8 @@ const Register = () => {
           confirmPassword: ''
         });
       } else {
-        alert('Registration failed');
+        const errorMsg = await response.text();
+        alert(errorMsg || 'Registration failed');
       }
     } catch (error) {
       alert('Registration failed');

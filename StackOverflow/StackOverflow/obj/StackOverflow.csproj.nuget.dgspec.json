@@ -55,6 +55,10 @@
               "target": "Package",
               "version": "[12.8.3, )"
             },
+            "Azure.Storage.Blobs": {
+              "target": "Package",
+              "version": "[12.25.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.4, )"

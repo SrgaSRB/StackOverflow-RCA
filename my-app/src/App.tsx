@@ -15,23 +15,19 @@ const router = createBrowserRouter([
   {
     element: <PublicLayout />,
     children: [
-      { path: "/dashboard", element: <Dashboard /> },
       { path: "/user-login", element: <Login /> },
       { path: "/user-register", element: <Register /> },
-      { path: "/post/:postId", element: <Post /> },
-      { path: "/profile/:id", element: <Profile /> },
     ],
   },
 
   {
-    element: (
-      //<ProtectedRoute>
-      <PrivateLayout />
-      ////</ProtectedRoute>
-    ),
+    element: <PrivateLayout />,
     children: [
+      { path: "/dashboard", element: <Dashboard /> },
       { path: "/create-post", element: <CreatePost /> },
       { path: "/update-post/:id", element: <CreatePost /> },
+      { path: "/post/:postId", element: <Post /> },
+      { path: "/profile/:id", element: <Profile /> },
       { path: "/profile", element: <Profile /> }, //my-profile
     ],
   },

@@ -12,6 +12,8 @@ const Profile = () => {
     const [formData, setFormData] = useState(user);
     const [showImageModal, setShowImageModal] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const [imageFile, setImageFile] = useState<File | null>(null);
+    const [imagePreview, setImagePreview] = useState<string | null>(null);
 
     // Kada se user promeni, osveži formData
     useEffect(() => {
@@ -34,23 +36,50 @@ const Profile = () => {
             alert('Greška: Nema ID korisnika. Molimo ponovo se prijavite.');
             return;
         }
+
+        let updatedUserData = { ...formData };
+
         try {
+            // Ako postoji nova slika za upload
+            if (imageFile) {
+                const formDataImg = new FormData();
+                formDataImg.append('file', imageFile);
+
+                const res = await fetch(`http://localhost:5167/api/users/${userId}/profile-picture`, {
+                    method: 'POST',
+                    body: formDataImg
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    updatedUserData.profilePictureUrl = data.imageUrl;
+                } else {
+                    alert('Greška pri upload-u slike');
+                    return; // Prekini ako upload slike ne uspe
+                }
+            }
+
+            // Ažuriraj ostale podatke korisnika
             const response = await fetch(`http://localhost:5167/api/users/${userId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(updatedUserData)
             });
+
             if (response.ok) {
-                const updatedUser = await response.json();
-                localStorage.setItem('user', JSON.stringify(updatedUser));
-                setUser(updatedUser);
-                setFormData(updatedUser);
+                const finalUpdatedUser = await response.json();
+                localStorage.setItem('user', JSON.stringify(finalUpdatedUser));
+                setUser(finalUpdatedUser);
+                setFormData(finalUpdatedUser);
+                setImageFile(null); // Resetuj fajl slike
+                setImagePreview(null); // Resetuj pregled slike
                 alert('Podaci uspešno ažurirani!');
             } else {
                 alert('Greška pri ažuriranju korisnika');
             }
-        } catch {
-            alert('Greška pri ažuriranju korisnika');
+        } catch (error) {
+            console.error("Greška pri čuvanju:", error);
+            alert('Došlo je do greške pri čuvanju podataka.');
         }
         setIsEditing(false);
     };
@@ -58,6 +87,8 @@ const Profile = () => {
     const handleCancel = () => {
         setFormData(user);
         setIsEditing(false);
+        setImageFile(null);
+        setImagePreview(null);
     };
 
     // Klik na sliku
@@ -70,42 +101,11 @@ const Profile = () => {
     };
 
     // Promena slike
-    const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
-            const formDataImg = new FormData();
-            formDataImg.append('file', e.target.files[0]);
-            const userId = formData.RowKey || formData.rowKey;
-            if (!userId) {
-                alert('Greška: Nema ID korisnika.');
-                return;
-            }
-            try {
-                const res = await fetch(`http://localhost:5167/api/users/${userId}/profile-picture`, {
-                    method: 'POST',
-                    body: formDataImg
-                });
-                if (res.ok) {
-                    const data = await res.json();
-                    const updatedUserData = { ...formData, profilePictureUrl: data.imageUrl };
-                    // Sačuvaj promenu slike u Azure Table
-                    const updateRes = await fetch(`http://localhost:5167/api/users/${userId}`, {
-                        method: 'PUT',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(updatedUserData)
-                    });
-                    if (updateRes.ok) {
-                        const finalUpdatedUser = await updateRes.json();
-                        localStorage.setItem('user', JSON.stringify(finalUpdatedUser));
-                        setUser(finalUpdatedUser);
-                        setFormData(finalUpdatedUser);
-                        alert('Slika profila uspešno ažurirana!');
-                    }
-                } else {
-                    alert('Greška pri upload-u slike');
-                }
-            } catch {
-                alert('Greška pri upload-u slike');
-            }
+            const file = e.target.files[0];
+            setImageFile(file);
+            setImagePreview(URL.createObjectURL(file));
         }
     };
 
@@ -118,16 +118,16 @@ const Profile = () => {
                     <div className="user-profile-left-div">
                         <img
                             src={
-                                formData.profilePictureUrl
-                                ? formData.profilePictureUrl
-                                : "https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a78893518a2aa043ff4749_female-placeholder.webp"
+                                imagePreview ||
+                                formData.profilePictureUrl ||
+                                "https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a78893518a2aa043ff4749_female-placeholder.webp"
                             }
                             loading="lazy"
                             alt=""
                             className="user-profile-user-image"
                             onClick={handleImageClick}
                             style={{ cursor: 'pointer' }}
-                            />
+                        />
                         {isEditing && (
                             <input
                                 type="file"
@@ -153,15 +153,14 @@ const Profile = () => {
                                 }}
                                 onClick={handleModalClose}
                             >
-                            <img
-                            src={
-                                formData.profilePictureUrl
-                                ? formData.profilePictureUrl
-                                : "https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a78893518a2aa043ff4749_female-placeholder.webp"
-                            }
-                            alt="Profile enlarged"
-                            style={{ maxWidth: '80vw', maxHeight: '80vh', borderRadius: '10px' }}
-                            />
+                                <img
+                                    src={
+                                        formData.profilePictureUrl ||
+                                        "https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a78893518a2aa043ff4749_female-placeholder.webp"
+                                    }
+                                    alt="Profile enlarged"
+                                    style={{ maxWidth: '80vw', maxHeight: '80vh', borderRadius: '10px' }}
+                                />
                             </div>
                         )}
                         <div>
@@ -260,45 +259,45 @@ const Profile = () => {
                         </div>
                     </div>
                     <div className="user-profile-main-div">
-                    <div className="user-profile-main-q-s-selector-div">
-                        <div className="user-profile-main-q-a">
-                            <div className="user-profile-main-q-a-tab-nav user-profile-main-q-a-tab-nav-select">
-                                <div>Questions (1)</div>
+                        <div className="user-profile-main-q-s-selector-div">
+                            <div className="user-profile-main-q-a">
+                                <div className="user-profile-main-q-a-tab-nav user-profile-main-q-a-tab-nav-select">
+                                    <div>Questions (1)</div>
+                                </div>
+                                <div className="user-profile-main-q-a-tab-nav">
+                                    <div>Answers (0)</div>
+                                </div>
                             </div>
-                            <div className="user-profile-main-q-a-tab-nav">
-                                <div>Answers (0)</div>
+                        </div>
+                        <div className="user-profile-q-a-list-div">
+                            <div className="user-profile-q-a-div">
+                                <div className="user-profile-q-a-div-left">
+                                    <div className="user-profile-q-a-div-left-info-div">
+                                        <div className="text-block-15">12</div>
+                                        <div className="text-block-16">votes</div>
+                                    </div>
+                                    <div className="user-profile-q-a-div-left-info-div">
+                                        <div className="text-block-15">5</div>
+                                        <div className="text-block-16">answers</div>
+                                    </div>
+                                    <div className="user-profile-q-a-div-left-info-div">
+                                        <div className="text-block-15">340</div>
+                                        <div className="text-block-16">views</div>
+                                    </div>
+                                </div>
+                                <div className="user-profile-q-a-div-info">
+                                    <div className="user-profile-q-a-div-info-title">How to implement authentication in React
+                                        with TypeScript?</div>
+                                    <div className="user-profile-q-a-div-info-description">Contrary to popular belief, Lorem
+                                        Ipsum is not simply random text. It has roots in a piece of classical Latin
+                                        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin
+                                        professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
+                                        Latin words, consectetur, from a L....</div>
+                                    <div className="user-profile-q-a-div-info-date">Asked January 15, 2024</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div className="user-profile-q-a-list-div">
-                        <div className="user-profile-q-a-div">
-                            <div className="user-profile-q-a-div-left">
-                                <div className="user-profile-q-a-div-left-info-div">
-                                    <div className="text-block-15">12</div>
-                                    <div className="text-block-16">votes</div>
-                                </div>
-                                <div className="user-profile-q-a-div-left-info-div">
-                                    <div className="text-block-15">5</div>
-                                    <div className="text-block-16">answers</div>
-                                </div>
-                                <div className="user-profile-q-a-div-left-info-div">
-                                    <div className="text-block-15">340</div>
-                                    <div className="text-block-16">views</div>
-                                </div>
-                            </div>
-                            <div className="user-profile-q-a-div-info">
-                                <div className="user-profile-q-a-div-info-title">How to implement authentication in React
-                                    with TypeScript?</div>
-                                <div className="user-profile-q-a-div-info-description">Contrary to popular belief, Lorem
-                                    Ipsum is not simply random text. It has roots in a piece of classical Latin
-                                    literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin
-                                    professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                                    Latin words, consectetur, from a L....</div>
-                                <div className="user-profile-q-a-div-info-date">Asked January 15, 2024</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 </div>
             </div>
         </section>

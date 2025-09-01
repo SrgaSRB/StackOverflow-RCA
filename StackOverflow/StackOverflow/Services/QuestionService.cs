@@ -42,6 +42,24 @@ namespace StackOverflow.Services
             return blobClient.Uri.ToString();
         }
 
+        public async Task DeletePictureAsync(string pictureUrl)
+        {
+            if (!string.IsNullOrEmpty(pictureUrl))
+            {
+                try
+                {
+                    var uri = new Uri(pictureUrl);
+                    var fileName = Path.GetFileName(uri.LocalPath);
+                    var blobClient = _blobContainerClient.GetBlobClient(fileName);
+                    await blobClient.DeleteIfExistsAsync();
+                }
+                catch (Exception)
+                {
+                    // Log the exception, but don't fail the operation
+                }
+            }
+        }
+
         public async Task<List<Question>> GetQuestionsByUserIdAsync(string userId)
         {
             var questions = new List<Question>();
@@ -50,6 +68,45 @@ namespace StackOverflow.Services
                 questions.Add(question);
             }
             return questions;
+        }
+
+        public async Task<Question?> GetQuestionByIdAsync(string questionId)
+        {
+            try
+            {
+                var response = await _tableClient.GetEntityAsync<Question>("QUESTION", questionId);
+                return response.Value;
+            }
+            catch (RequestFailedException ex) when (ex.Status == 404)
+            {
+                return null;
+            }
+        }
+
+        public async Task DeleteQuestionAsync(string questionId)
+        {
+            var question = await GetQuestionByIdAsync(questionId);
+            if (question != null)
+            {
+                // Delete the picture from blob storage if it exists
+                if (!string.IsNullOrEmpty(question.PictureUrl))
+                {
+                    try
+                    {
+                        var uri = new Uri(question.PictureUrl);
+                        var fileName = Path.GetFileName(uri.LocalPath);
+                        var blobClient = _blobContainerClient.GetBlobClient(fileName);
+                        await blobClient.DeleteIfExistsAsync();
+                    }
+                    catch (Exception)
+                    {
+                        // Log the exception, but don't fail the deletion
+                    }
+                }
+
+                // Delete the question from table storage
+                await _tableClient.DeleteEntityAsync("QUESTION", questionId);
+            }
         }
     }
 }

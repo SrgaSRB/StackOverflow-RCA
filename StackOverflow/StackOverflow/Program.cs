@@ -21,6 +21,7 @@ builder.Services.AddSwaggerGen();
 // Dodajte Azure Storage service
 var connectionString = builder.Configuration.GetConnectionString("AzureStorage");
 builder.Services.AddSingleton(new UserService(connectionString!));
+builder.Services.AddSingleton(new QuestionService(connectionString!));
 
 var app = builder.Build();
 

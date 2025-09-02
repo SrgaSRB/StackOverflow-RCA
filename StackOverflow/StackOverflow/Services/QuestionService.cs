@@ -173,7 +173,7 @@ namespace StackOverflow.Services
                         ProfilePictureUrl = user.ProfilePictureUrl,
                         QuestionsCount = actualQuestionsCount
                     } : new UserInfo { Username = "Unknown" },
-                    Answers = new List<DTOs.Answer>() // TODO: Implement answers
+                    Answers = new List<DTOs.Answer>() // Will be populated by controller
                 };
             }
             catch (RequestFailedException ex) when (ex.Status == 404)

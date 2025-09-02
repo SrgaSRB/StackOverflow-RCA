@@ -13,6 +13,7 @@ interface Answer {
     createdAt: string;
     user: UserInfo;
     totalVotes: number;
+    userQuestionsCount?: number;
 }
 
 interface QuestionDetails {
@@ -34,6 +35,7 @@ const Post = () => {
     const [error, setError] = useState<string | null>(null);
     const [showImageModal, setShowImageModal] = useState(false);
     const [authorQuestionsCount, setAuthorQuestionsCount] = useState<number>(0);
+    const [answerAuthorsQuestionsCount, setAnswerAuthorsQuestionsCount] = useState<Record<string, number>>({});
 
     useEffect(() => {
         const fetchQuestion = async () => {
@@ -50,9 +52,19 @@ const Post = () => {
                     console.log('Question answers:', data.answers);
                     setQuestion(data);
                     
-                    // Fetch author's questions count
                     if (data.user && data.user.username) {
                         await fetchAuthorQuestionsCount(data.user.username);
+                    }
+
+                    if (data.answers && data.answers.length > 0) {
+                        const counts: Record<string, number> = {};
+                        for (const answer of data.answers) {
+                            if (answer.user && answer.user.username) {
+                                const count = await fetchAuthorQuestionsCount(answer.user.username, false);
+                                counts[answer.user.username] = count;
+                            }
+                        }
+                        setAnswerAuthorsQuestionsCount(counts);
                     }
                 } else {
                     const errorText = await response.text();
@@ -67,18 +79,24 @@ const Post = () => {
             }
         };
 
-        const fetchAuthorQuestionsCount = async (username: string) => {
+        const fetchAuthorQuestionsCount = async (username: string, isPostAuthor: boolean = true) => {
             try {
-                // Get all questions and count those by this user
                 const response = await fetch('http://localhost:5167/api/questions');
                 if (response.ok) {
                     const allQuestions = await response.json();
                     const userQuestions = allQuestions.filter((q: any) => q.user && q.user.username === username);
-                    setAuthorQuestionsCount(userQuestions.length);
+                    if (isPostAuthor) {
+                        setAuthorQuestionsCount(userQuestions.length);
+                    }
+                    return userQuestions.length;
                 }
+                return 0;
             } catch (error) {
                 console.error("Error fetching author questions count:", error);
-                setAuthorQuestionsCount(0);
+                if (isPostAuthor) {
+                    setAuthorQuestionsCount(0);
+                }
+                return 0;
             }
         };
 
@@ -90,9 +108,10 @@ const Post = () => {
     const handleAnswerSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const user = JSON.parse(localStorage.getItem('user') || '{}');
+        const userId = user.RowKey || user.rowKey;
 
-        if (!user.userId || !newAnswer.trim()) {
-            // Handle not logged in or empty answer
+        if (!userId || !newAnswer.trim()) {
+            alert("You must be logged in to post an answer.");
             return;
         }
 
@@ -104,7 +123,7 @@ const Post = () => {
                 },
                 body: JSON.stringify({
                     Content: newAnswer,
-                    UserId: user.userId,
+                    UserId: userId,
                 }),
             });
 
@@ -112,11 +131,14 @@ const Post = () => {
                 const addedAnswer = await response.json();
                 setQuestion(prev => prev ? { ...prev, answers: [...prev.answers, addedAnswer] } : null);
                 setNewAnswer('');
+                alert('Your answer has been posted successfully!');
             } else {
                 console.error("Failed to post answer");
+                alert('Failed to post answer. Please try again.');
             }
         } catch (error) {
             console.error("Error posting answer:", error);
+            alert('An error occurred while posting your answer. Please try again.');
         }
     };
 
@@ -204,7 +226,7 @@ const Post = () => {
                     </div>
                     <div className="add-answer-block">
                         <div className="w-form">
-                            <form onSubmit={handleAnswerSubmit}>
+                            <form id="email-form-4" className="form-3" onSubmit={handleAnswerSubmit}>
                                 <div className="text-block-23">Your Answer</div>
                                 <textarea
                                     placeholder="Write your answer here..."
@@ -233,12 +255,16 @@ const Post = () => {
                                             <div className="q-answer-right-bottom-div">
                                                 <div className="q-answer-date-div">
                                                     <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a789647d68e02a34817ecb_date.png" loading="lazy" alt="" className="image-11" />
-                                                    <div>Answered <span className="q-answer-date">{new Date(answer.createdAt).toLocaleDateString()}</span></div>
+                                                    <div>
+                                                        Answered <span className="q-answer-date">{new Date(answer.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} </span>
+                                                        at <span className="q-answer-time">{new Date(answer.createdAt).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}</span>
+                                                    </div>
                                                 </div>
                                                 <div className="q-question-user-info answer-user-info">
                                                     <img src={answer.user.profilePictureUrl || "https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a78893518a2aa043ff4749_female-placeholder.webp"} loading="lazy" alt="" className="q-question-user-info-image question-user-image" />
                                                     <div className="q-question-user-info-right-div">
                                                         <div className="q-question-user-info-username answer-user-username">@{answer.user.username}</div>
+                                                        <div className="text-block-20">({answerAuthorsQuestionsCount[answer.user.username] || 0})</div>
                                                     </div>
                                                 </div>
                                             </div>

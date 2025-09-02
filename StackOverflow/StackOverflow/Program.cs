@@ -22,6 +22,7 @@ builder.Services.AddSwaggerGen();
 var connectionString = builder.Configuration.GetConnectionString("AzureStorage");
 builder.Services.AddSingleton(new UserService(connectionString!));
 builder.Services.AddSingleton(new QuestionService(connectionString!));
+builder.Services.AddSingleton(new CommentService(connectionString!));
 
 var app = builder.Build();
 

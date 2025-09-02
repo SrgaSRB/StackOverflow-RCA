@@ -127,5 +127,59 @@ namespace StackOverflow.Services
                 throw;
             }
         }
+
+        public async Task IncrementUserQuestionsCountAsync(string userId)
+        {
+            try
+            {
+                var user = await GetUserAsync(userId);
+                if (user != null)
+                {
+                    user.QuestionsCount++;
+                    await UpdateUserAsync(user);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error incrementing questions count for user {userId}: {ex.Message}");
+                throw;
+            }
+        }
+
+        public async Task DecrementUserQuestionsCountAsync(string userId)
+        {
+            try
+            {
+                var user = await GetUserAsync(userId);
+                if (user != null && user.QuestionsCount > 0)
+                {
+                    user.QuestionsCount--;
+                    await UpdateUserAsync(user);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error decrementing questions count for user {userId}: {ex.Message}");
+                throw;
+            }
+        }
+
+        public async Task UpdateUserQuestionsCountAsync(string userId, int questionsCount)
+        {
+            try
+            {
+                var user = await GetUserAsync(userId);
+                if (user != null)
+                {
+                    user.QuestionsCount = questionsCount;
+                    await UpdateUserAsync(user);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error updating questions count for user {userId}: {ex.Message}");
+                throw;
+            }
+        }
     }
 }

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test API</title>
+</head>
+<body>
+    <h1>API Test</h1>
+    <button onclick="testGetQuestions()">Test Get All Questions</button>
+    <button onclick="testGetQuestion()">Test Get Single Question</button>
+    <div id="result"></div>
+
+    <script>
+        async function testGetQuestions() {
+            try {
+                const response = await fetch('http://localhost:5167/api/questions');
+                const data = await response.json();
+                document.getElementById('result').innerHTML = '<h2>All Questions:</h2><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                document.getElementById('result').innerHTML = '<h2>Error:</h2>' + error;
+            }
+        }
+
+        async function testGetQuestion() {
+            try {
+                const response = await fetch('http://localhost:5167/api/questions/797c0290-b85d-43b9-8e00-f40f7592d866');
+                const data = await response.json();
+                document.getElementById('result').innerHTML = '<h2>Single Question:</h2><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                document.getElementById('result').innerHTML = '<h2>Error:</h2>' + error;
+            }
+        }
+    </script>
+</body>
+</html>

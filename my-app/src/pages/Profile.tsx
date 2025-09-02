@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import ReactCrop, {
   centerCrop,
   makeAspectCrop,
@@ -866,7 +867,7 @@ const Profile = () => {
                                   type="button"
                                   onClick={handleRemoveQuestionImage}
                                   style={{
-                                    backgroundColor: "#dc3545",
+                                    backgroundColor: "#145c38ff",
                                     color: "white",
                                     border: "none",
                                     padding: "4px 8px",
@@ -898,7 +899,7 @@ const Profile = () => {
                                 handleSaveQuestion(question.rowKey)
                               }
                               style={{
-                                backgroundColor: "#28a745",
+                                backgroundColor: "#38ad73",
                                 color: "white",
                                 border: "none",
                                 padding: "8px 16px",
@@ -929,9 +930,14 @@ const Profile = () => {
                         </div>
                       ) : (
                         <>
-                          <div className="user-profile-q-a-div-info-title">
-                            {question.title}
-                          </div>
+                          <Link 
+                            to={`/post/${question.rowKey}`} 
+                            style={{ textDecoration: 'none', color: 'inherit' }}
+                          >
+                            <div className="user-profile-q-a-div-info-title" style={{ cursor: 'pointer' }}>
+                              {question.title}
+                            </div>
+                          </Link>
                           <div className="user-profile-q-a-div-info-description">
                             {question.description}
                           </div>

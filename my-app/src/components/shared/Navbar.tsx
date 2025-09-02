@@ -33,7 +33,15 @@ const Navbar = () => {
           </Link>
           {isLoggedIn && (
             <div className="form-block-2 w-form">
-              <form id="search-form" name="search-form">
+              <form
+                id="search-form"
+                name="search-form"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const search = (e.currentTarget.elements.namedItem('search') as HTMLInputElement).value;
+                  navigate(`/dashboard?search=${search}`);
+                }}
+              >
                 <div className="div-block-3">
                   <input
                     className="input search w-input"
@@ -43,7 +51,6 @@ const Navbar = () => {
                     placeholder="Search"
                     type="text"
                     id="search"
-                    required
                   />
                   <img
                     src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a78ec7d59d91133ecf299e_magnifying-glass.png"

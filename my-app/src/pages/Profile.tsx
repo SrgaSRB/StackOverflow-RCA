@@ -54,13 +54,14 @@ function getCroppedImg(
 }
 
 interface Question {
-  rowKey: string;
+  questionId: string;
   title: string;
   description: string;
-  timestamp: string;
-  upvote: number;
-  downvote: number;
+  createdAt: string | Date;
+  upvotes: number;
+  downvotes: number;
   totalVotes: number;
+  answersCount: number;
   pictureUrl?: string;
 }
 
@@ -90,6 +91,7 @@ const Profile = () => {
   const [originalFileName, setOriginalFileName] = useState("");
 
   const [questions, setQuestions] = useState<Question[]>([]);
+  const [userStats, setUserStats] = useState<{answersCount: number} | null>(null);
   const [showQuestionImageModal, setShowQuestionImageModal] = useState(false);
   const [selectedQuestionImageUrl, setSelectedQuestionImageUrl] = useState<
     string | null
@@ -119,7 +121,7 @@ const Profile = () => {
 
   // Question editing functions
   const handleEditQuestion = (question: Question) => {
-    setEditingQuestionId(question.rowKey);
+    setEditingQuestionId(question.questionId);
     setEditQuestionData({
       title: question.title,
       description: question.description,
@@ -230,7 +232,26 @@ const Profile = () => {
       }
     };
 
+    const fetchUserStats = async () => {
+      if (user.RowKey) {
+        try {
+          const response = await fetch(
+            `http://localhost:5167/api/users/${user.RowKey}/stats`
+          );
+          if (response.ok) {
+            const data = await response.json();
+            setUserStats({ answersCount: data.answersCount });
+          } else {
+            console.error("Failed to fetch user stats");
+          }
+        } catch (error) {
+          console.error("Error fetching user stats:", error);
+        }
+      }
+    };
+
     fetchQuestions();
+    fetchUserStats();
   }, [user.RowKey]);
 
   // Function to refresh questions
@@ -246,6 +267,23 @@ const Profile = () => {
         }
       } catch (error) {
         console.error("Error refreshing questions:", error);
+      }
+    }
+  };
+
+  // Function to refresh user stats
+  const refreshUserStats = async () => {
+    if (user.RowKey) {
+      try {
+        const response = await fetch(
+          `http://localhost:5167/api/users/${user.RowKey}/stats`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setUserStats({ answersCount: data.answersCount });
+        }
+      } catch (error) {
+        console.error("Error refreshing user stats:", error);
       }
     }
   };
@@ -629,7 +667,7 @@ const Profile = () => {
               </div>
               <div className="user-profile-user-q-a-div">
                 <div className="user-profile-user-answers">
-                  {formData.answersCount || 0}
+                  {userStats?.answersCount || 0}
                 </div>
                 <div className="text-block-12">Answers</div>
               </div>
@@ -642,13 +680,13 @@ const Profile = () => {
                   <div>Questions ({questions.length})</div>
                 </div>
                 <div className="user-profile-main-q-a-tab-nav">
-                  <div>Answers (0)</div>
+                  <div>Answers ({userStats?.answersCount || 0})</div>
                 </div>
               </div>
             </div>
             <div className="user-profile-q-a-list-div">
               {questions.map((question) => (
-                <div key={question.rowKey} className="user-profile-q-a-item">
+                <div key={question.questionId} className="user-profile-q-a-item">
                   <div
                     className="user-profile-q-a-div"
                     style={{
@@ -695,7 +733,7 @@ const Profile = () => {
                           className="user-profile-q-a-div-left-info-div"
                           style={{ textAlign: "center" }}
                         >
-                          <div className="text-block-15">0</div>
+                          <div className="text-block-15">{question.answersCount || 0}</div>
                           <div
                             className="text-block-16"
                             style={{ fontSize: "11px" }}
@@ -717,7 +755,7 @@ const Profile = () => {
                         </div>
                       </div>
                       {/* Edit and Delete buttons */}
-                      {editingQuestionId !== question.rowKey && (
+                      {editingQuestionId !== question.questionId && (
                         <div
                           style={{
                             display: "flex",
@@ -754,7 +792,7 @@ const Profile = () => {
                           </button>
                           <button
                             onClick={() =>
-                              handleDeleteQuestion(question.rowKey)
+                              handleDeleteQuestion(question.questionId)
                             }
                             style={{
                               backgroundColor: "#38ad73",
@@ -789,7 +827,7 @@ const Profile = () => {
                       className="user-profile-q-a-div-info"
                       style={{ flex: 1, marginRight: "20px" }}
                     >
-                      {editingQuestionId === question.rowKey ? (
+                      {editingQuestionId === question.questionId ? (
                         <div
                           style={{
                             padding: "15px",
@@ -896,7 +934,7 @@ const Profile = () => {
                           <div style={{ display: "flex", gap: "10px" }}>
                             <button
                               onClick={() =>
-                                handleSaveQuestion(question.rowKey)
+                                handleSaveQuestion(question.questionId)
                               }
                               style={{
                                 backgroundColor: "#38ad73",
@@ -931,7 +969,7 @@ const Profile = () => {
                       ) : (
                         <>
                           <Link 
-                            to={`/post/${question.rowKey}`} 
+                            to={`/post/${question.questionId}`} 
                             style={{ textDecoration: 'none', color: 'inherit' }}
                           >
                             <div className="user-profile-q-a-div-info-title" style={{ cursor: 'pointer' }}>
@@ -943,7 +981,7 @@ const Profile = () => {
                           </div>
                           <div className="user-profile-q-a-div-info-date">
                             Asked{" "}
-                            {new Date(question.timestamp).toLocaleDateString()}
+                            {new Date(question.createdAt).toLocaleDateString()}
                           </div>
                         </>
                       )}
@@ -951,7 +989,7 @@ const Profile = () => {
 
                     {/* Image Div */}
                     {question.pictureUrl &&
-                      editingQuestionId !== question.rowKey &&
+                      editingQuestionId !== question.questionId &&
                       !removeQuestionImage && (
                         <div style={{ flexShrink: 0 }}>
                           <img

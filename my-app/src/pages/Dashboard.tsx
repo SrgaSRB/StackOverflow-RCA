@@ -27,6 +27,7 @@ interface VoteState {
 
 const Dashboard = () => {
     const [questions, setQuestions] = useState<QuestionDetails[]>([]);
+    const [popularQuestions, setPopularQuestions] = useState<QuestionDetails[]>([]);
     const [searchParams] = useSearchParams();
     const [questionVoteStates, setQuestionVoteStates] = useState<Record<string, VoteState>>({});
 
@@ -91,6 +92,40 @@ const Dashboard = () => {
 
         fetchQuestions();
     }, [searchParams]);
+
+    const fetchPopularQuestions = async () => {
+        try {
+            const response = await fetch("http://localhost:5167/api/questions/popular?limit=100"); // Fetch many questions
+            if (response.ok) {
+                const data = await response.json();
+                
+                // Get current user from localStorage
+                const currentUser = JSON.parse(localStorage.getItem('user') || '{}');
+                const currentUserId = currentUser.RowKey || currentUser.rowKey;
+                
+                let filteredData = data;
+                
+                // Filter out current user's questions
+                if (currentUserId) {
+                    filteredData = data.filter((question: QuestionDetails) => {
+                        return question.user && question.user.username !== currentUser.username;
+                    });
+                }
+                
+                // Show all filtered questions (no slice limit)
+                setPopularQuestions(filteredData);
+            } else {
+                console.error("Failed to fetch popular questions");
+            }
+        } catch (error) {
+            console.error("Error fetching popular questions:", error);
+        }
+    };
+
+    // Fetch popular questions on component mount
+    useEffect(() => {
+        fetchPopularQuestions();
+    }, []);
 
     const fetchUserQuestionVote = async (userId: string, questionId: string) => {
         try {
@@ -278,7 +313,7 @@ const Dashboard = () => {
                                         </div>
                                     </div>
                                     <div className="question-main-div">
-                                        <Link to={`/post/${question.questionId}`} className="question-title-link">
+                                        <Link to={`/post/${question.questionId}`} className="question-title-link" style={{ textDecoration: 'none' }}>
                                             <div className="question-title">{question.title}</div>
                                         </Link>
                                         <div className="question-description">{question.description}</div>
@@ -314,18 +349,21 @@ const Dashboard = () => {
                                 <div className="text-block-5">Popular Questions</div>
                             </div>
                             <div className="popular-question-list">
-                                <div className="popular-question-div">
-                                    <div className="text-block-6">How to optimize React app performance with large datasets?
+                                {popularQuestions.map((question) => (
+                                    <div className="popular-question-div" key={question.questionId}>
+                                        <Link to={`/post/${question.questionId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                            <div className="text-block-6">{question.title}</div>
+                                        </Link>
+                                        <div className="popular-question-div-footer">
+                                            <div className="popular-question-votes">{question.totalVotes}</div>
+                                            <div>votes</div>
+                                            <div className="div-block-2"></div>
+                                            <div className="popular-question-answers">{question.answersCount}</div>
+                                            <div>answers</div>
+                                        </div>
+                                        <div className="popular-question-hr"></div>
                                     </div>
-                                    <div className="popular-question-div-footer">
-                                        <div className="popular-question-votes">22</div>
-                                        <div>votes</div>
-                                        <div className="div-block-2"></div>
-                                        <div className="popular-question-answers">8</div>
-                                        <div>answers</div>
-                                    </div>
-                                    <div className="popular-question-hr"></div>
-                                </div>
+                                ))}
                             </div>
                         </div>
                     </div>

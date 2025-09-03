@@ -54,8 +54,14 @@ const Post = () => {
         userVote: null
     });
     const [answerVoteStates, setAnswerVoteStates] = useState<Record<string, VoteState>>({});
+    const [isQuestionAuthor, setIsQuestionAuthor] = useState<boolean>(false);
 
     useEffect(() => {
+        // Get current user info once at the beginning
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        const userId = user.RowKey || user.rowKey;
+        const currentUserUsername = user.Username || user.username;
+        
         const fetchQuestion = async () => {
             try {
                 console.log('Fetching question with ID:', postId);
@@ -70,6 +76,11 @@ const Post = () => {
                     console.log('Question answers:', data.answers);
                     setQuestion(data);
                     
+                    // Check if current user is the author of the question
+                    if (userId && data.user && data.user.username) {
+                        setIsQuestionAuthor(currentUserUsername === data.user.username);
+                    }
+                    
                     // Set initial question vote state
                     setQuestionVoteState({
                         upvotes: data.upvotes || 0,
@@ -79,8 +90,6 @@ const Post = () => {
                     });
 
                     // Load user's current vote for question
-                    const user = JSON.parse(localStorage.getItem('user') || '{}');
-                    const userId = user.RowKey || user.rowKey;
                     if (userId) {
                         await fetchUserQuestionVote(userId);
                     }
@@ -481,21 +490,23 @@ const Post = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="add-answer-block">
-                        <div className="w-form">
-                            <form id="email-form-4" className="form-3" onSubmit={handleAnswerSubmit}>
-                                <div className="text-block-23">Your Answer</div>
-                                <textarea
-                                    placeholder="Write your answer here..."
-                                    maxLength={5000}
-                                    className="input answer-textarea w-input"
-                                    value={newAnswer}
-                                    onChange={(e) => setNewAnswer(e.target.value)}
-                                ></textarea>
-                                <input type="submit" value="Post Your Answer" className="primary-button add-answer-submit w-button" />
-                            </form>
+                    {!isQuestionAuthor && (
+                        <div className="add-answer-block">
+                            <div className="w-form">
+                                <form id="email-form-4" className="form-3" onSubmit={handleAnswerSubmit}>
+                                    <div className="text-block-23">Your Answer</div>
+                                    <textarea
+                                        placeholder="Write your answer here..."
+                                        maxLength={5000}
+                                        className="input answer-textarea w-input"
+                                        value={newAnswer}
+                                        onChange={(e) => setNewAnswer(e.target.value)}
+                                    ></textarea>
+                                    <input type="submit" value="Post Your Answer" className="primary-button add-answer-submit w-button" />
+                                </form>
+                            </div>
                         </div>
-                    </div>
+                    )}
                     <div className="q-answers-block">
                         <div className="text-block-21"><span className="q-answers-count">{question.answers?.length || 0}</span> Answers</div>
                         <div className="q-answers-list">

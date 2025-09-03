@@ -91,5 +91,15 @@ namespace StackOverflow.Services
         {
             return await _voteService.GetUserVoteTypeAsync(userId, commentId, "COMMENT");
         }
+
+        public async Task<int> GetUserAnswersCountAsync(string userId)
+        {
+            int count = 0;
+            await foreach (var comment in _tableClient.QueryAsync<Comment>(c => c.UserId == userId))
+            {
+                count++;
+            }
+            return count;
+        }
     }
 }

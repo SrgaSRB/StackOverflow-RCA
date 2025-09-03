@@ -9,10 +9,12 @@ namespace StackOverflow.Controllers
     public class UsersController : ControllerBase
     {
         private readonly UserService _userService;
+        private readonly CommentService _commentService;
 
-        public UsersController(UserService userService)
+        public UsersController(UserService userService, CommentService commentService)
         {
             _userService = userService;
+            _commentService = commentService;
         }
 
         [HttpPost("register")]
@@ -81,6 +83,45 @@ namespace StackOverflow.Controllers
             {
                 Console.WriteLine($"Get user error: {ex.Message}");
                 return BadRequest($"Failed to get user: {ex.Message}");
+            }
+        }
+
+        [HttpGet("{id}/stats")]
+        public async Task<IActionResult> GetUserStats(string id)
+        {
+            try
+            {
+                var user = await _userService.GetUserAsync(id);
+                if (user == null)
+                    return NotFound();
+
+                var answersCount = await _commentService.GetUserAnswersCountAsync(id);
+                
+                var userWithStats = new
+                {
+                    user.RowKey,
+                    user.PartitionKey,
+                    user.FirstName,
+                    user.LastName,
+                    user.Username,
+                    user.Email,
+                    user.Country,
+                    user.City,
+                    user.StreetAddress,
+                    user.Gender,
+                    user.ProfilePictureUrl,
+                    user.CreatedDate,
+                    user.IsAdmin,
+                    user.QuestionsCount,
+                    AnswersCount = answersCount
+                };
+
+                return Ok(userWithStats);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Get user stats error: {ex.Message}");
+                return BadRequest($"Failed to get user stats: {ex.Message}");
             }
         }
 

@@ -10,6 +10,7 @@ namespace StackOverflow.Services
     {
         private readonly TableClient _tableClient;
         private readonly TableClient _userTableClient;
+        private readonly TableClient _commentsTableClient;
         private readonly BlobContainerClient _blobContainerClient;
         private readonly VoteService _voteService;
 
@@ -19,6 +20,8 @@ namespace StackOverflow.Services
             _tableClient.CreateIfNotExists();
             _userTableClient = new TableClient(connectionString, "Users");
             _userTableClient.CreateIfNotExists();
+            _commentsTableClient = new TableClient(connectionString, "Comments");
+            _commentsTableClient.CreateIfNotExists();
             _blobContainerClient = new BlobContainerClient(connectionString, "question-pictures");
             _blobContainerClient.CreateIfNotExists();
             _voteService = voteService;
@@ -62,6 +65,13 @@ namespace StackOverflow.Services
                     (upvotes, downvotes, totalVotes) = await _voteService.GetVoteStatsAsync(question.RowKey, "QUESTION");
                 }
 
+                // Count answers (comments) for this question
+                int answersCount = 0;
+                await foreach (var comment in _commentsTableClient.QueryAsync<Comment>(c => c.QuestionId == question.RowKey))
+                {
+                    answersCount++;
+                }
+
                 questionDetailsList.Add(new QuestionDetails
                 {
                     QuestionId = question.RowKey,
@@ -77,7 +87,7 @@ namespace StackOverflow.Services
                         ProfilePictureUrl = user.ProfilePictureUrl,
                         QuestionsCount = user.QuestionsCount
                     } : new UserInfo { Username = "Unknown" },
-                    AnswersCount = 0 // This needs to be implemented
+                    AnswersCount = answersCount
                 });
             }
 
@@ -134,6 +144,71 @@ namespace StackOverflow.Services
                 questions.Add(question);
             }
             return questions;
+        }
+
+        public async Task<List<QuestionDetails>> GetQuestionsByUserIdWithDetailsAsync(string userId)
+        {
+            var questions = new List<Question>();
+            await foreach (var question in _tableClient.QueryAsync<Question>(q => q.UserId == userId))
+            {
+                questions.Add(question);
+            }
+
+            // Sort questions by CreatedDate in descending order (newest first)
+            questions = questions.OrderByDescending(q => q.CreatedDate).ToList();
+
+            var questionDetailsList = new List<QuestionDetails>();
+            foreach (var question in questions)
+            {
+                User? user = null;
+                try
+                {
+                    var response = await _userTableClient.GetEntityAsync<User>("USER", question.UserId);
+                    user = response.Value;
+                }
+                catch (RequestFailedException ex) when (ex.Status == 404)
+                {
+                    // User not found, handle as needed
+                }
+
+                // Get vote stats for this question (use cached values from entity if available)
+                var upvotes = question.Upvotes;
+                var downvotes = question.Downvotes;
+                var totalVotes = question.TotalVotes;
+                
+                // If vote counts are all zero, fall back to calculating from Vote table (for existing data)
+                if (upvotes == 0 && downvotes == 0 && totalVotes == 0)
+                {
+                    (upvotes, downvotes, totalVotes) = await _voteService.GetVoteStatsAsync(question.RowKey, "QUESTION");
+                }
+
+                // Count answers (comments) for this question
+                int answersCount = 0;
+                await foreach (var comment in _commentsTableClient.QueryAsync<Comment>(c => c.QuestionId == question.RowKey))
+                {
+                    answersCount++;
+                }
+
+                questionDetailsList.Add(new QuestionDetails
+                {
+                    QuestionId = question.RowKey,
+                    Title = question.Title,
+                    Description = question.Description,
+                    PictureUrl = question.PictureUrl,
+                    Upvotes = upvotes,
+                    Downvotes = downvotes,
+                    TotalVotes = totalVotes,
+                    CreatedAt = question.Timestamp?.DateTime ?? question.CreatedDate,
+                    User = user != null ? new UserInfo { 
+                        Username = user.Username, 
+                        ProfilePictureUrl = user.ProfilePictureUrl,
+                        QuestionsCount = user.QuestionsCount
+                    } : new UserInfo { Username = "Unknown" },
+                    AnswersCount = answersCount
+                });
+            }
+
+            return questionDetailsList;
         }
 
         public async Task<Question?> GetQuestionByIdAsync(string questionId)
@@ -249,6 +324,25 @@ namespace StackOverflow.Services
         public async Task<string?> GetUserVoteAsync(string userId, string questionId)
         {
             return await _voteService.GetUserVoteTypeAsync(userId, questionId, "QUESTION");
+        }
+
+        public async Task<List<QuestionDetails>> GetPopularQuestionsAsync(int limit = 5)
+        {
+            var allQuestions = await GetAllQuestionsWithUserDetailsAsync();
+            
+            // Sort by total votes descending and then by creation date for ties
+            var sortedQuestions = allQuestions
+                .OrderByDescending(q => q.TotalVotes)
+                .ThenByDescending(q => q.CreatedAt)
+                .ToList();
+            
+            // If limit is high (like 100), return all questions, otherwise apply limit
+            if (limit >= 100) 
+            {
+                return sortedQuestions;
+            }
+            
+            return sortedQuestions.Take(limit).ToList();
         }
     }
 }

@@ -76,7 +76,7 @@ namespace StackOverflow.Controllers
         [HttpGet("user/{userId}")]
         public async Task<IActionResult> GetByUserId(string userId)
         {
-            var questions = await _questionService.GetQuestionsByUserIdAsync(userId);
+            var questions = await _questionService.GetQuestionsByUserIdWithDetailsAsync(userId);
             return Ok(questions);
         }
 
@@ -349,6 +349,13 @@ namespace StackOverflow.Controllers
             {
                 return StatusCode(500, $"An error occurred during migration: {ex.Message}");
             }
+        }
+
+        [HttpGet("popular")]
+        public async Task<IActionResult> GetPopularQuestions([FromQuery] int limit = 5)
+        {
+            var questions = await _questionService.GetPopularQuestionsAsync(limit);
+            return Ok(questions);
         }
     }
 }

@@ -3058,7 +3058,7 @@ textarea.w-input, textarea.w-select {
 }
 
 .q-question-user-info.answer-user-info {
-  position: relative; /* This overrides position: absolute */
+  position: relative; 
   grid-column-gap: 12px;
   background-color: #f0f0f0;
   border-radius: 50px;

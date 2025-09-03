@@ -20,9 +20,19 @@ builder.Services.AddSwaggerGen();
 
 // Dodajte Azure Storage service
 var connectionString = builder.Configuration.GetConnectionString("AzureStorage");
+builder.Services.AddSingleton(new VoteService(connectionString!));
 builder.Services.AddSingleton(new UserService(connectionString!));
-builder.Services.AddSingleton(new QuestionService(connectionString!));
-builder.Services.AddSingleton(new CommentService(connectionString!));
+builder.Services.AddSingleton(provider => 
+{
+    var voteService = provider.GetRequiredService<VoteService>();
+    return new QuestionService(connectionString!, voteService);
+});
+builder.Services.AddSingleton(provider => 
+{
+    var userService = provider.GetRequiredService<UserService>();
+    var voteService = provider.GetRequiredService<VoteService>();
+    return new CommentService(connectionString!, userService, voteService);
+});
 
 var app = builder.Build();
 

@@ -37,6 +37,75 @@ namespace StackOverflow.Controllers
             IEnumerable<object> comments = await _commentService.GetCommentsForQuestionAsync(questionId);
             return Ok(comments);
         }
+
+        [HttpPost("{commentId}/upvote")]
+        public async Task<IActionResult> UpvoteComment(string commentId, [FromBody] VoteRequest request)
+        {
+            if (string.IsNullOrEmpty(request.UserId))
+            {
+                return BadRequest("UserId is required");
+            }
+
+            try
+            {
+                var (upvotes, downvotes, totalVotes) = await _commentService.UpvoteCommentAsync(commentId, request.UserId);
+                var userVote = await _commentService.GetUserVoteAsync(request.UserId, commentId);
+                return Ok(new { 
+                    upvotes = upvotes,
+                    downvotes = downvotes,
+                    totalVotes = totalVotes,
+                    userVote = userVote
+                });
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "An error occurred while upvoting the comment.");
+            }
+        }
+
+        [HttpPost("{commentId}/downvote")]
+        public async Task<IActionResult> DownvoteComment(string commentId, [FromBody] VoteRequest request)
+        {
+            if (string.IsNullOrEmpty(request.UserId))
+            {
+                return BadRequest("UserId is required");
+            }
+
+            try
+            {
+                var (upvotes, downvotes, totalVotes) = await _commentService.DownvoteCommentAsync(commentId, request.UserId);
+                var userVote = await _commentService.GetUserVoteAsync(request.UserId, commentId);
+                return Ok(new { 
+                    upvotes = upvotes,
+                    downvotes = downvotes,
+                    totalVotes = totalVotes,
+                    userVote = userVote
+                });
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "An error occurred while downvoting the comment.");
+            }
+        }
+
+        [HttpGet("{commentId}/vote/{userId}")]
+        public async Task<IActionResult> GetUserVote(string commentId, string userId)
+        {
+            try
+            {
+                var userVote = await _commentService.GetUserVoteAsync(userId, commentId);
+                return Ok(new { userVote = userVote });
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "An error occurred while getting user vote.");
+            }
+        }
+    }
+
+    public class VoteRequest
+    {
+        public required string UserId { get; set; }
     }
 
     public class CommentRequest

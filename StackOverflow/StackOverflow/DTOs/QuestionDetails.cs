@@ -8,6 +8,8 @@ namespace StackOverflow.DTOs
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string? PictureUrl { get; set; }
+        public int Upvotes { get; set; }
+        public int Downvotes { get; set; }
         public int TotalVotes { get; set; }
         public DateTime CreatedAt { get; set; }
         public UserInfo? User { get; set; }
@@ -28,6 +30,8 @@ namespace StackOverflow.DTOs
         public string Content { get; set; } = string.Empty;
         public string CreatedAt { get; set; } = string.Empty;
         public UserInfo User { get; set; } = new UserInfo();
+        public int Upvotes { get; set; }
+        public int Downvotes { get; set; }
         public int TotalVotes { get; set; }
     }
 }

@@ -12,12 +12,14 @@ namespace StackOverflow.Controllers
         private readonly QuestionService _questionService;
         private readonly CommentService _commentService;
         private readonly UserService _userService;
+        private readonly VoteService _voteService;
 
-        public QuestionsController(QuestionService questionService, CommentService commentService, UserService userService)
+        public QuestionsController(QuestionService questionService, CommentService commentService, UserService userService, VoteService voteService)
         {
             _questionService = questionService;
             _commentService = commentService;
             _userService = userService;
+            _voteService = voteService;
         }
 
         [HttpGet]
@@ -94,6 +96,8 @@ namespace StackOverflow.Controllers
                 AnswerId = ((dynamic)c).AnswerId,
                 Content = ((dynamic)c).Content,
                 CreatedAt = ((dynamic)c).CreatedAt,
+                Upvotes = ((dynamic)c).Upvotes,
+                Downvotes = ((dynamic)c).Downvotes,
                 TotalVotes = ((dynamic)c).TotalVotes,
                 User = ((dynamic)c).User
             }).ToList();
@@ -105,6 +109,8 @@ namespace StackOverflow.Controllers
                 questionDetails.Title,
                 questionDetails.Description,
                 questionDetails.PictureUrl,
+                questionDetails.Upvotes,
+                questionDetails.Downvotes,
                 questionDetails.TotalVotes,
                 questionDetails.CreatedAt,
                 questionDetails.User,
@@ -226,7 +232,9 @@ namespace StackOverflow.Controllers
                 AnswerId = comment.RowKey,
                 Content = comment.Text,
                 CreatedAt = comment.Timestamp,
-                TotalVotes = comment.TotalVotes,
+                Upvotes = 0,
+                Downvotes = 0,
+                TotalVotes = 0, // New comment has no votes yet
                 User = new
                 {
                     Username = user?.Username,
@@ -254,10 +262,93 @@ namespace StackOverflow.Controllers
             public bool RemovePicture { get; set; } = false;
         }
 
+        [HttpPost("{questionId}/upvote")]
+        public async Task<IActionResult> UpvoteQuestion(string questionId, [FromBody] VoteRequest request)
+        {
+            if (string.IsNullOrEmpty(request.UserId))
+            {
+                return BadRequest("UserId is required");
+            }
+
+            try
+            {
+                var (upvotes, downvotes, totalVotes) = await _questionService.UpvoteQuestionAsync(questionId, request.UserId);
+                var userVote = await _questionService.GetUserVoteAsync(request.UserId, questionId);
+                return Ok(new { 
+                    upvotes = upvotes,
+                    downvotes = downvotes,
+                    totalVotes = totalVotes,
+                    userVote = userVote
+                });
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "An error occurred while upvoting the question.");
+            }
+        }
+
+        [HttpPost("{questionId}/downvote")]
+        public async Task<IActionResult> DownvoteQuestion(string questionId, [FromBody] VoteRequest request)
+        {
+            if (string.IsNullOrEmpty(request.UserId))
+            {
+                return BadRequest("UserId is required");
+            }
+
+            try
+            {
+                var (upvotes, downvotes, totalVotes) = await _questionService.DownvoteQuestionAsync(questionId, request.UserId);
+                var userVote = await _questionService.GetUserVoteAsync(request.UserId, questionId);
+                return Ok(new { 
+                    upvotes = upvotes,
+                    downvotes = downvotes,
+                    totalVotes = totalVotes,
+                    userVote = userVote
+                });
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "An error occurred while downvoting the question.");
+            }
+        }
+
+        [HttpGet("{questionId}/vote/{userId}")]
+        public async Task<IActionResult> GetUserVote(string questionId, string userId)
+        {
+            try
+            {
+                var userVote = await _questionService.GetUserVoteAsync(userId, questionId);
+                return Ok(new { userVote = userVote });
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "An error occurred while getting user vote.");
+            }
+        }
+
+        public class VoteRequest
+        {
+            public required string UserId { get; set; }
+        }
+
         public class CreateCommentDto
         {
             public required string Content { get; set; }
             public required string UserId { get; set; }
+        }
+
+        [HttpPost("migrate-vote-counts")]
+        public async Task<IActionResult> MigrateVoteCounts()
+        {
+            try
+            {
+                await _voteService.MigrateVoteCountsAsync();
+                return Ok(new { message = "Vote counts migration completed successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred during migration: {ex.Message}");
+            }
         }
     }
 }

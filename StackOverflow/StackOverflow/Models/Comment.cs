@@ -8,11 +8,10 @@ namespace StackOverflow.Models
         }
 
         public required string Text { get; set; }
-        public int Upvote { get; set; } = 0;
-        public int Downvote { get; set; } = 0;
         public required string UserId { get; set; }
         public required string QuestionId { get; set; }
-
-        public int TotalVotes => Upvote - Downvote;
+        public int Upvotes { get; set; } = 0;
+        public int Downvotes { get; set; } = 0;
+        public int TotalVotes { get; set; } = 0;
     }
 }

@@ -181,6 +181,16 @@ const Dashboard = () => {
                         ? { ...q, upvotes: data.upvotes, downvotes: data.downvotes, totalVotes: data.totalVotes }
                         : q
                 ));
+
+                // Update popular questions as well
+                setPopularQuestions(prev => prev.map(q => 
+                    q.questionId === questionId 
+                        ? { ...q, upvotes: data.upvotes, downvotes: data.downvotes, totalVotes: data.totalVotes }
+                        : q
+                ));
+
+                // Refresh popular questions to ensure proper ordering
+                fetchPopularQuestions();
             } else {
                 console.error("Failed to upvote question");
             }
@@ -225,6 +235,16 @@ const Dashboard = () => {
                         ? { ...q, upvotes: data.upvotes, downvotes: data.downvotes, totalVotes: data.totalVotes }
                         : q
                 ));
+
+                // Update popular questions as well
+                setPopularQuestions(prev => prev.map(q => 
+                    q.questionId === questionId 
+                        ? { ...q, upvotes: data.upvotes, downvotes: data.downvotes, totalVotes: data.totalVotes }
+                        : q
+                ));
+
+                // Refresh popular questions to ensure proper ordering
+                fetchPopularQuestions();
             } else {
                 console.error("Failed to downvote question");
             }

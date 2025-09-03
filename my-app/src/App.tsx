@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import PublicLayout from './layout/PublicLayout';
 import NotFound from './components/shared/NotFound';
 import PrivateLayout from './layout/PrivateLayout';
+import './styles/global.css';
 
 const router = createBrowserRouter([
   { path: "/", element: <Navigate to="/dashboard" replace /> },

@@ -16,6 +16,7 @@ interface Answer {
     downvotes: number;
     totalVotes: number;
     userQuestionsCount?: number;
+    isBestAnswer?: boolean;
 }
 
 interface QuestionDetails {
@@ -29,6 +30,7 @@ interface QuestionDetails {
     createdAt: string | Date;
     user: UserInfo;
     answers: Answer[];
+    bestCommentId?: string;
 }
 
 interface VoteState {
@@ -55,6 +57,7 @@ const Post = () => {
     });
     const [answerVoteStates, setAnswerVoteStates] = useState<Record<string, VoteState>>({});
     const [isQuestionAuthor, setIsQuestionAuthor] = useState<boolean>(false);
+    const [bestAnswerId, setBestAnswerId] = useState<string | null>(null);
 
     useEffect(() => {
         // Get current user info once at the beginning
@@ -76,9 +79,16 @@ const Post = () => {
                     console.log('Question answers:', data.answers);
                     setQuestion(data);
                     
+                    // Set best answer ID
+                    setBestAnswerId(data.bestCommentId || null);
+                    
                     // Check if current user is the author of the question
                     if (userId && data.user && data.user.username) {
-                        setIsQuestionAuthor(currentUserUsername === data.user.username);
+                        console.log('Current user username:', currentUserUsername);
+                        console.log('Question author username:', data.user.username);
+                        const isAuthor = currentUserUsername === data.user.username;
+                        console.log('Is question author:', isAuthor);
+                        setIsQuestionAuthor(isAuthor);
                     }
                     
                     // Set initial question vote state
@@ -395,6 +405,55 @@ const Post = () => {
         }
     };
 
+    const handleMarkBestAnswer = async (answerId: string) => {
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        const userId = user.RowKey || user.rowKey;
+
+        if (!userId) {
+            alert("You must be logged in to mark the best answer.");
+            return;
+        }
+
+        if (!isQuestionAuthor) {
+            alert("Only the question author can mark the best answer.");
+            return;
+        }
+
+        // Check if there's already a best answer
+        if (bestAnswerId) {
+            alert("A best answer has already been selected for this question.");
+            return;
+        }
+
+        // Ask for confirmation
+        const confirmMark = window.confirm("Are you sure you want to mark this answer as the best? This action cannot be undone and no other answer can be marked as best for this question.");
+        
+        if (!confirmMark) {
+            return;
+        }
+
+        try {
+            const response = await fetch(`http://localhost:5167/api/questions/${postId}/best-answer/${answerId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ UserId: userId }),
+            });
+
+            if (response.ok) {
+                setBestAnswerId(answerId);
+                alert("Answer marked as best!");
+            } else {
+                console.error("Failed to mark best answer");
+                alert("Failed to mark answer as best.");
+            }
+        } catch (error) {
+            console.error("Error marking best answer:", error);
+            alert("An error occurred while marking the best answer.");
+        }
+    };
+
     if (loading) {
         return (
             <section className="question-section">
@@ -520,7 +579,7 @@ const Post = () => {
                                     };
                                     
                                     return (
-                                    <div className="q-answer-div" key={answer.answerId}>
+                                    <div className={`q-answer-div ${bestAnswerId === answer.answerId ? 'best-answer-div' : ''}`} key={answer.answerId}>
                                         <div className="q-answer-div-left-div">
                                             <div 
                                                 className={`div-block-7 answer-div-upvote ${answerVoteState.userVote === 'upvote' ? 'voted-up' : ''}`} 
@@ -529,8 +588,7 @@ const Post = () => {
                                             >
                                                 <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a786ab9ccef31e64f760b7_upload.png" loading="lazy" alt="Upvote" className="image-10" />
                                             </div>
-                                            <div className="q-answer-votes upvote-count">{answerVoteState.upvotes}</div>
-                                            <div className="q-answer-votes downvote-count">{answerVoteState.downvotes}</div>
+                                            <div className="q-answer-votes">{answerVoteState.totalVotes}</div>
                                             <div 
                                                 className={`div-block-7 answer-div-downvote ${answerVoteState.userVote === 'downvote' ? 'voted-down' : ''}`} 
                                                 onClick={() => handleAnswerDownvote(answer.answerId)} 
@@ -540,6 +598,9 @@ const Post = () => {
                                             </div>
                                         </div>
                                         <div className="q-answer-div-right-div">
+                                            {bestAnswerId === answer.answerId && (
+                                                <div className="text-block-22">Best Answer</div>
+                                            )}
                                             <div className="q-answer-content">{answer.content}</div>
                                             <div className="q-answer-right-bottom-div">
                                                 <div className="q-answer-date-div">
@@ -549,11 +610,32 @@ const Post = () => {
                                                         at <span className="q-answer-time">{new Date(answer.createdAt).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}</span>
                                                     </div>
                                                 </div>
-                                                <div className="q-question-user-info answer-user-info">
+                                                
+                                                {/* Mark as Best button in the middle */}
+                                                {isQuestionAuthor && !bestAnswerId && (
+                                                    <button 
+                                                        onClick={() => handleMarkBestAnswer(answer.answerId)}
+                                                        className="mark-best-answer-btn"
+                                                        style={{
+                                                            background: '#38ad73',
+                                                            color: 'white',
+                                                            border: 'none',
+                                                            padding: '5px 10px',
+                                                            borderRadius: '4px',
+                                                            cursor: 'pointer',
+                                                            fontSize: '12px'
+                                                        }}
+                                                    >
+                                                        Mark as Best
+                                                    </button>
+                                                )}
+                                                
+                                                {/* User info on the right */}
+                                                <div className={`q-question-user-info answer-user-info ${bestAnswerId === answer.answerId ? 'best-answer-user-info' : ''}`}>
                                                     <img src={answer.user.profilePictureUrl || "https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a78893518a2aa043ff4749_female-placeholder.webp"} loading="lazy" alt="" className="q-question-user-info-image question-user-image" />
                                                     <div className="q-question-user-info-right-div">
-                                                        <div className="q-question-user-info-username answer-user-username">@{answer.user.username}</div>
-                                                        <div className="text-block-20">({answerAuthorsQuestionsCount[answer.user.username] || 0})</div>
+                                                        <div className={`q-question-user-info-username answer-user-username ${bestAnswerId === answer.answerId ? 'best-answer-user-username' : ''}`}>@{answer.user.username}</div>
+                                                        <div className={`text-block-20 ${bestAnswerId === answer.answerId ? 'best-answer-user-stats' : ''}`}>({answerAuthorsQuestionsCount[answer.user.username] || 0})</div>
                                                     </div>
                                                 </div>
                                             </div>

@@ -11,8 +11,9 @@ namespace StackOverflow.Services
         private readonly TableClient _tableClient;
         private readonly TableClient _userTableClient;
         private readonly BlobContainerClient _blobContainerClient;
+        private readonly VoteService _voteService;
 
-        public QuestionService(string connectionString)
+        public QuestionService(string connectionString, VoteService voteService)
         {
             _tableClient = new TableClient(connectionString, "Questions");
             _tableClient.CreateIfNotExists();
@@ -20,6 +21,7 @@ namespace StackOverflow.Services
             _userTableClient.CreateIfNotExists();
             _blobContainerClient = new BlobContainerClient(connectionString, "question-pictures");
             _blobContainerClient.CreateIfNotExists();
+            _voteService = voteService;
         }
 
         public async Task<List<QuestionDetails>> GetAllQuestionsWithUserDetailsAsync()
@@ -49,13 +51,26 @@ namespace StackOverflow.Services
                     // User not found, handle as needed
                 }
 
+                // Get vote stats for this question (use cached values from entity if available)
+                var upvotes = question.Upvotes;
+                var downvotes = question.Downvotes;
+                var totalVotes = question.TotalVotes;
+                
+                // If vote counts are all zero, fall back to calculating from Vote table (for existing data)
+                if (upvotes == 0 && downvotes == 0 && totalVotes == 0)
+                {
+                    (upvotes, downvotes, totalVotes) = await _voteService.GetVoteStatsAsync(question.RowKey, "QUESTION");
+                }
+
                 questionDetailsList.Add(new QuestionDetails
                 {
                     QuestionId = question.RowKey,
                     Title = question.Title,
                     Description = question.Description,
                     PictureUrl = question.PictureUrl,
-                    TotalVotes = question.TotalVotes,
+                    Upvotes = upvotes,
+                    Downvotes = downvotes,
+                    TotalVotes = totalVotes,
                     CreatedAt = question.Timestamp?.DateTime ?? question.CreatedDate,
                     User = user != null ? new UserInfo { 
                         Username = user.Username, 
@@ -160,13 +175,26 @@ namespace StackOverflow.Services
                     // User not found, handle as needed
                 }
 
+                // Get vote stats for this question (use cached values from entity if available)
+                var upvotes = question.Upvotes;
+                var downvotes = question.Downvotes;
+                var totalVotes = question.TotalVotes;
+                
+                // If vote counts are all zero, fall back to calculating from Vote table (for existing data)
+                if (upvotes == 0 && downvotes == 0 && totalVotes == 0)
+                {
+                    (upvotes, downvotes, totalVotes) = await _voteService.GetVoteStatsAsync(question.RowKey, "QUESTION");
+                }
+
                 return new QuestionDetails
                 {
                     QuestionId = question.RowKey,
                     Title = question.Title,
                     Description = question.Description,
                     PictureUrl = question.PictureUrl,
-                    TotalVotes = question.TotalVotes,
+                    Upvotes = upvotes,
+                    Downvotes = downvotes,
+                    TotalVotes = totalVotes,
                     CreatedAt = question.Timestamp?.DateTime ?? question.CreatedDate,
                     User = user != null ? new UserInfo { 
                         Username = user.Username, 
@@ -206,6 +234,21 @@ namespace StackOverflow.Services
                 // Delete the question from table storage
                 await _tableClient.DeleteEntityAsync("QUESTION", questionId);
             }
+        }
+
+        public async Task<(int upvotes, int downvotes, int totalVotes)> UpvoteQuestionAsync(string questionId, string userId)
+        {
+            return await _voteService.VoteAsync(userId, questionId, "QUESTION", true);
+        }
+
+        public async Task<(int upvotes, int downvotes, int totalVotes)> DownvoteQuestionAsync(string questionId, string userId)
+        {
+            return await _voteService.VoteAsync(userId, questionId, "QUESTION", false);
+        }
+
+        public async Task<string?> GetUserVoteAsync(string userId, string questionId)
+        {
+            return await _voteService.GetUserVoteTypeAsync(userId, questionId, "QUESTION");
         }
     }
 }

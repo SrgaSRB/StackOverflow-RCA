@@ -10,15 +10,25 @@ interface QuestionDetails {
     questionId: string;
     title: string;
     description: string;
+    upvotes: number;
+    downvotes: number;
     totalVotes: number;
     createdAt: string | Date;
     user: UserInfo;
     answersCount: number;
 }
 
+interface VoteState {
+    upvotes: number;
+    downvotes: number;
+    totalVotes: number;
+    userVote?: string | null;
+}
+
 const Dashboard = () => {
     const [questions, setQuestions] = useState<QuestionDetails[]>([]);
     const [searchParams] = useSearchParams();
+    const [questionVoteStates, setQuestionVoteStates] = useState<Record<string, VoteState>>({});
 
     useEffect(() => {
         const fetchQuestions = async () => {
@@ -52,6 +62,25 @@ const Dashboard = () => {
 
                     const sortedData = filteredData.sort((a: QuestionDetails, b: QuestionDetails) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
                     setQuestions(sortedData);
+
+                    // Initialize vote states for all questions
+                    const initialVoteStates: Record<string, VoteState> = {};
+                    for (const question of sortedData) {
+                        initialVoteStates[question.questionId] = {
+                            upvotes: question.upvotes || 0,
+                            downvotes: question.downvotes || 0,
+                            totalVotes: question.totalVotes || 0,
+                            userVote: null
+                        };
+                    }
+                    setQuestionVoteStates(initialVoteStates);
+
+                    // Load user votes for all questions
+                    if (currentUserId) {
+                        for (const question of sortedData) {
+                            fetchUserQuestionVote(currentUserId, question.questionId);
+                        }
+                    }
                 } else {
                     console.error("Failed to fetch questions");
                 }
@@ -62,6 +91,112 @@ const Dashboard = () => {
 
         fetchQuestions();
     }, [searchParams]);
+
+    const fetchUserQuestionVote = async (userId: string, questionId: string) => {
+        try {
+            const response = await fetch(`http://localhost:5167/api/questions/${questionId}/vote/${userId}`);
+            if (response.ok) {
+                const data = await response.json();
+                setQuestionVoteStates(prev => ({
+                    ...prev,
+                    [questionId]: {
+                        ...prev[questionId],
+                        userVote: data.userVote
+                    }
+                }));
+            }
+        } catch (error) {
+            console.error("Error fetching user question vote:", error);
+        }
+    };
+
+    const handleQuestionUpvote = async (questionId: string) => {
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        const userId = user.RowKey || user.rowKey;
+
+        if (!userId) {
+            alert("You must be logged in to vote.");
+            return;
+        }
+
+        try {
+            const response = await fetch(`http://localhost:5167/api/questions/${questionId}/upvote`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ UserId: userId }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setQuestionVoteStates(prev => ({
+                    ...prev,
+                    [questionId]: {
+                        upvotes: data.upvotes,
+                        downvotes: data.downvotes,
+                        totalVotes: data.totalVotes,
+                        userVote: data.userVote
+                    }
+                }));
+                
+                // Update the question in the list
+                setQuestions(prev => prev.map(q => 
+                    q.questionId === questionId 
+                        ? { ...q, upvotes: data.upvotes, downvotes: data.downvotes, totalVotes: data.totalVotes }
+                        : q
+                ));
+            } else {
+                console.error("Failed to upvote question");
+            }
+        } catch (error) {
+            console.error("Error upvoting question:", error);
+        }
+    };
+
+    const handleQuestionDownvote = async (questionId: string) => {
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        const userId = user.RowKey || user.rowKey;
+
+        if (!userId) {
+            alert("You must be logged in to vote.");
+            return;
+        }
+
+        try {
+            const response = await fetch(`http://localhost:5167/api/questions/${questionId}/downvote`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ UserId: userId }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setQuestionVoteStates(prev => ({
+                    ...prev,
+                    [questionId]: {
+                        upvotes: data.upvotes,
+                        downvotes: data.downvotes,
+                        totalVotes: data.totalVotes,
+                        userVote: data.userVote
+                    }
+                }));
+                
+                // Update the question in the list
+                setQuestions(prev => prev.map(q => 
+                    q.questionId === questionId 
+                        ? { ...q, upvotes: data.upvotes, downvotes: data.downvotes, totalVotes: data.totalVotes }
+                        : q
+                ));
+            } else {
+                console.error("Failed to downvote question");
+            }
+        } catch (error) {
+            console.error("Error downvoting question:", error);
+        }
+    };
 
     return (
         <section className="dashboard-section">
@@ -84,16 +219,44 @@ const Dashboard = () => {
                     </div>
                     <div className="dashboard-main-div">
                         <div className="dashboard-questions">
-                            {questions.map((question) => (
+                            {questions.map((question) => {
+                                const voteState = questionVoteStates[question.questionId] || {
+                                    upvotes: question.upvotes || 0,
+                                    downvotes: question.downvotes || 0,
+                                    totalVotes: question.totalVotes || 0,
+                                    userVote: null
+                                };
+                                
+                                return (
                                 <div className="question-div" key={question.questionId}>
                                     <div className="question-left-side-info">
                                         <div className="question-left-side-info-div">
                                             <div className="question-left-side-info-top-div">
-                                                <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a786ab9ccef31e64f760b7_upload.png"
-                                                    loading="lazy" alt="" className="image" />
-                                                <div className="text-block-3">{question.totalVotes}</div>
-                                                <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a786aaa1593ccde3ae5f09_download%20(1).png"
-                                                    loading="lazy" alt="" className="image" />
+                                                <button 
+                                                    onClick={() => handleQuestionUpvote(question.questionId)}
+                                                    style={{
+                                                        background: 'none',
+                                                        border: 'none',
+                                                        cursor: 'pointer',
+                                                        opacity: voteState.userVote === 'upvote' ? 1 : 0.6
+                                                    }}
+                                                >
+                                                    <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a786ab9ccef31e64f760b7_upload.png"
+                                                        loading="lazy" alt="Upvote" className="image" />
+                                                </button>
+                                                <div className="text-block-3">{voteState.totalVotes}</div>
+                                                <button 
+                                                    onClick={() => handleQuestionDownvote(question.questionId)}
+                                                    style={{
+                                                        background: 'none',
+                                                        border: 'none',
+                                                        cursor: 'pointer',
+                                                        opacity: voteState.userVote === 'downvote' ? 1 : 0.6
+                                                    }}
+                                                >
+                                                    <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a786aaa1593ccde3ae5f09_download%20(1).png"
+                                                        loading="lazy" alt="Downvote" className="image" />
+                                                </button>
                                             </div>
                                             <div className="text-block-4">votes</div>
                                         </div>
@@ -141,7 +304,8 @@ const Dashboard = () => {
                                         )}
                                     </div>
                                 </div>
-                            ))}
+                                );
+                            })}
                         </div>
                         <div className="popular-question-block">
                             <div className="popular-question-header">

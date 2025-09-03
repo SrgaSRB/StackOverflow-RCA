@@ -344,5 +344,25 @@ namespace StackOverflow.Services
             
             return sortedQuestions.Take(limit).ToList();
         }
+
+        public async Task MarkBestAnswerAsync(string questionId, string answerId)
+        {
+            var question = await GetQuestionByIdAsync(questionId);
+            if (question != null)
+            {
+                question.BestCommentId = answerId;
+                await _tableClient.UpdateEntityAsync(question, question.ETag, TableUpdateMode.Replace);
+            }
+        }
+
+        public async Task UnmarkBestAnswerAsync(string questionId)
+        {
+            var question = await GetQuestionByIdAsync(questionId);
+            if (question != null)
+            {
+                question.BestCommentId = null;
+                await _tableClient.UpdateEntityAsync(question, question.ETag, TableUpdateMode.Replace);
+            }
+        }
     }
 }

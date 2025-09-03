@@ -89,6 +89,9 @@ namespace StackOverflow.Controllers
                 return NotFound();
             }
 
+            // Get the question entity to access BestCommentId
+            var question = await _questionService.GetQuestionByIdAsync(id);
+
             // Get answers for this question
             var comments = await _commentService.GetCommentsForQuestionAsync(id);
             var answers = comments.Select(c => new
@@ -99,7 +102,8 @@ namespace StackOverflow.Controllers
                 Upvotes = ((dynamic)c).Upvotes,
                 Downvotes = ((dynamic)c).Downvotes,
                 TotalVotes = ((dynamic)c).TotalVotes,
-                User = ((dynamic)c).User
+                User = ((dynamic)c).User,
+                IsBestAnswer = question?.BestCommentId == ((dynamic)c).AnswerId
             }).ToList();
 
             // Add answers to question details
@@ -114,6 +118,7 @@ namespace StackOverflow.Controllers
                 questionDetails.TotalVotes,
                 questionDetails.CreatedAt,
                 questionDetails.User,
+                BestCommentId = question?.BestCommentId,
                 Answers = answers
             };
 
@@ -356,6 +361,80 @@ namespace StackOverflow.Controllers
         {
             var questions = await _questionService.GetPopularQuestionsAsync(limit);
             return Ok(questions);
+        }
+
+        [HttpPost("{questionId}/best-answer/{answerId}")]
+        public async Task<IActionResult> MarkBestAnswer(string questionId, string answerId, [FromBody] MarkBestAnswerRequest request)
+        {
+            if (string.IsNullOrEmpty(request.UserId))
+            {
+                return BadRequest("UserId is required");
+            }
+
+            try
+            {
+                var question = await _questionService.GetQuestionByIdAsync(questionId);
+                if (question == null)
+                {
+                    return NotFound("Question not found");
+                }
+
+                // Check if the user is the question author
+                if (question.UserId != request.UserId)
+                {
+                    return Forbid("Only the question author can mark the best answer");
+                }
+
+                // Verify the answer exists and belongs to this question
+                var answer = await _commentService.GetCommentByIdAsync(answerId);
+                if (answer == null || answer.QuestionId != questionId)
+                {
+                    return NotFound("Answer not found or doesn't belong to this question");
+                }
+
+                await _questionService.MarkBestAnswerAsync(questionId, answerId);
+                return Ok(new { message = "Best answer marked successfully" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+        [HttpDelete("{questionId}/best-answer")]
+        public async Task<IActionResult> UnmarkBestAnswer(string questionId, [FromBody] MarkBestAnswerRequest request)
+        {
+            if (string.IsNullOrEmpty(request.UserId))
+            {
+                return BadRequest("UserId is required");
+            }
+
+            try
+            {
+                var question = await _questionService.GetQuestionByIdAsync(questionId);
+                if (question == null)
+                {
+                    return NotFound("Question not found");
+                }
+
+                // Check if the user is the question author
+                if (question.UserId != request.UserId)
+                {
+                    return Forbid("Only the question author can unmark the best answer");
+                }
+
+                await _questionService.UnmarkBestAnswerAsync(questionId);
+                return Ok(new { message = "Best answer unmarked successfully" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+        public class MarkBestAnswerRequest
+        {
+            public required string UserId { get; set; }
         }
     }
 }

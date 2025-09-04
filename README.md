@@ -11,6 +11,7 @@ This system consists of multiple interconnected services:
 - **Notification Service** - Handles email notifications (3 instances for scalability)
 - **Health Monitoring Service** - Monitors system health (2 instances with distributed locking)
 - **Health Status Service** - Web dashboard for health visualization
+- **Admin Tools Console App** - Command-line tool for managing alert email addresses
 - **React Frontend** - User interface
 
 ### Supporting Infrastructure
@@ -64,9 +65,11 @@ Features:
 │   ├── StackOverflowService/      # Main API service
 │   ├── NotificationService/       # Email notification service
 │   ├── HealthMonitoringService/   # Health check worker service
-│   └── HealthStatusService/       # Web dashboard for health status
+│   ├── HealthStatusService/       # Web dashboard for health status
+│   └── AdminToolsConsoleApp/      # Console app for email management
 ├── my-app/                        # React frontend application
 ├── start-all-services.bat         # Service startup script
+├── start-admin-tools.bat          # Admin tools startup script
 └── health-status-dashboard.html   # Static HTML dashboard (backup)
 ```
 
@@ -96,6 +99,7 @@ Detailed documentation is available in the `docs/` folder:
 - [Health Monitoring System](docs/HEALTH_MONITORING_README.md)
 - [Health Status Service](docs/HEALTH_STATUS_SERVICE_README.md)
 - [Notification System](docs/NOTIFICATION_SYSTEM_README.md)
+- [Admin Tools Console App](docs/ADMIN_TOOLS_CONSOLE_APP.md)
 - [Distributed Locking Solution](docs/DISTRIBUTED_LOCK_SOLUTION.md)
 - [Testing Health Monitoring](docs/TESTING_HEALTH_MONITORING.md)
 - [Testing Notification System](docs/TESTING_NOTIFICATION_SYSTEM.md)
@@ -115,7 +119,22 @@ Use the provided test files:
 3. Ensure the new service has a `/health-monitoring` endpoint
 
 ### Customizing Alert Emails
-Add email addresses to the `AlertEmails` table in Azure Storage.
+Use the AdminToolsConsoleApp to manage email addresses:
+```cmd
+.\start-admin-tools.bat
+```
+
+Or run directly:
+```cmd
+cd StackOverflow\AdminToolsConsoleApp
+dotnet run
+```
+
+Features:
+- View all configured alert email addresses
+- Add new email addresses with validation
+- Delete existing email addresses
+- Activate/deactivate email addresses without deletion
 
 ## 📝 Notes
 

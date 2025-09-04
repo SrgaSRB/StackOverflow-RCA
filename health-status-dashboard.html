@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StackOverflow Health Status Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { background-color: #f8f9fa; }
+        .card { box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); margin-bottom: 1.5rem; }
+        .metric-card { text-align: center; }
+        .status-ok { background-color: rgba(25, 135, 84, 0.1); }
+        .status-error { background-color: rgba(220, 53, 69, 0.1); }
+        #availabilityChart { max-height: 400px; }
+        .refresh-indicator { position: fixed; top: 20px; right: 20px; z-index: 1000; }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Header -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <nav class="navbar navbar-dark bg-dark">
+                    <div class="container">
+                        <span class="navbar-brand">🏥 StackOverflow Health Status Dashboard</span>
+                        <span class="navbar-text" id="lastUpdate">Last update: Loading...</span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Auto-refresh indicator -->
+        <div class="refresh-indicator">
+            <div class="alert alert-info alert-sm">
+                <small>Auto-refresh: <span id="countdown">30</span>s</small>
+            </div>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card text-white bg-success metric-card">
+                    <div class="card-header"><h6>🟢 Availability</h6></div>
+                    <div class="card-body">
+                        <h2 id="availability">--.--%</h2>
+                        <p class="card-text">Last 3 hours</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-danger metric-card">
+                    <div class="card-header"><h6>🔴 Unavailability</h6></div>
+                    <div class="card-body">
+                        <h2 id="unavailability">--.--%</h2>
+                        <p class="card-text">Downtime</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-info metric-card">
+                    <div class="card-header"><h6>✅ Successful</h6></div>
+                    <div class="card-body">
+                        <h2 id="successful">-- / --</h2>
+                        <p class="card-text">Checks</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-warning metric-card">
+                    <div class="card-header"><h6>❌ Failed</h6></div>
+                    <div class="card-body">
+                        <h2 id="failed">--</h2>
+                        <p class="card-text">Errors</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Time Range Info -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="alert alert-info">
+                    <strong>📅 Time Range:</strong> <span id="timeRange">Loading...</span> (Last 3 hours)
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>📊 Hourly Availability Chart</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="availabilityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hourly Data Table -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>⏰ Hourly Status Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="hourlyTable">
+                                <thead>
+                                    <tr>
+                                        <th>Hour</th>
+                                        <th>Total Checks</th>
+                                        <th>Successful</th>
+                                        <th>Failed</th>
+                                        <th>Availability %</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Health Checks -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>📋 Recent Health Checks</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-sm" id="recentTable">
+                                <thead>
+                                    <tr>
+                                        <th>Timestamp</th>
+                                        <th>Service</th>
+                                        <th>Status</th>
+                                        <th>Response Time (ms)</th>
+                                        <th>Error Message</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let chart;
+        let countdownTimer;
+        
+        // Generate sample data for demonstration
+        function generateSampleData() {
+            const now = new Date();
+            const data = [];
+            
+            for (let i = 0; i < 36; i++) { // 3 hours, every 5 minutes
+                const checkTime = new Date(now.getTime() - (i * 5 * 60 * 1000));
+                const isHealthy = Math.random() > 0.1; // 90% uptime
+                
+                data.push({
+                    DateTime: checkTime,
+                    Status: isHealthy ? "OK" : "NOT_OK",
+                    ServiceName: "StackOverflowService",
+                    ResponseTimeMs: isHealthy ? Math.floor(Math.random() * 150) + 50 : Math.floor(Math.random() * 4000) + 1000,
+                    ErrorMessage: isHealthy ? null : "Service timeout"
+                });
+            }
+            
+            return data.reverse(); // Chronological order
+        }
+
+        function processHealthData(healthChecks) {
+            const totalChecks = healthChecks.length;
+            const successfulChecks = healthChecks.filter(h => h.Status === "OK").length;
+            const failedChecks = totalChecks - successfulChecks;
+            
+            const availability = totalChecks > 0 ? (successfulChecks / totalChecks * 100) : 0;
+            const unavailability = 100 - availability;
+            
+            // Group by hour
+            const hourlyData = {};
+            healthChecks.forEach(check => {
+                const hour = new Date(check.DateTime);
+                hour.setMinutes(0, 0, 0);
+                const hourKey = hour.toISOString();
+                
+                if (!hourlyData[hourKey]) {
+                    hourlyData[hourKey] = { hour, total: 0, successful: 0, failed: 0 };
+                }
+                
+                hourlyData[hourKey].total++;
+                if (check.Status === "OK") {
+                    hourlyData[hourKey].successful++;
+                } else {
+                    hourlyData[hourKey].failed++;
+                }
+            });
+            
+            const hourlyArray = Object.values(hourlyData).map(h => ({
+                ...h,
+                availability: h.total > 0 ? (h.successful / h.total * 100) : 0,
+                status: h.successful === h.total ? "OK" : "DEGRADED"
+            })).sort((a, b) => a.hour - b.hour);
+            
+            return {
+                totalChecks,
+                successfulChecks,
+                failedChecks,
+                availability,
+                unavailability,
+                hourlyData: hourlyArray,
+                healthChecks: healthChecks.slice(-50) // Last 50 for table
+            };
+        }
+
+        function updateDashboard() {
+            const data = generateSampleData();
+            const processed = processHealthData(data);
+            
+            // Update summary cards
+            document.getElementById('availability').textContent = processed.availability.toFixed(2) + '%';
+            document.getElementById('unavailability').textContent = processed.unavailability.toFixed(2) + '%';
+            document.getElementById('successful').textContent = `${processed.successfulChecks} / ${processed.totalChecks}`;
+            document.getElementById('failed').textContent = processed.failedChecks;
+            
+            // Update time range
+            const fromTime = new Date(Math.min(...data.map(d => new Date(d.DateTime))));
+            const toTime = new Date(Math.max(...data.map(d => new Date(d.DateTime))));
+            document.getElementById('timeRange').textContent = 
+                `${fromTime.toLocaleString()} - ${toTime.toLocaleString()}`;
+            
+            // Update last update time
+            document.getElementById('lastUpdate').textContent = 
+                `Last update: ${new Date().toLocaleTimeString()}`;
+            
+            // Update chart
+            updateChart(processed.hourlyData);
+            
+            // Update hourly table
+            updateHourlyTable(processed.hourlyData);
+            
+            // Update recent checks table
+            updateRecentTable(processed.healthChecks.reverse());
+        }
+
+        function updateChart(hourlyData) {
+            const ctx = document.getElementById('availabilityChart').getContext('2d');
+            
+            if (chart) {
+                chart.destroy();
+            }
+            
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: hourlyData.map(h => h.hour.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})),
+                    datasets: [{
+                        label: 'Availability %',
+                        data: hourlyData.map(h => h.availability),
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Service Availability Over Time'
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateHourlyTable(hourlyData) {
+            const tbody = document.querySelector('#hourlyTable tbody');
+            tbody.innerHTML = '';
+            
+            hourlyData.forEach(hour => {
+                const row = tbody.insertRow();
+                row.innerHTML = `
+                    <td>${hour.hour.toLocaleString()}</td>
+                    <td>${hour.total}</td>
+                    <td><span class="badge bg-success">${hour.successful}</span></td>
+                    <td><span class="badge bg-danger">${hour.failed}</span></td>
+                    <td>${hour.availability.toFixed(2)}%</td>
+                    <td><span class="badge ${hour.status === 'OK' ? 'bg-success' : 'bg-warning'}">${hour.status}</span></td>
+                `;
+            });
+        }
+
+        function updateRecentTable(recentChecks) {
+            const tbody = document.querySelector('#recentTable tbody');
+            tbody.innerHTML = '';
+            
+            recentChecks.forEach(check => {
+                const row = tbody.insertRow();
+                row.className = check.Status === 'OK' ? 'status-ok' : 'status-error';
+                row.innerHTML = `
+                    <td>${new Date(check.DateTime).toLocaleString()}</td>
+                    <td>${check.ServiceName}</td>
+                    <td><span class="badge ${check.Status === 'OK' ? 'bg-success' : 'bg-danger'}">${check.Status}</span></td>
+                    <td>${check.ResponseTimeMs}</td>
+                    <td>${check.ErrorMessage || '-'}</td>
+                `;
+            });
+        }
+
+        function startCountdown() {
+            let seconds = 30;
+            const countdownEl = document.getElementById('countdown');
+            
+            countdownTimer = setInterval(() => {
+                seconds--;
+                countdownEl.textContent = seconds;
+                
+                if (seconds <= 0) {
+                    seconds = 30;
+                    updateDashboard();
+                }
+            }, 1000);
+        }
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDashboard();
+            startCountdown();
+        });
+
+        // Manual refresh button (could be added)
+        function manualRefresh() {
+            clearInterval(countdownTimer);
+            updateDashboard();
+            startCountdown();
+        }
+    </script>
+</body>
+</html>

@@ -443,7 +443,7 @@ const Post = () => {
 
             if (response.ok) {
                 setBestAnswerId(answerId);
-                alert("Answer marked as best!");
+                alert("Answer marked as best! All users who answered this question will be notified by email that the question has been closed.");
             } else {
                 console.error("Failed to mark best answer");
                 alert("Failed to mark answer as best.");

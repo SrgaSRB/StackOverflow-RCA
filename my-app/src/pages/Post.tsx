@@ -549,7 +549,7 @@ const Post = () => {
                             </div>
                         </div>
                     </div>
-                    {!isQuestionAuthor && (
+                    {!isQuestionAuthor && !bestAnswerId &&(
                         <div className="add-answer-block">
                             <div className="w-form">
                                 <form id="email-form-4" className="form-3" onSubmit={handleAnswerSubmit}>
@@ -563,6 +563,24 @@ const Post = () => {
                                     ></textarea>
                                     <input type="submit" value="Post Your Answer" className="primary-button add-answer-submit w-button" />
                                 </form>
+                            </div>
+                        </div>
+                    )}
+                    {bestAnswerId && (
+                        <div className="discussion-closed-block" style={{ 
+                            padding: '20px', 
+                            backgroundColor: '#f8f9fa', 
+                            border: '1px solid #dee2e6', 
+                            borderRadius: '5px', 
+                            textAlign: 'center', 
+                            margin: '20px 0',
+                            color: '#6c757d'
+                        }}>
+                            <div style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '10px' }}>
+                                Discussion Closed
+                            </div>
+                            <div>
+                                This question already has a selected best answer, so it's not possible to add new answers.
                             </div>
                         </div>
                     )}

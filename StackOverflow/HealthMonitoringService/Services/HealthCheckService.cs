@@ -26,10 +26,10 @@ namespace HealthMonitoringService.Services
             _emailService = emailService;
             _logger = logger;
 
-            var connectionString = _configuration.GetConnectionString("DefaultConnection") ?? 
+            var connectionString = _configuration.GetConnectionString("AzureStorage") ?? 
                                   "UseDevelopmentStorage=true";
 
-            _healthCheckTableClient = new TableClient(connectionString, "HealthCheck");
+            _healthCheckTableClient = new TableClient(connectionString, "HealthChecks");
             _healthCheckTableClient.CreateIfNotExists();
 
             _alertEmailTableClient = new TableClient(connectionString, "AlertEmails");

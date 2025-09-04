@@ -1,0 +1,27 @@
+{
+  "profiles": {
+    "HealthMonitoringService": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    },
+    "HealthMonitoringService-Instance1": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development",
+        "INSTANCE_ID": "1"
+      }
+    },
+    "HealthMonitoringService-Instance2": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development",
+        "INSTANCE_ID": "2"
+      }
+    }
+  }
+}

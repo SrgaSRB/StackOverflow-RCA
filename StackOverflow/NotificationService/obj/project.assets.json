@@ -2409,23 +2409,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Sanja\\.nuget\\packages\\": {},
+    "C:\\Users\\Ana\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sanja\\Desktop\\StackOverflow-RCA\\StackOverflow\\NotificationService\\NotificationService.csproj",
+      "projectUniqueName": "C:\\Users\\Ana\\Documents\\Faks\\4. god\\Cloud\\StackOverflow-RCA\\StackOverflow\\NotificationService\\NotificationService.csproj",
       "projectName": "NotificationService",
-      "projectPath": "C:\\Users\\Sanja\\Desktop\\StackOverflow-RCA\\StackOverflow\\NotificationService\\NotificationService.csproj",
-      "packagesPath": "C:\\Users\\Sanja\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sanja\\Desktop\\StackOverflow-RCA\\StackOverflow\\NotificationService\\obj\\",
+      "projectPath": "C:\\Users\\Ana\\Documents\\Faks\\4. god\\Cloud\\StackOverflow-RCA\\StackOverflow\\NotificationService\\NotificationService.csproj",
+      "packagesPath": "C:\\Users\\Ana\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ana\\Documents\\Faks\\4. god\\Cloud\\StackOverflow-RCA\\StackOverflow\\NotificationService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Sanja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ana\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2491,12 +2491,33 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.19, 8.0.19]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[8.0.19, 8.0.19]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.19, 8.0.19]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[8.0.19, 8.0.19]"
+          }
+        ],
         "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

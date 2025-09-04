@@ -10,11 +10,11 @@ namespace NotificationService;
 public class Worker : BackgroundService
 {
     private readonly ILogger<Worker> _logger;
-    private readonly QueueClient _queueClient;
-    private readonly TableClient _questionsTableClient;
-    private readonly TableClient _commentsTableClient;
-    private readonly TableClient _usersTableClient;
-    private readonly TableClient _notificationLogTableClient;
+    private readonly QueueClient? _queueClient;
+    private readonly TableClient? _questionsTableClient;
+    private readonly TableClient? _commentsTableClient;
+    private readonly TableClient? _usersTableClient;
+    private readonly TableClient? _notificationLogTableClient;
     private readonly EmailService _emailService;
     private readonly string _connectionString;
 
@@ -25,26 +25,41 @@ public class Worker : BackgroundService
         _connectionString = configuration.GetConnectionString("DefaultConnection") ?? 
                            "UseDevelopmentStorage=true";
 
-        // Initialize queue client
-        _queueClient = new QueueClient(_connectionString, "notifications");
-        _queueClient.CreateIfNotExists();
+        try
+        {
+            // Initialize queue client
+            _queueClient = new QueueClient(_connectionString, "notifications");
+            _queueClient.CreateIfNotExists();
 
-        // Initialize table clients
-        _questionsTableClient = new TableClient(_connectionString, "Questions");
-        _questionsTableClient.CreateIfNotExists();
-        
-        _commentsTableClient = new TableClient(_connectionString, "Comments");
-        _commentsTableClient.CreateIfNotExists();
-        
-        _usersTableClient = new TableClient(_connectionString, "Users");
-        _usersTableClient.CreateIfNotExists();
-        
-        _notificationLogTableClient = new TableClient(_connectionString, "NotificationLogs");
-        _notificationLogTableClient.CreateIfNotExists();
+            // Initialize table clients
+            _questionsTableClient = new TableClient(_connectionString, "Questions");
+            _questionsTableClient.CreateIfNotExists();
+            
+            _commentsTableClient = new TableClient(_connectionString, "Comments");
+            _commentsTableClient.CreateIfNotExists();
+            
+            _usersTableClient = new TableClient(_connectionString, "Users");
+            _usersTableClient.CreateIfNotExists();
+            
+            _notificationLogTableClient = new TableClient(_connectionString, "NotificationLogs");
+            _notificationLogTableClient.CreateIfNotExists();
+            
+            _logger.LogInformation("Successfully initialized Azure Storage clients");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Failed to initialize Azure Storage clients. Service will continue but notification processing may not work.");
+        }
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        if (_queueClient == null)
+        {
+            _logger.LogError("Queue client is not initialized. Notification processing will not start.");
+            return;
+        }
+
         while (!stoppingToken.IsCancellationRequested)
         {
             try
@@ -81,7 +96,26 @@ public class Worker : BackgroundService
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in notification processing loop");
-                await Task.Delay(60000, stoppingToken); // Wait 1 minute on error
+                
+                // Check if it's a cancellation token exception
+                if (ex is TaskCanceledException || ex is OperationCanceledException)
+                {
+                    if (stoppingToken.IsCancellationRequested)
+                    {
+                        _logger.LogInformation("Notification worker is stopping due to cancellation request");
+                        break;
+                    }
+                }
+                
+                try
+                {
+                    await Task.Delay(60000, stoppingToken); // Wait 1 minute on error
+                }
+                catch (TaskCanceledException)
+                {
+                    // Service is shutting down
+                    break;
+                }
             }
         }
     }
@@ -208,6 +242,12 @@ public class Worker : BackgroundService
     {
         try
         {
+            if (_commentsTableClient == null)
+            {
+                _logger.LogError("Comments table client is not initialized");
+                return null;
+            }
+            
             var response = await _commentsTableClient.GetEntityAsync<Comment>("COMMENT", commentId);
             return response.Value;
         }
@@ -222,6 +262,12 @@ public class Worker : BackgroundService
     {
         try
         {
+            if (_questionsTableClient == null)
+            {
+                _logger.LogError("Questions table client is not initialized");
+                return null;
+            }
+            
             var response = await _questionsTableClient.GetEntityAsync<Question>("QUESTION", questionId);
             return response.Value;
         }
@@ -236,6 +282,12 @@ public class Worker : BackgroundService
     {
         try
         {
+            if (_usersTableClient == null)
+            {
+                _logger.LogError("Users table client is not initialized");
+                return null;
+            }
+            
             var response = await _usersTableClient.GetEntityAsync<User>("USER", userId);
             return response.Value;
         }
@@ -251,6 +303,12 @@ public class Worker : BackgroundService
         var comments = new List<Comment>();
         try
         {
+            if (_commentsTableClient == null)
+            {
+                _logger.LogError("Comments table client is not initialized");
+                return comments;
+            }
+            
             await foreach (var comment in _commentsTableClient.QueryAsync<Comment>(
                 c => c.QuestionId == questionId))
             {
@@ -269,6 +327,12 @@ public class Worker : BackgroundService
     {
         try
         {
+            if (_notificationLogTableClient == null)
+            {
+                _logger.LogError("Notification log table client is not initialized");
+                return;
+            }
+            
             var log = new NotificationLog
             {
                 RowKey = Guid.NewGuid().ToString(),

@@ -26,11 +26,13 @@ echo [6/7] Starting HealthMonitoringService Instance 2...
 start "HealthMonitor-Instance2" cmd /k "cd StackOverflow\HealthMonitoringService & echo Starting HealthMonitoring Instance 2... & dotnet run --launch-profile HealthMonitoringService-Instance2"
 timeout /t 2 /nobreak >nul
 
-echo [7/7] Starting HealthStatusService Dashboard (HTML Version)...
-start "HealthStatus Dashboard" cmd /k "echo Starting Health Status Dashboard... & start health-status-dashboard.html & echo Dashboard opened in browser!"
-timeout /t 2 /nobreak >nul
+echo [7/8] Starting HealthStatusService (.NET Dashboard)...
+start "HealthStatus Service" cmd /k "cd StackOverflow\HealthStatusService & echo Starting Health Status Service... & dotnet run"
+timeout /t 5 /nobreak >nul
+echo Opening Health Status Dashboard in browser...
+start http://localhost:5123
 
-echo [8/7] Starting React Frontend...
+echo [8/8] Starting React Frontend...
 start "React App" cmd /k "cd my-app & echo Starting React App... & npm start"
 
 echo.
@@ -42,11 +44,11 @@ echo - NotificationService Instance 1: http://localhost:5168
 echo - NotificationService Instance 2: http://localhost:5169  
 echo - NotificationService Instance 3: http://localhost:5170
 echo - HealthMonitoringService: 2 instances monitoring health every 4 seconds
-echo - HealthStatusService Dashboard: HTML Version (opened in browser)
+echo - HealthStatusService Dashboard: http://localhost:5123
 echo - React Frontend: http://localhost:3000
 echo.
-echo 📊 Health Status Dashboard opened in your default browser
-echo (HTML version with simulated data - full .NET version available when disk space allows)
+echo 📊 Health Status Dashboard: http://localhost:5123
+echo (Real-time data from Azure Storage - shows actual health monitoring results)
 echo.
 echo Press any key to exit this launcher...
 pause >nul

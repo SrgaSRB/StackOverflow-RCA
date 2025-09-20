@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ana\\Documents\\Faks\\4. god\\Cloud\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\StackOverflow.csproj": {}
+    "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\StackOverflow.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ana\\Documents\\Faks\\4. god\\Cloud\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\StackOverflow.csproj": {
+    "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\StackOverflow.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ana\\Documents\\Faks\\4. god\\Cloud\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\StackOverflow.csproj",
+        "projectUniqueName": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\StackOverflow.csproj",
         "projectName": "StackOverflow",
-        "projectPath": "C:\\Users\\Ana\\Documents\\Faks\\4. god\\Cloud\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\StackOverflow.csproj",
-        "packagesPath": "C:\\Users\\Ana\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ana\\Documents\\Faks\\4. god\\Cloud\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\obj\\",
+        "projectPath": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\StackOverflow.csproj",
+        "packagesPath": "C:\\Users\\SRDJAN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "E:\\Vidual studio 2019 Shared components, tools\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Ana\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\SRDJAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -53,7 +53,7 @@
           "dependencies": {
             "Azure.Data.Tables": {
               "target": "Package",
-              "version": "[12.8.3, )"
+              "version": "[12.11.0, )"
             },
             "Azure.Storage.Blobs": {
               "target": "Package",
@@ -87,24 +87,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.19, 8.0.19]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[8.0.19, 8.0.19]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.19, 8.0.19]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.19, 8.0.19]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="SOCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="7" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="NotificationServiceWorker">
+    <Instances count="3" />
+    <ConfigurationSettings>
+      <Setting name="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=yourstorageaccount;AccountKey=yourkey" />
+      <Setting name="SmtpServer" value="smtp.gmail.com" />
+      <Setting name="SmtpPort" value="587" />
+      <Setting name="SmtpUsername" value="your-email@gmail.com" />
+      <Setting name="SmtpPassword" value="your-app-password" />
+      <Setting name="FromEmail" value="noreply@stackoverflow.com" />
+      <Setting name="FromName" value="StackOverflow Notifications" />
+    </ConfigurationSettings>
+  </Role>
+  <Role name="HealthMonitoringServiceWorker">
+    <Instances count="1" />
+    <ConfigurationSettings />
+  </Role>
+  <NetworkConfiguration>
+    <VirtualNetworkSite name="socloudserviceVNet" />
+    <AddressAssignments>
+      <InstanceAddress roleName="NotificationServiceWorker">
+        <Subnets>
+          <Subnet name="WebTier" />
+        </Subnets>
+      </InstanceAddress>
+      <InstanceAddress roleName="HealthMonitoringServiceWorker">
+        <Subnets>
+          <Subnet name="WebTier" />
+        </Subnets>
+      </InstanceAddress>
+    </AddressAssignments>
+  </NetworkConfiguration>
+</ServiceConfiguration>

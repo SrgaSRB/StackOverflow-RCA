@@ -25,19 +25,18 @@
           }
         }
       },
-      "Azure.Data.Tables/12.8.3": {
+      "Azure.Data.Tables/12.11.0": {
         "type": "package",
         "dependencies": {
-          "Azure.Core": "1.37.0",
-          "System.Text.Json": "4.7.2"
+          "Azure.Core": "1.44.1"
         },
         "compile": {
-          "lib/netstandard2.0/Azure.Data.Tables.dll": {
+          "lib/net8.0/Azure.Data.Tables.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.0/Azure.Data.Tables.dll": {
+          "lib/net8.0/Azure.Data.Tables.dll": {
             "related": ".xml"
           }
         }
@@ -479,18 +478,20 @@
         "lib/netstandard2.0/Azure.Core.xml"
       ]
     },
-    "Azure.Data.Tables/12.8.3": {
-      "sha512": "2wAUXLS1ebTnV+qm9qc1z1MZIPC3as2WJt9bEgL08oC1wlT5UhaW78PlYgTld89p/YWCawJycHtBwVx+SWIuLw==",
+    "Azure.Data.Tables/12.11.0": {
+      "sha512": "MabH2HegMvZA1ocaMhEfW/idyTa3CoH64s43/V9/KFRGdVqEj0EETvd3ItDe6Bbs2teiR40KE9Kz9NLDc5DJJw==",
       "type": "package",
-      "path": "azure.data.tables/12.8.3",
+      "path": "azure.data.tables/12.11.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "CHANGELOG.md",
         "README.md",
-        "azure.data.tables.12.8.3.nupkg.sha512",
+        "azure.data.tables.12.11.0.nupkg.sha512",
         "azure.data.tables.nuspec",
         "azureicon.png",
+        "lib/net8.0/Azure.Data.Tables.dll",
+        "lib/net8.0/Azure.Data.Tables.xml",
         "lib/netstandard2.0/Azure.Data.Tables.dll",
         "lib/netstandard2.0/Azure.Data.Tables.xml"
       ]
@@ -1199,7 +1200,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Azure.Data.Tables >= 12.8.3",
+      "Azure.Data.Tables >= 12.11.0",
       "Azure.Storage.Blobs >= 12.25.0",
       "Azure.Storage.Queues >= 12.21.0",
       "MailKit >= 4.7.1.1",
@@ -1208,23 +1209,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ana\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\SRDJAN\\.nuget\\packages\\": {},
+    "E:\\Vidual studio 2019 Shared components, tools\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ana\\Documents\\Faks\\4. god\\Cloud\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\StackOverflow.csproj",
+      "projectUniqueName": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\StackOverflow.csproj",
       "projectName": "StackOverflow",
-      "projectPath": "C:\\Users\\Ana\\Documents\\Faks\\4. god\\Cloud\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\StackOverflow.csproj",
-      "packagesPath": "C:\\Users\\Ana\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ana\\Documents\\Faks\\4. god\\Cloud\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\obj\\",
+      "projectPath": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\StackOverflow.csproj",
+      "packagesPath": "C:\\Users\\SRDJAN\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "E:\\Vidual studio 2019 Shared components, tools\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Ana\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\SRDJAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1260,7 +1261,7 @@
         "dependencies": {
           "Azure.Data.Tables": {
             "target": "Package",
-            "version": "[12.8.3, )"
+            "version": "[12.11.0, )"
           },
           "Azure.Storage.Blobs": {
             "target": "Package",
@@ -1294,24 +1295,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.19, 8.0.19]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[8.0.19, 8.0.19]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.19, 8.0.19]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[8.0.19, 8.0.19]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"

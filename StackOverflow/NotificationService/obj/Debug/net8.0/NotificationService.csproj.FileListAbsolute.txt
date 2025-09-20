@@ -101,3 +101,45 @@ C:\Users\Ana\Documents\Faks\4. god\Cloud\StackOverflow-RCA\StackOverflow\Notific
 C:\Users\Ana\Documents\Faks\4. god\Cloud\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\NotificationService.pdb
 C:\Users\Ana\Documents\Faks\4. god\Cloud\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\NotificationService.genruntimeconfig.cache
 C:\Users\Ana\Documents\Faks\4. god\Cloud\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\ref\NotificationService.dll
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\NotificationService.csproj.AssemblyReference.cache
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\NotificationService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\NotificationService.AssemblyInfoInputs.cache
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\NotificationService.AssemblyInfo.cs
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\NotificationService.csproj.CoreCompileInputs.cache
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\NotificationService.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\NotificationService.sourcelink.json
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\NotificationService.dll
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\refint\NotificationService.dll
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\NotificationService.pdb
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\bin\Debug\net8.0\appsettings.json
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\bin\Debug\net8.0\NotificationService.staticwebassets.endpoints.json
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\bin\Debug\net8.0\NotificationService.exe
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\bin\Debug\net8.0\NotificationService.deps.json
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\bin\Debug\net8.0\NotificationService.runtimeconfig.json
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\bin\Debug\net8.0\NotificationService.dll
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\bin\Debug\net8.0\NotificationService.pdb
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\bin\Debug\net8.0\Azure.Core.dll
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\bin\Debug\net8.0\Azure.Data.Tables.dll
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\bin\Debug\net8.0\Azure.Storage.Common.dll
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\bin\Debug\net8.0\Azure.Storage.Queues.dll
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\bin\Debug\net8.0\MailKit.dll
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\bin\Debug\net8.0\MimeKit.dll
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\bin\Debug\net8.0\System.ClientModel.dll
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\bin\Debug\net8.0\System.IO.Hashing.dll
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\bin\Debug\net8.0\System.Memory.Data.dll
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\scopedcss\bundle\NotificationService.styles.css
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\Notifica.A960C9D4.Up2Date
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\NotificationService.genruntimeconfig.cache
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\ref\NotificationService.dll
+C:\Users\SRDJAN\Desktop\Projects\StackOverflow-RCA\StackOverflow\NotificationService\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

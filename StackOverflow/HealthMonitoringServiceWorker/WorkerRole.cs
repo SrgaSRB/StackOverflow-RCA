@@ -76,17 +76,17 @@ namespace HealthMonitoringServiceWorker
 
                 try
                 {
-                    //var soHealth = await _healthCheckService.CheckStackOverflowServiceAsync();
-                    //await _dataService.SaveHealthCheckAsync(soHealth);
+                    var soHealth = await _healthCheckService.CheckStackOverflowServiceAsync();
+                    await _dataService.SaveHealthCheckAsync(soHealth);
 
-                    //if (soHealth.Status != "OK")
-                    //{
-                    //    var alertEmails = await _dataService.GetActiveEmailsAsync();
-                    //    if (alertEmails.Count > 0)
-                    //    {
-                    //        await _emailAlertService.SendHealthAlertAsync(alertEmails, soHealth);
-                    //    }
-                    //}
+                    if (soHealth.Status != "OK")
+                    {
+                        var alertEmails = await _dataService.GetActiveEmailsAsync();
+                        if (alertEmails.Count > 0)
+                        {
+                            await _emailAlertService.SendHealthAlertAsync(alertEmails, soHealth);
+                        }
+                    }
 
                     var notificationHealth = await _healthCheckService.CheckNotificationServiceAsync();
                     await _dataService.SaveHealthCheckAsync(notificationHealth);
@@ -101,7 +101,7 @@ namespace HealthMonitoringServiceWorker
                     }
 
                     Trace.TraceInformation($"Health checks completed Notification: {notificationHealth.Status}");
-                    //Trace.TraceInformation($"Health checks completed - StackOverflow: {soHealth.Status}, Notification: {notificationHealth.Status}");
+                    Trace.TraceInformation($"Health checks completed - StackOverflow: {soHealth.Status}, Notification: {notificationHealth.Status}");
 
                 }
                 catch (Exception ex)

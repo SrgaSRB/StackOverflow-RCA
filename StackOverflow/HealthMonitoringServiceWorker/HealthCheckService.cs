@@ -21,18 +21,12 @@ namespace HealthMonitoringServiceWorker
             _httpClient.Timeout = TimeSpan.FromSeconds(10);
         }
 
-        //CHECK THIS WHEN IMPLEMENT SOSERVICE 
-        //public async Task<HealthCheck> CheckStackOverflowServiceAsync()
-        //{
-
-        //    var endpoints = RoleEnvironment.Roles["StackOverflowService"].Instances;
-        //    var instance = endpoints.First();
-
-        //    var endpoint = instance.InstanceEndpoints["HealthMonitoring"];
-        //    var serviceUrl = $"http://{endpoint.IPEndpoint}";
-
-        //    return await CheckServiceHealthAsync("StackOverflowService", serviceUrl);
-        //}
+        public async Task<HealthCheck> CheckStackOverflowServiceAsync()
+        {
+            var baseUrl = RoleEnvironment.GetConfigurationSettingValue("WebBaseUrl");
+            var url = $"{baseUrl.TrimEnd('/')}";
+            return await CheckServiceHealthAsync("StackOverflowService", url);
+        }
 
         public async Task<HealthCheck> CheckNotificationServiceAsync()
         {

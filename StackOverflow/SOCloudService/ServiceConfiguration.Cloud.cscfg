@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ServiceConfiguration serviceName="SOCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="7" osVersion="*" schemaVersion="2015-04.2.6">
+	
   <Role name="NotificationServiceWorker">
     <Instances count="3" />
     <ConfigurationSettings>
@@ -25,6 +26,14 @@
 			<Setting name="SmtpPassword" value="your-app-password" />
 			<Setting name="FromEmail" value="noreply@stackoverflow.com" />
 			<Setting name="FromName" value="StackOverflow Notifications" />
+			<Setting name="WebBaseUrl" value="http://localhost:59535" />
+		</ConfigurationSettings>
+	</Role>
+	
+	<Role name="StackOverflowServiceWeb">
+		<Instances count="1" />
+		<ConfigurationSettings>
+			<Setting name="AzureStorage" value="UseDevelopmentStorage=true" />
 		</ConfigurationSettings>
 	</Role>
 	

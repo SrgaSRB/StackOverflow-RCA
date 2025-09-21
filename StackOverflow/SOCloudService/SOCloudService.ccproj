@@ -55,14 +55,24 @@
       <RoleName>NotificationServiceWorker</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
+    <ProjectReference Include="..\StackOverflowServiceWeb\StackOverflowServiceWeb.csproj">
+      <Name>StackOverflowServiceWeb</Name>
+      <Project>{606f0057-765f-4cbc-a742-8775612afaca}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>StackOverflowServiceWeb</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <DiagnosticsConfiguration Include="HealthMonitoringServiceWorkerContent\diagnostics.wadcfgx" />
     <DiagnosticsConfiguration Include="NotificationServiceWorkerContent\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="StackOverflowServiceWebContent\diagnostics.wadcfgx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="HealthMonitoringServiceWorkerContent\" />
     <Folder Include="NotificationServiceWorkerContent\" />
+    <Folder Include="StackOverflowServiceWebContent\" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>

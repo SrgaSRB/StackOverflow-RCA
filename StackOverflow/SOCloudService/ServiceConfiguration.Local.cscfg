@@ -12,8 +12,19 @@
       <Setting name="FromName" value="StackOverflow Notifications" />
     </ConfigurationSettings>
   </Role>
-  <Role name="HealthMonitoringServiceWorker">
-    <Instances count="1" />
-    <ConfigurationSettings />
-  </Role>
+	<Role name="HealthMonitoringServiceWorker">
+		<Instances count="2" />
+		<ConfigurationSettings>
+			<Setting name="StorageConnectionString" value="UseDevelopmentStorage=true" />
+			<Setting name="StackOverflowServiceUrl" value="https://example.com/so" />
+			<Setting name="NotificationServiceUrl" value="https://example.com/notify" />
+			<Setting name="SmtpServer" value="smtp.gmail.com" />
+			<Setting name="SmtpPort" value="587" />
+			<Setting name="SmtpUsername" value="your-email@gmail.com" />
+			<Setting name="SmtpPassword" value="your-app-password" />
+			<Setting name="FromEmail" value="noreply@stackoverflow.com" />
+			<Setting name="FromName" value="StackOverflow Notifications" />
+		</ConfigurationSettings>
+	</Role>
+
 </ServiceConfiguration>

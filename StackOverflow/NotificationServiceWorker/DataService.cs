@@ -82,21 +82,6 @@ namespace NotificationServiceWorker
         {
             try
             {
-                var newQuestion = new Question
-                {
-                    PartitionKey = "QUESTION",
-                    RowKey = questionId,
-                    Title = "Sample Question Title",
-                    Description = "Sample question text.",
-                    UserId = "user123",
-                    Upvotes = 0,
-                    Downvotes = 0,
-                    TotalVotes = 0
-                };
-
-                var addOperation = TableOperation.Insert(newQuestion);
-                await _questionTable.ExecuteAsync(addOperation);
-
                 var operation = TableOperation.Retrieve<Question>("QUESTION", questionId);
                 var result = await _questionTable.ExecuteAsync(operation);
                 return result.Result as Question;

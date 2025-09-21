@@ -10,8 +10,21 @@
       <Setting name="FromEmail" />
       <Setting name="FromName" />
     </ConfigurationSettings>
+    <Endpoints>
+      <InternalEndpoint name="HealthMonitoring" protocol="http" port="8081" />
+    </Endpoints>
   </WorkerRole>
-  <WorkerRole name="HealthMonitoringServiceWorker" vmsize="Standard_D1_v2">
-    <ConfigurationSettings />
+  <WorkerRole name="HealthMonitoringServiceWorker" vmsize="Small">
+    <ConfigurationSettings>
+      <Setting name="StorageConnectionString" />
+      <Setting name="StackOverflowServiceUrl" />
+      <Setting name="NotificationServiceUrl" />
+      <Setting name="SmtpServer" />
+      <Setting name="SmtpPort" />
+      <Setting name="SmtpUsername" />
+      <Setting name="SmtpPassword" />
+      <Setting name="FromEmail" />
+      <Setting name="FromName" />
+    </ConfigurationSettings>
   </WorkerRole>
 </ServiceDefinition>

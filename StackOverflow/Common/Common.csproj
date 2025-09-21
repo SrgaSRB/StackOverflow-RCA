@@ -96,8 +96,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\AlertEmail.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\HealthCheck.cs" />
     <Compile Include="Models\NotificationLog.cs" />
     <Compile Include="Models\NotificationMessage.cs" />
     <Compile Include="Models\Question.cs" />

@@ -39,6 +39,14 @@
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HealthMonitoringServiceWorker\HealthMonitoringServiceWorker.csproj">
+      <Name>HealthMonitoringServiceWorker</Name>
+      <Project>{ce7c6bd7-6618-4b30-9243-c23a9cc776f7}</Project>
+      <Private>True</Private>
+      <RoleType>Worker</RoleType>
+      <RoleName>HealthMonitoringServiceWorker</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
     <ProjectReference Include="..\NotificationServiceWorker\NotificationServiceWorker.csproj">
       <Name>NotificationServiceWorker</Name>
       <Project>{b2c1d85b-4c97-4340-a5de-4546780cdaa0}</Project>
@@ -49,7 +57,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <DiagnosticsConfiguration Include="HealthMonitoringServiceWorkerContent\diagnostics.wadcfgx" />
     <DiagnosticsConfiguration Include="NotificationServiceWorkerContent\diagnostics.wadcfgx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="HealthMonitoringServiceWorkerContent\" />
+    <Folder Include="NotificationServiceWorkerContent\" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>

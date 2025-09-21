@@ -19,6 +19,7 @@ namespace NotificationServiceWorker
 
         private DataService _dataService;
         private EmailService _emailService;
+        private HealthServer _healthServer;
 
         public override void Run()
         {
@@ -47,6 +48,8 @@ namespace NotificationServiceWorker
 
             _dataService = new DataService();
             _emailService = new EmailService();
+            _healthServer = new HealthServer();
+            _healthServer.Start();
 
             bool result = base.OnStart();
 
@@ -62,6 +65,7 @@ namespace NotificationServiceWorker
             this.cancellationTokenSource.Cancel();
             this.runCompleteEvent.WaitOne();
 
+            _healthServer.Stop();
             base.OnStop();
 
             Trace.TraceInformation("NotificationServiceWorker has stopped");
@@ -84,7 +88,7 @@ namespace NotificationServiceWorker
                     }
                     else
                     {
-                        Trace.TraceInformation("Trenutno ne postoji poruka u redu.");
+                        Trace.TraceInformation("No notifications to process");
                     }
                 }
                 catch (Exception ex)
@@ -93,7 +97,7 @@ namespace NotificationServiceWorker
                 }
 
                 Trace.TraceInformation("Working");
-                await Task.Delay(1000);
+                await Task.Delay(5000);
             }
         }
 

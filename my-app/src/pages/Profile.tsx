@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { data, Link } from "react-router-dom";
 import ReactCrop, {
   centerCrop,
   makeAspectCrop,
@@ -54,15 +54,15 @@ function getCroppedImg(
 }
 
 interface Question {
-  questionId: string;
-  title: string;
-  description: string;
-  createdAt: string | Date;
-  upvotes: number;
-  downvotes: number;
-  totalVotes: number;
-  answersCount: number;
-  pictureUrl?: string;
+  QuestionId: string;
+  Title: string;
+  Description: string;
+  CreatedAt: string | Date;
+  Upvotes: number;
+  Downvotes: number;
+  TotalVotes: number;
+  AnswersCount: number;
+  PictureUrl?: string;
 }
 
 const Profile = () => {
@@ -121,10 +121,10 @@ const Profile = () => {
 
   // Question editing functions
   const handleEditQuestion = (question: Question) => {
-    setEditingQuestionId(question.questionId);
+    setEditingQuestionId(question.QuestionId);
     setEditQuestionData({
-      title: question.title,
-      description: question.description,
+      title: question.Title,
+      description: question.Description,
     });
     setEditQuestionImage(null);
     setRemoveQuestionImage(false);
@@ -686,7 +686,7 @@ const Profile = () => {
             </div>
             <div className="user-profile-q-a-list-div">
               {questions.map((question) => (
-                <div key={question.questionId} className="user-profile-q-a-item">
+                <div key={question.QuestionId} className="user-profile-q-a-item">
                   <div
                     className="user-profile-q-a-div"
                     style={{
@@ -720,7 +720,7 @@ const Profile = () => {
                           style={{ textAlign: "center" }}
                         >
                           <div className="text-block-15">
-                            {question.totalVotes}
+                            {question.Upvotes - question.Downvotes}
                           </div>
                           <div
                             className="text-block-16"
@@ -733,7 +733,7 @@ const Profile = () => {
                           className="user-profile-q-a-div-left-info-div"
                           style={{ textAlign: "center" }}
                         >
-                          <div className="text-block-15">{question.answersCount || 0}</div>
+                          <div className="text-block-15">{question.AnswersCount || 0}</div>
                           <div
                             className="text-block-16"
                             style={{ fontSize: "11px" }}
@@ -755,7 +755,7 @@ const Profile = () => {
                         </div>
                       </div>
                       {/* Edit and Delete buttons */}
-                      {editingQuestionId !== question.questionId && (
+                      {editingQuestionId !== question.QuestionId && (
                         <div
                           style={{
                             display: "flex",
@@ -792,7 +792,7 @@ const Profile = () => {
                           </button>
                           <button
                             onClick={() =>
-                              handleDeleteQuestion(question.questionId)
+                              handleDeleteQuestion(question.QuestionId)
                             }
                             style={{
                               backgroundColor: "#38ad73",
@@ -827,7 +827,7 @@ const Profile = () => {
                       className="user-profile-q-a-div-info"
                       style={{ flex: 1, marginRight: "20px" }}
                     >
-                      {editingQuestionId === question.questionId ? (
+                      {editingQuestionId === question.QuestionId ? (
                         <div
                           style={{
                             padding: "15px",
@@ -899,7 +899,7 @@ const Profile = () => {
                                 fontSize: "13px",
                               }}
                             />
-                            {question.pictureUrl && !removeQuestionImage && (
+                            {question.PictureUrl && !removeQuestionImage && (
                               <div style={{ marginTop: "8px" }}>
                                 <button
                                   type="button"
@@ -934,7 +934,7 @@ const Profile = () => {
                           <div style={{ display: "flex", gap: "10px" }}>
                             <button
                               onClick={() =>
-                                handleSaveQuestion(question.questionId)
+                                handleSaveQuestion(question.QuestionId)
                               }
                               style={{
                                 backgroundColor: "#38ad73",
@@ -969,31 +969,31 @@ const Profile = () => {
                       ) : (
                         <>
                           <Link 
-                            to={`/post/${question.questionId}`} 
+                            to={`/post/${question.QuestionId}`} 
                             style={{ textDecoration: 'none', color: 'inherit' }}
                           >
                             <div className="user-profile-q-a-div-info-title" style={{ cursor: 'pointer' }}>
-                              {question.title}
+                              {question.Title}
                             </div>
                           </Link>
                           <div className="user-profile-q-a-div-info-description">
-                            {question.description}
+                            {question.Description}
                           </div>
                           <div className="user-profile-q-a-div-info-date">
                             Asked{" "}
-                            {new Date(question.createdAt).toLocaleDateString()}
+                            {new Date(question.CreatedAt).toLocaleDateString()}
                           </div>
                         </>
                       )}
                     </div>
 
                     {/* Image Div */}
-                    {question.pictureUrl &&
-                      editingQuestionId !== question.questionId &&
+                    {question.PictureUrl &&
+                      editingQuestionId !== question.QuestionId &&
                       !removeQuestionImage && (
                         <div style={{ flexShrink: 0 }}>
                           <img
-                            src={question.pictureUrl}
+                            src={question.PictureUrl}
                             alt="Question"
                             style={{
                               width: "100px",
@@ -1003,8 +1003,8 @@ const Profile = () => {
                               borderRadius: "5px",
                             }}
                             onClick={() =>
-                              question.pictureUrl &&
-                              handleQuestionImageClick(question.pictureUrl)
+                              question.PictureUrl &&
+                              handleQuestionImageClick(question.PictureUrl)
                             }
                           />
                         </div>

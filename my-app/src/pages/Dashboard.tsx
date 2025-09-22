@@ -2,20 +2,22 @@ import { useEffect, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 
 interface UserInfo {
-    username: string;
-    profilePictureUrl: string | null;
+    Username: string;
+    ProfilePictureUrl: string | null;
+    QuestionsCount?: number;
 }
 
 interface QuestionDetails {
-    questionId: string;
-    title: string;
-    description: string;
-    upvotes: number;
-    downvotes: number;
-    totalVotes: number;
-    createdAt: string | Date;
-    user: UserInfo;
-    answersCount: number;
+    QuestionId: string;
+    Title: string;
+    Description: string;
+    Upvotes: number;
+    Downvotes: number;
+    TotalVotes: number;
+    CreatedAt: string | Date;
+    User: UserInfo;
+    AnswersCount: number;
+    PictureUrl?: string;
 }
 
 interface VoteState {
@@ -44,33 +46,35 @@ const Dashboard = () => {
                     const currentUserId = currentUser.RowKey || currentUser.rowKey;
                     
                     let filteredData = data;
+                    console.log("Current User ID:", currentUserId);
+                    console.log("Fetched Questions:", data);
                     
                     // Filter out current user's questions
                     if (currentUserId) {
                         filteredData = data.filter((question: QuestionDetails) => {
                             // Assuming the API returns userId in the question object or user.id
                             // You might need to adjust this based on your actual API response structure
-                            return question.user && question.user.username !== currentUser.username;
+                            return question.User && question.User.Username !== currentUser.Username;
                         });
                     }
                     
                     // Apply search filter if provided
                     if (searchTerm) {
                         filteredData = filteredData.filter((question: QuestionDetails) =>
-                            question.title.toLowerCase().includes(searchTerm.toLowerCase())
+                            question.Title.toLowerCase().includes(searchTerm.toLowerCase())
                         );
                     }
 
-                    const sortedData = filteredData.sort((a: QuestionDetails, b: QuestionDetails) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+                    const sortedData = filteredData.sort((a: QuestionDetails, b: QuestionDetails) => new Date(b.CreatedAt).getTime() - new Date(a.CreatedAt).getTime());
                     setQuestions(sortedData);
 
                     // Initialize vote states for all questions
                     const initialVoteStates: Record<string, VoteState> = {};
                     for (const question of sortedData) {
-                        initialVoteStates[question.questionId] = {
-                            upvotes: question.upvotes || 0,
-                            downvotes: question.downvotes || 0,
-                            totalVotes: question.totalVotes || 0,
+                        initialVoteStates[question.QuestionId] = {
+                            upvotes: question.Upvotes || 0,
+                            downvotes: question.Downvotes || 0,
+                            totalVotes: question.TotalVotes || 0,
                             userVote: null
                         };
                     }
@@ -79,7 +83,7 @@ const Dashboard = () => {
                     // Load user votes for all questions
                     if (currentUserId) {
                         for (const question of sortedData) {
-                            fetchUserQuestionVote(currentUserId, question.questionId);
+                            fetchUserQuestionVote(currentUserId, question.QuestionId);
                         }
                     }
                 } else {
@@ -108,7 +112,7 @@ const Dashboard = () => {
                 // Filter out current user's questions
                 if (currentUserId) {
                     filteredData = data.filter((question: QuestionDetails) => {
-                        return question.user && question.user.username !== currentUser.username;
+                        return question.User && question.User.Username !== currentUser.Username;
                     });
                 }
                 
@@ -177,14 +181,14 @@ const Dashboard = () => {
                 
                 // Update the question in the list
                 setQuestions(prev => prev.map(q => 
-                    q.questionId === questionId 
+                    q.QuestionId === questionId 
                         ? { ...q, upvotes: data.upvotes, downvotes: data.downvotes, totalVotes: data.totalVotes }
                         : q
                 ));
 
                 // Update popular questions as well
                 setPopularQuestions(prev => prev.map(q => 
-                    q.questionId === questionId 
+                    q.QuestionId === questionId 
                         ? { ...q, upvotes: data.upvotes, downvotes: data.downvotes, totalVotes: data.totalVotes }
                         : q
                 ));
@@ -231,15 +235,15 @@ const Dashboard = () => {
                 
                 // Update the question in the list
                 setQuestions(prev => prev.map(q => 
-                    q.questionId === questionId 
-                        ? { ...q, upvotes: data.upvotes, downvotes: data.downvotes, totalVotes: data.totalVotes }
+                    q.QuestionId === questionId 
+                        ? { ...q, Upvotes: data.upvotes, Downvotes: data.downvotes, TotalVotes: data.totalVotes }
                         : q
                 ));
 
                 // Update popular questions as well
                 setPopularQuestions(prev => prev.map(q => 
-                    q.questionId === questionId 
-                        ? { ...q, upvotes: data.upvotes, downvotes: data.downvotes, totalVotes: data.totalVotes }
+                    q.QuestionId === questionId 
+                        ? { ...q, Upvotes: data.upvotes, Downvotes: data.downvotes, TotalVotes: data.totalVotes }
                         : q
                 ));
 
@@ -275,20 +279,20 @@ const Dashboard = () => {
                     <div className="dashboard-main-div">
                         <div className="dashboard-questions">
                             {questions.map((question) => {
-                                const voteState = questionVoteStates[question.questionId] || {
-                                    upvotes: question.upvotes || 0,
-                                    downvotes: question.downvotes || 0,
-                                    totalVotes: question.totalVotes || 0,
+                                const voteState = questionVoteStates[question.QuestionId] || {
+                                    upvotes: question.Upvotes || 0,
+                                    downvotes: question.Downvotes || 0,
+                                    totalVotes: question.TotalVotes || 0,
                                     userVote: null
                                 };
                                 
                                 return (
-                                <div className="question-div" key={question.questionId}>
+                                <div className="question-div" key={question.QuestionId}>
                                     <div className="question-left-side-info">
                                         <div className="question-left-side-info-div">
                                             <div className="question-left-side-info-top-div">
                                                 <button 
-                                                    onClick={() => handleQuestionUpvote(question.questionId)}
+                                                    onClick={() => handleQuestionUpvote(question.QuestionId)}
                                                     style={{
                                                         background: 'none',
                                                         border: 'none',
@@ -299,9 +303,9 @@ const Dashboard = () => {
                                                     <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a786ab9ccef31e64f760b7_upload.png"
                                                         loading="lazy" alt="Upvote" className="image" />
                                                 </button>
-                                                <div className="text-block-3">{voteState.totalVotes}</div>
+                                                <div className="text-block-3">{voteState.upvotes - voteState.downvotes}</div>
                                                 <button 
-                                                    onClick={() => handleQuestionDownvote(question.questionId)}
+                                                    onClick={() => handleQuestionDownvote(question.QuestionId)}
                                                     style={{
                                                         background: 'none',
                                                         border: 'none',
@@ -319,7 +323,7 @@ const Dashboard = () => {
                                             <div className="question-left-side-info-top-div">
                                                 <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a786aa1837efdbc1ee1afa_chat.png"
                                                     loading="lazy" alt="" className="image" />
-                                                <div className="text-block-3">{question.answersCount}</div>
+                                                <div className="text-block-3">{question.AnswersCount}</div>
                                             </div>
                                             <div className="text-block-4">answers</div>
                                         </div>
@@ -333,24 +337,24 @@ const Dashboard = () => {
                                         </div>
                                     </div>
                                     <div className="question-main-div">
-                                        <Link to={`/post/${question.questionId}`} className="question-title-link" style={{ textDecoration: 'none' }}>
-                                            <div className="question-title">{question.title}</div>
+                                        <Link to={`/post/${question.QuestionId}`} className="question-title-link" style={{ textDecoration: 'none' }}>
+                                            <div className="question-title">{question.Title}</div>
                                         </Link>
-                                        <div className="question-description">{question.description}</div>
+                                        <div className="question-description">{question.Description}</div>
                                         <div className="question-footer">
                                             <div className="question-user-div">
-                                                <img src={question.user.profilePictureUrl || "https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a78893518a2aa043ff4749_female-placeholder.webp"}
+                                                <img src={question.User.ProfilePictureUrl || "https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a78893518a2aa043ff4749_female-placeholder.webp"}
                                                     loading="lazy"
                                                     alt="" className="question-user-photo" />
-                                                <div className="question-user-username">{question.user.username}</div>
+                                                <div className="question-user-username">{question.User.Username}</div>
                                             </div>
                                             <div className="question-date-div">
                                                 <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a789647d68e02a34817ecb_date.png"
                                                     loading="lazy" alt="" className="image-2" />
-                                                <div>{new Date(question.createdAt).toLocaleDateString()}</div>
+                                                <div>{new Date(question.CreatedAt).toLocaleDateString()}</div>
                                             </div>
                                         </div>
-                                        {question.answersCount > 0 && (
+                                        {question.AnswersCount > 0 && (
                                             <div className="question-isanswered">
                                                 <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a84da09c4a82a45ae94301_checked%20(2).png"
                                                     loading="lazy" alt="" className="image-6" />
@@ -370,15 +374,15 @@ const Dashboard = () => {
                             </div>
                             <div className="popular-question-list">
                                 {popularQuestions.map((question) => (
-                                    <div className="popular-question-div" key={question.questionId}>
-                                        <Link to={`/post/${question.questionId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                                            <div className="text-block-6">{question.title}</div>
+                                    <div className="popular-question-div" key={question.QuestionId}>
+                                        <Link to={`/post/${question.QuestionId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                            <div className="text-block-6">{question.Title}</div>
                                         </Link>
                                         <div className="popular-question-div-footer">
-                                            <div className="popular-question-votes">{question.totalVotes}</div>
+                                            <div className="popular-question-votes">{question.Upvotes - question.Downvotes}</div>
                                             <div>votes</div>
                                             <div className="div-block-2"></div>
-                                            <div className="popular-question-answers">{question.answersCount}</div>
+                                            <div className="popular-question-answers">{question.AnswersCount}</div>
                                             <div>answers</div>
                                         </div>
                                         <div className="popular-question-hr"></div>

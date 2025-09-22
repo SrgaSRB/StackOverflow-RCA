@@ -138,17 +138,22 @@ namespace StackOverflowServiceWeb.Controllers
         [HttpPut, Route("{id}")]
         public async Task<IHttpActionResult> Update(string id)
         {
-            var question = await _questionService.GetQuestionByIdAsync(id);
-            if (question == null) return NotFound();
+            Question question = await _questionService.GetQuestionByIdAsync(id);
+            if (question == null)
+            {
+                return NotFound();
+            }
 
             var httpRequest = System.Web.HttpContext.Current.Request;
-            var userId = httpRequest.Form["UserId"];
-            if (question.UserId != userId) return ResponseMessage(Request.CreateErrorResponse(System.Net.HttpStatusCode.Forbidden, "You can only edit your own questions."));
+            var userId = httpRequest.Form["userId"] ?? httpRequest.Form["UserId"];
+            if (question.UserId != userId)
+                return ResponseMessage(Request.CreateErrorResponse(System.Net.HttpStatusCode.Forbidden, "You can only edit your own questions."));
 
-            question.Title = httpRequest.Form["Title"];
-            question.Description = httpRequest.Form["Description"];
+            // Accept both camelCase and PascalCase for form fields
+            question.Title = httpRequest.Form["title"] ?? httpRequest.Form["Title"];
+            question.Description = httpRequest.Form["description"] ?? httpRequest.Form["Description"];
 
-            // slika
+            // Handle image upload/removal
             if (httpRequest.Files.Count > 0)
             {
                 if (!string.IsNullOrEmpty(question.PictureUrl))
@@ -161,7 +166,7 @@ namespace StackOverflowServiceWeb.Controllers
                     question.PictureUrl = pictureUrl;
                 }
             }
-            else if (!string.IsNullOrEmpty(httpRequest.Form["RemovePicture"]) && question.PictureUrl != null)
+            else if ((!string.IsNullOrEmpty(httpRequest.Form["removePicture"]) || !string.IsNullOrEmpty(httpRequest.Form["RemovePicture"])) && question.PictureUrl != null)
             {
                 await _questionService.DeletePictureAsync(question.PictureUrl);
                 question.PictureUrl = null;

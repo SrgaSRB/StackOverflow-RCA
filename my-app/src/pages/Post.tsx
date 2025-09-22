@@ -2,42 +2,42 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 interface UserInfo {
-    username: string;
-    profilePictureUrl: string | null;
-    questionsCount: number;
+    Username: string;
+    ProfilePictureUrl: string | null;
+    QuestionsCount: number;
 }
 
 interface Answer {
-    answerId: string;
-    content: string;
-    createdAt: string;
-    user: UserInfo;
-    upvotes: number;
-    downvotes: number;
-    totalVotes: number;
-    userQuestionsCount?: number;
-    isBestAnswer?: boolean;
+    AnswerId: string;
+    Content: string;
+    CreatedAt: string;
+    User: UserInfo;
+    Upvotes: number;
+    Downvotes: number;
+    TotalVotes: number;
+    UserQuestionsCount?: number;
+    IsBestAnswer?: boolean;
 }
 
 interface QuestionDetails {
-    questionId: string;
-    title: string;
-    description: string;
-    pictureUrl?: string;
-    upvotes: number;
-    downvotes: number;
-    totalVotes: number;
-    createdAt: string | Date;
-    user: UserInfo;
-    answers: Answer[];
-    bestCommentId?: string;
+    QuestionId: string;
+    Title: string;
+    Description: string;
+    PictureUrl?: string;
+    Upvotes: number;
+    Downvotes: number;
+    TotalVotes: number;
+    CreatedAt: string | Date;
+    User: UserInfo;
+    Answers: Answer[];
+    BestCommentId?: string;
 }
 
 interface VoteState {
-    upvotes: number;
-    downvotes: number;
-    totalVotes: number;
-    userVote?: string | null;
+    Upvotes: number;
+    Downvotes: number;
+    TotalVotes: number;
+    UserVote?: string | null;
 }
 
 const Post = () => {
@@ -50,10 +50,10 @@ const Post = () => {
     const [authorQuestionsCount, setAuthorQuestionsCount] = useState<number>(0);
     const [answerAuthorsQuestionsCount, setAnswerAuthorsQuestionsCount] = useState<Record<string, number>>({});
     const [questionVoteState, setQuestionVoteState] = useState<VoteState>({
-        upvotes: 0,
-        downvotes: 0,
-        totalVotes: 0,
-        userVote: null
+        Upvotes: 0,
+        Downvotes: 0,
+        TotalVotes: 0,
+        UserVote: null
     });
     const [answerVoteStates, setAnswerVoteStates] = useState<Record<string, VoteState>>({});
     const [isQuestionAuthor, setIsQuestionAuthor] = useState<boolean>(false);
@@ -64,24 +64,24 @@ const Post = () => {
         const user = JSON.parse(localStorage.getItem('user') || '{}');
         const userId = user.RowKey || user.rowKey;
         const currentUserUsername = user.Username || user.username;
-        
+
         const fetchQuestion = async () => {
             try {
                 console.log('Fetching question with ID:', postId);
                 const response = await fetch(`http://localhost:59535/api/questions/${postId}`);
                 console.log('Response status:', response.status);
                 console.log('Response headers:', response.headers);
-                
+
                 if (response.ok) {
                     const data = await response.json();
                     console.log('Question data received:', data);
                     console.log('Question user:', data.user);
                     console.log('Question answers:', data.answers);
                     setQuestion(data);
-                    
+
                     // Set best answer ID
                     setBestAnswerId(data.bestCommentId || null);
-                    
+
                     // Check if current user is the author of the question
                     if (userId && data.user && data.user.username) {
                         console.log('Current user username:', currentUserUsername);
@@ -90,20 +90,20 @@ const Post = () => {
                         console.log('Is question author:', isAuthor);
                         setIsQuestionAuthor(isAuthor);
                     }
-                    
+
                     // Set initial question vote state
                     setQuestionVoteState({
-                        upvotes: data.upvotes || 0,
-                        downvotes: data.downvotes || 0,
-                        totalVotes: data.totalVotes || 0,
-                        userVote: null
+                        Upvotes: data.Upvotes || 0,
+                        Downvotes: data.Downvotes || 0,
+                        TotalVotes: data.TotalVotes || 0,
+                        UserVote: null
                     });
 
                     // Load user's current vote for question
                     if (userId) {
                         await fetchUserQuestionVote(userId);
                     }
-                    
+
                     if (data.user && data.user.username) {
                         await fetchAuthorQuestionsCount(data.user.username);
                     }
@@ -111,19 +111,19 @@ const Post = () => {
                     if (data.answers && data.answers.length > 0) {
                         const counts: Record<string, number> = {};
                         const voteStates: Record<string, VoteState> = {};
-                        
+
                         for (const answer of data.answers) {
                             if (answer.user && answer.user.username) {
                                 const count = await fetchAuthorQuestionsCount(answer.user.username, false);
                                 counts[answer.user.username] = count;
                             }
-                            
+
                             // Initialize answer vote state
                             voteStates[answer.answerId] = {
-                                upvotes: answer.upvotes || 0,
-                                downvotes: answer.downvotes || 0,
-                                totalVotes: answer.totalVotes || 0,
-                                userVote: null
+                                Upvotes: answer.Upvotes || 0,
+                                Downvotes: answer.Downvotes || 0,
+                                TotalVotes: answer.TotalVotes || 0,
+                                UserVote: null
                             };
 
                             // Load user's current vote for answer
@@ -230,7 +230,7 @@ const Post = () => {
 
             if (response.ok) {
                 const addedAnswer = await response.json();
-                setQuestion(prev => prev ? { ...prev, answers: [...prev.answers, addedAnswer] } : null);
+                setQuestion(prev => prev ? { ...prev, Answers: [...prev.Answers, addedAnswer] } : null);
                 setNewAnswer('');
                 alert('Your answer has been posted successfully!');
             } else {
@@ -264,12 +264,12 @@ const Post = () => {
             if (response.ok) {
                 const data = await response.json();
                 setQuestionVoteState({
-                    upvotes: data.upvotes,
-                    downvotes: data.downvotes,
-                    totalVotes: data.totalVotes,
-                    userVote: data.userVote
+                    Upvotes: data.Upvotes,
+                    Downvotes: data.Downvotes,
+                    TotalVotes: data.TotalVotes,
+                    UserVote: data.UserVote
                 });
-                setQuestion(prev => prev ? { ...prev, totalVotes: data.totalVotes } : null);
+                setQuestion(prev => prev ? { ...prev, TotalVotes: data.TotalVotes } : null);
             } else {
                 console.error("Failed to upvote question");
             }
@@ -299,12 +299,12 @@ const Post = () => {
             if (response.ok) {
                 const data = await response.json();
                 setQuestionVoteState({
-                    upvotes: data.upvotes,
-                    downvotes: data.downvotes,
-                    totalVotes: data.totalVotes,
-                    userVote: data.userVote
+                    Upvotes: data.Upvotes,
+                    Downvotes: data.Downvotes,
+                    TotalVotes: data.TotalVotes,
+                    UserVote: data.UserVote
                 });
-                setQuestion(prev => prev ? { ...prev, totalVotes: data.totalVotes } : null);
+                setQuestion(prev => prev ? { ...prev, TotalVotes: data.TotalVotes } : null);
             } else {
                 console.error("Failed to downvote question");
             }
@@ -336,17 +336,17 @@ const Post = () => {
                 setAnswerVoteStates(prev => ({
                     ...prev,
                     [answerId]: {
-                        upvotes: data.upvotes,
-                        downvotes: data.downvotes,
-                        totalVotes: data.totalVotes,
-                        userVote: data.userVote
+                        Upvotes: data.Upvotes,
+                        Downvotes: data.Downvotes,
+                        TotalVotes: data.TotalVotes,
+                        UserVote: data.UserVote
                     }
                 }));
                 setQuestion(prev => {
                     if (!prev) return null;
-                    const updatedAnswers = prev.answers.map(answer => 
-                        answer.answerId === answerId 
-                            ? { ...answer, totalVotes: data.totalVotes }
+                    const updatedAnswers = prev.Answers.map(answer =>
+                        answer.AnswerId === answerId
+                            ? { ...answer, TotalVotes: data.TotalVotes }
                             : answer
                     );
                     return { ...prev, answers: updatedAnswers };
@@ -382,20 +382,20 @@ const Post = () => {
                 setAnswerVoteStates(prev => ({
                     ...prev,
                     [answerId]: {
-                        upvotes: data.upvotes,
-                        downvotes: data.downvotes,
-                        totalVotes: data.totalVotes,
-                        userVote: data.userVote
+                        Upvotes: data.Upvotes,
+                        Downvotes: data.Downvotes,
+                        TotalVotes: data.TotalVotes,
+                        UserVote: data.UserVote
                     }
                 }));
                 setQuestion(prev => {
                     if (!prev) return null;
-                    const updatedAnswers = prev.answers.map(answer => 
-                        answer.answerId === answerId 
-                            ? { ...answer, totalVotes: data.totalVotes }
+                    const updatedAnswers = prev.Answers.map(answer =>
+                        answer.AnswerId === answerId
+                            ? { ...answer, TotalVotes: data.TotalVotes }
                             : answer
                     );
-                    return { ...prev, answers: updatedAnswers };
+                    return { ...prev, Answers: updatedAnswers };
                 });
             } else {
                 console.error("Failed to downvote answer");
@@ -427,7 +427,7 @@ const Post = () => {
 
         // Ask for confirmation
         const confirmMark = window.confirm("Are you sure you want to mark this answer as the best? This action cannot be undone and no other answer can be marked as best for this question.");
-        
+
         if (!confirmMark) {
             return;
         }
@@ -474,7 +474,7 @@ const Post = () => {
         );
     }
 
-    if (!question || !question.user) {
+    if (!question || !question.User) {
         return (
             <section className="question-section">
                 <div className="w-layout-blockcontainer container w-container">
@@ -489,42 +489,41 @@ const Post = () => {
             <div className="w-layout-blockcontainer container w-container">
                 <div className="question-wrapper">
                     <div className="q-question-block">
-                        <div className="text-block-17">{question.title}</div>
+                        <div className="text-block-17">{question.Title}</div>
                         <div className="div-block-6">
                             <div className="q-question-time">
                                 <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a789647d68e02a34817ecb_date.png" loading="lazy" alt="" className="image-7" />
-                                <div>Asked <span className="q-question-time-day">{new Date(question.createdAt).toLocaleDateString()}</span></div>
+                                <div>Asked <span className="q-question-time-day">{new Date(question.CreatedAt).toLocaleDateString()}</span></div>
                             </div>
                         </div>
                         <div className="q-question-bottom-div">
                             <div className="q-question-bottom-left-div">
-                                <div 
-                                    className={`div-block-8 question-div-upvote ${questionVoteState.userVote === 'upvote' ? 'voted-up' : ''}`} 
-                                    onClick={handleQuestionUpvote} 
+                                <div
+                                    className={`div-block-8 question-div-upvote ${questionVoteState.UserVote === 'upvote' ? 'voted-up' : ''}`}
+                                    onClick={handleQuestionUpvote}
                                     style={{ cursor: 'pointer' }}
                                 >
                                     <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a786ab9ccef31e64f760b7_upload.png" loading="lazy" alt="Upvote" className="image-8" />
                                 </div>
-                                <div className="text-block-18 upvote-count">{questionVoteState.upvotes}</div>
-                                <div className="text-block-18 downvote-count">{questionVoteState.downvotes}</div>
-                                <div 
-                                    className={`div-block-8 question-div-downvote ${questionVoteState.userVote === 'downvote' ? 'voted-down' : ''}`} 
-                                    onClick={handleQuestionDownvote} 
+                                <div className="text-block-18 upvote-count">{questionVoteState.Upvotes - questionVoteState.Downvotes}</div>
+                                <div
+                                    className={`div-block-8 question-div-downvote ${questionVoteState.UserVote === 'downvote' ? 'voted-down' : ''}`}
+                                    onClick={handleQuestionDownvote}
                                     style={{ cursor: 'pointer' }}
                                 >
                                     <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a786aaa1593ccde3ae5f09_download%20(1).png" loading="lazy" alt="Downvote" className="image-8" />
                                 </div>
                             </div>
                             <div className="q-question-bottom-lright-div">
-                                <div className="text-block-19">{question.description}</div>
-                                {question.pictureUrl && (
+                                <div className="text-block-19">{question.Description}</div>
+                                {question.PictureUrl && (
                                     <div className="q-question-image-div">
-                                        <img 
-                                            src={question.pictureUrl} 
-                                            alt="Question illustration" 
-                                            className="image-9" 
+                                        <img
+                                            src={question.PictureUrl}
+                                            alt="Question illustration"
+                                            className="image-9"
                                         />
-                                        <button 
+                                        <button
                                             className="primary-button q-question-image-button w-button"
                                             onClick={() => setShowImageModal(true)}
                                         >
@@ -535,21 +534,21 @@ const Post = () => {
                             </div>
                         </div>
                         <div className="q-question-user-info">
-                            <img 
-                                src={question.user.profilePictureUrl || "https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a78893518a2aa043ff4749_female-placeholder.webp"} 
-                                loading="lazy" 
+                            <img
+                                src={question.User.ProfilePictureUrl || "https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a78893518a2aa043ff4749_female-placeholder.webp"}
+                                loading="lazy"
                                 sizes="(max-width: 767px) 100vw, (max-width: 991px) 95vw, 940.0000610351562px"
-                                srcSet={question.user.profilePictureUrl ? "" : "https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a78893518a2aa043ff4749_female-placeholder-p-500.webp 500w, https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a78893518a2aa043ff4749_female-placeholder-p-800.webp 800w, https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a78893518a2aa043ff4749_female-placeholder.webp 1024w"}
-                                alt="User profile picture" 
-                                className="q-question-user-info-image" 
+                                srcSet={question.User.ProfilePictureUrl ? "" : "https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a78893518a2aa043ff4749_female-placeholder-p-500.webp 500w, https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a78893518a2aa043ff4749_female-placeholder-p-800.webp 800w, https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a78893518a2aa043ff4749_female-placeholder.webp 1024w"}
+                                alt="User profile picture"
+                                className="q-question-user-info-image"
                             />
                             <div className="q-question-user-info-right-div">
-                                <div className="q-question-user-info-username answer-user-username best-answer-user-username">@{question.user.username}</div>
+                                <div className="q-question-user-info-username answer-user-username best-answer-user-username">@{question.User.Username}</div>
                                 <div className="text-block-20">({authorQuestionsCount})</div>
                             </div>
                         </div>
                     </div>
-                    {!isQuestionAuthor && !bestAnswerId &&(
+                    {!isQuestionAuthor && !bestAnswerId && (
                         <div className="add-answer-block">
                             <div className="w-form">
                                 <form id="email-form-4" className="form-3" onSubmit={handleAnswerSubmit}>
@@ -567,12 +566,12 @@ const Post = () => {
                         </div>
                     )}
                     {bestAnswerId && (
-                        <div className="discussion-closed-block" style={{ 
-                            padding: '20px', 
-                            backgroundColor: '#f8f9fa', 
-                            border: '1px solid #dee2e6', 
-                            borderRadius: '5px', 
-                            textAlign: 'center', 
+                        <div className="discussion-closed-block" style={{
+                            padding: '20px',
+                            backgroundColor: '#f8f9fa',
+                            border: '1px solid #dee2e6',
+                            borderRadius: '5px',
+                            textAlign: 'center',
                             margin: '20px 0',
                             color: '#6c757d'
                         }}>
@@ -585,80 +584,80 @@ const Post = () => {
                         </div>
                     )}
                     <div className="q-answers-block">
-                        <div className="text-block-21"><span className="q-answers-count">{question.answers?.length || 0}</span> Answers</div>
+                        <div className="text-block-21"><span className="q-answers-count">{question.Answers?.length || 0}</span> Answers</div>
                         <div className="q-answers-list">
-                            {question.answers && question.answers.length > 0 ? (
-                                question.answers.map(answer => {
-                                    const answerVoteState = answerVoteStates[answer.answerId] || { 
-                                        upvotes: 0, 
-                                        downvotes: 0, 
-                                        totalVotes: answer.totalVotes, 
-                                        userVote: null 
+                            {question.Answers && question.Answers.length > 0 ? (
+                                question.Answers.map(answer => {
+                                    const answerVoteState = answerVoteStates[answer.AnswerId] || {
+                                        upvotes: 0,
+                                        downvotes: 0,
+                                        totalVotes: answer.TotalVotes,
+                                        userVote: null
                                     };
-                                    
+
                                     return (
-                                    <div className={`q-answer-div ${bestAnswerId === answer.answerId ? 'best-answer-div' : ''}`} key={answer.answerId}>
-                                        <div className="q-answer-div-left-div">
-                                            <div 
-                                                className={`div-block-7 answer-div-upvote ${answerVoteState.userVote === 'upvote' ? 'voted-up' : ''}`} 
-                                                onClick={() => handleAnswerUpvote(answer.answerId)} 
-                                                style={{ cursor: 'pointer' }}
-                                            >
-                                                <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a786ab9ccef31e64f760b7_upload.png" loading="lazy" alt="Upvote" className="image-10" />
-                                            </div>
-                                            <div className="q-answer-votes">{answerVoteState.totalVotes}</div>
-                                            <div 
-                                                className={`div-block-7 answer-div-downvote ${answerVoteState.userVote === 'downvote' ? 'voted-down' : ''}`} 
-                                                onClick={() => handleAnswerDownvote(answer.answerId)} 
-                                                style={{ cursor: 'pointer' }}
-                                            >
-                                                <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a786aaa1593ccde3ae5f09_download%20(1).png" loading="lazy" alt="Downvote" className="image-10" />
-                                            </div>
-                                        </div>
-                                        <div className="q-answer-div-right-div">
-                                            {bestAnswerId === answer.answerId && (
-                                                <div className="text-block-22">Best Answer</div>
-                                            )}
-                                            <div className="q-answer-content">{answer.content}</div>
-                                            <div className="q-answer-right-bottom-div">
-                                                <div className="q-answer-date-div">
-                                                    <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a789647d68e02a34817ecb_date.png" loading="lazy" alt="" className="image-11" />
-                                                    <div>
-                                                        Answered <span className="q-answer-date">{new Date(answer.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} </span>
-                                                        at <span className="q-answer-time">{new Date(answer.createdAt).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}</span>
-                                                    </div>
+                                        <div className={`q-answer-div ${bestAnswerId === answer.AnswerId ? 'best-answer-div' : ''}`} key={answer.AnswerId}>
+                                            <div className="q-answer-div-left-div">
+                                                <div
+                                                    className={`div-block-7 answer-div-upvote ${answerVoteState.UserVote === 'upvote' ? 'voted-up' : ''}`}
+                                                    onClick={() => handleAnswerUpvote(answer.AnswerId)}
+                                                    style={{ cursor: 'pointer' }}
+                                                >
+                                                    <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a786ab9ccef31e64f760b7_upload.png" loading="lazy" alt="Upvote" className="image-10" />
                                                 </div>
-                                                
-                                                {/* Mark as Best button in the middle */}
-                                                {isQuestionAuthor && !bestAnswerId && (
-                                                    <button 
-                                                        onClick={() => handleMarkBestAnswer(answer.answerId)}
-                                                        className="mark-best-answer-btn"
-                                                        style={{
-                                                            background: '#38ad73',
-                                                            color: 'white',
-                                                            border: 'none',
-                                                            padding: '5px 10px',
-                                                            borderRadius: '4px',
-                                                            cursor: 'pointer',
-                                                            fontSize: '12px'
-                                                        }}
-                                                    >
-                                                        Mark as Best
-                                                    </button>
+                                                <div className="q-answer-votes">{answerVoteState.TotalVotes}</div>
+                                                <div
+                                                    className={`div-block-7 answer-div-downvote ${answerVoteState.UserVote === 'downvote' ? 'voted-down' : ''}`}
+                                                    onClick={() => handleAnswerDownvote(answer.AnswerId)}
+                                                    style={{ cursor: 'pointer' }}
+                                                >
+                                                    <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a786aaa1593ccde3ae5f09_download%20(1).png" loading="lazy" alt="Downvote" className="image-10" />
+                                                </div>
+                                            </div>
+                                            <div className="q-answer-div-right-div">
+                                                {bestAnswerId === answer.AnswerId && (
+                                                    <div className="text-block-22">Best Answer</div>
                                                 )}
-                                                
-                                                {/* User info on the right */}
-                                                <div className={`q-question-user-info answer-user-info ${bestAnswerId === answer.answerId ? 'best-answer-user-info' : ''}`}>
-                                                    <img src={answer.user.profilePictureUrl || "https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a78893518a2aa043ff4749_female-placeholder.webp"} loading="lazy" alt="" className="q-question-user-info-image question-user-image" />
-                                                    <div className="q-question-user-info-right-div">
-                                                        <div className={`q-question-user-info-username answer-user-username ${bestAnswerId === answer.answerId ? 'best-answer-user-username' : ''}`}>@{answer.user.username}</div>
-                                                        <div className={`text-block-20 ${bestAnswerId === answer.answerId ? 'best-answer-user-stats' : ''}`}>({answerAuthorsQuestionsCount[answer.user.username] || 0})</div>
+                                                <div className="q-answer-content">{answer.Content}</div>
+                                                <div className="q-answer-right-bottom-div">
+                                                    <div className="q-answer-date-div">
+                                                        <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a789647d68e02a34817ecb_date.png" loading="lazy" alt="" className="image-11" />
+                                                        <div>
+                                                            Answered <span className="q-answer-date">{new Date(answer.CreatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} </span>
+                                                            at <span className="q-answer-time">{new Date(answer.CreatedAt).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}</span>
+                                                        </div>
+                                                    </div>
+
+                                                    {/* Mark as Best button in the middle */}
+                                                    {isQuestionAuthor && !bestAnswerId && (
+                                                        <button
+                                                            onClick={() => handleMarkBestAnswer(answer.AnswerId)}
+                                                            className="mark-best-answer-btn"
+                                                            style={{
+                                                                background: '#38ad73',
+                                                                color: 'white',
+                                                                border: 'none',
+                                                                padding: '5px 10px',
+                                                                borderRadius: '4px',
+                                                                cursor: 'pointer',
+                                                                fontSize: '12px'
+                                                            }}
+                                                        >
+                                                            Mark as Best
+                                                        </button>
+                                                    )}
+
+                                                    {/* User info on the right */}
+                                                    <div className={`q-question-user-info answer-user-info ${bestAnswerId === answer.AnswerId ? 'best-answer-user-info' : ''}`}>
+                                                        <img src={answer.User.ProfilePictureUrl || "https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a78893518a2aa043ff4749_female-placeholder.webp"} loading="lazy" alt="" className="q-question-user-info-image question-user-image" />
+                                                        <div className="q-question-user-info-right-div">
+                                                            <div className={`q-question-user-info-username answer-user-username ${bestAnswerId === answer.AnswerId ? 'best-answer-user-username' : ''}`}>@{answer.User.Username}</div>
+                                                            <div className={`text-block-20 ${bestAnswerId === answer.AnswerId ? 'best-answer-user-stats' : ''}`}>({answerAuthorsQuestionsCount[answer.User.Username] || 0})</div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     );
                                 })
                             ) : (
@@ -670,9 +669,9 @@ const Post = () => {
                     </div>
                 </div>
             </div>
-            
+
             {/* Image Modal */}
-            {showImageModal && question?.pictureUrl && (
+            {showImageModal && question?.PictureUrl && (
                 <div style={{
                     position: 'fixed',
                     top: 0,
@@ -685,9 +684,9 @@ const Post = () => {
                     justifyContent: 'center',
                     zIndex: 1000,
                 }} onClick={() => setShowImageModal(false)}>
-                    <img 
-                        src={question.pictureUrl} 
-                        alt="Question illustration - full size" 
+                    <img
+                        src={question.PictureUrl}
+                        alt="Question illustration - full size"
                         style={{
                             maxWidth: '80vw',
                             maxHeight: '80vh',

@@ -41,6 +41,8 @@ namespace StackOverflowServiceWeb.Services
             _picturesContainer.CreateIfNotExists();
 
             _voteService = voteService;
+
+            _picturesContainer.SetPermissionsAsync(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
         }
 
         public async Task<List<QuestionDetails>> GetAllQuestionsWithUserDetailsAsync()

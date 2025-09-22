@@ -9,9 +9,11 @@ import PublicLayout from './layout/PublicLayout';
 import NotFound from './components/shared/NotFound';
 import PrivateLayout from './layout/PrivateLayout';
 import './styles/global.css';
+import HealthMonitoring from './pages/HealthMonitoring';
 
 const router = createBrowserRouter([
   { path: "/", element: <Navigate to="/dashboard" replace /> },
+  { path: "/health-monitoring", element: <HealthMonitoring /> },
 
   {
     element: <PublicLayout />,

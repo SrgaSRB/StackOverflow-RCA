@@ -111,6 +111,9 @@ const Navbar = () => {
                     <Link to="/profile" className="primary-button secondary--button w-button" style={{ margin: '5px', textAlign: 'left' }}>
                       Profile
                     </Link>
+                    <Link to="/health-monitoring" className="primary-button secondary--button w-button" style={{ margin: '5px', textAlign: 'left' }}>
+                      Health Monitoring
+                    </Link>
                   </div>
                 )}
               </div>

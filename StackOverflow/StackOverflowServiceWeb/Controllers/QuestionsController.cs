@@ -104,7 +104,7 @@ namespace StackOverflowServiceWeb.Controllers
             if (questionDetails == null)
                 return NotFound();
 
-            var question = await _questionService.GetQuestionByIdAsync(id);
+            Question question = await _questionService.GetQuestionByIdAsync(id);
             var comments = await _commentService.GetCommentsForQuestionAsync(id);
 
             var answers = comments.Select(c => new

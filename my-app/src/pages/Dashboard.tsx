@@ -34,7 +34,7 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchQuestions = async () => {
             try {
-                const response = await fetch("http://localhost:5167/api/questions");
+                const response = await fetch("http://localhost:59535/api/questions");
                 if (response.ok) {
                     const data = await response.json();
                     const searchTerm = searchParams.get('search');
@@ -95,7 +95,7 @@ const Dashboard = () => {
 
     const fetchPopularQuestions = async () => {
         try {
-            const response = await fetch("http://localhost:5167/api/questions/popular?limit=100"); // Fetch many questions
+            const response = await fetch("http://localhost:59535/api/questions/popular?limit=100"); // Fetch many questions
             if (response.ok) {
                 const data = await response.json();
                 
@@ -129,7 +129,7 @@ const Dashboard = () => {
 
     const fetchUserQuestionVote = async (userId: string, questionId: string) => {
         try {
-            const response = await fetch(`http://localhost:5167/api/questions/${questionId}/vote/${userId}`);
+            const response = await fetch(`http://localhost:59535/api/questions/${questionId}/vote/${userId}`);
             if (response.ok) {
                 const data = await response.json();
                 setQuestionVoteStates(prev => ({
@@ -155,7 +155,7 @@ const Dashboard = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:5167/api/questions/${questionId}/upvote`, {
+            const response = await fetch(`http://localhost:59535/api/questions/${questionId}/upvote`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -209,7 +209,7 @@ const Dashboard = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:5167/api/questions/${questionId}/downvote`, {
+            const response = await fetch(`http://localhost:59535/api/questions/${questionId}/downvote`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -68,7 +68,7 @@ const Post = () => {
         const fetchQuestion = async () => {
             try {
                 console.log('Fetching question with ID:', postId);
-                const response = await fetch(`http://localhost:5167/api/questions/${postId}`);
+                const response = await fetch(`http://localhost:59535/api/questions/${postId}`);
                 console.log('Response status:', response.status);
                 console.log('Response headers:', response.headers);
                 
@@ -149,7 +149,7 @@ const Post = () => {
 
         const fetchUserQuestionVote = async (userId: string) => {
             try {
-                const response = await fetch(`http://localhost:5167/api/questions/${postId}/vote/${userId}`);
+                const response = await fetch(`http://localhost:59535/api/questions/${postId}/vote/${userId}`);
                 if (response.ok) {
                     const data = await response.json();
                     setQuestionVoteState(prev => ({
@@ -164,7 +164,7 @@ const Post = () => {
 
         const fetchUserAnswerVote = async (userId: string, answerId: string) => {
             try {
-                const response = await fetch(`http://localhost:5167/api/comments/${answerId}/vote/${userId}`);
+                const response = await fetch(`http://localhost:59535/api/comments/${answerId}/vote/${userId}`);
                 if (response.ok) {
                     const data = await response.json();
                     setAnswerVoteStates(prev => ({
@@ -182,7 +182,7 @@ const Post = () => {
 
         const fetchAuthorQuestionsCount = async (username: string, isPostAuthor: boolean = true) => {
             try {
-                const response = await fetch('http://localhost:5167/api/questions');
+                const response = await fetch('http://localhost:59535/api/questions');
                 if (response.ok) {
                     const allQuestions = await response.json();
                     const userQuestions = allQuestions.filter((q: any) => q.user && q.user.username === username);
@@ -217,7 +217,7 @@ const Post = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:5167/api/questions/${postId}/answers`, {
+            const response = await fetch(`http://localhost:59535/api/questions/${postId}/answers`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -253,7 +253,7 @@ const Post = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:5167/api/questions/${postId}/upvote`, {
+            const response = await fetch(`http://localhost:59535/api/questions/${postId}/upvote`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -288,7 +288,7 @@ const Post = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:5167/api/questions/${postId}/downvote`, {
+            const response = await fetch(`http://localhost:59535/api/questions/${postId}/downvote`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -323,7 +323,7 @@ const Post = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:5167/api/comments/${answerId}/upvote`, {
+            const response = await fetch(`http://localhost:59535/api/comments/${answerId}/upvote`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -369,7 +369,7 @@ const Post = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:5167/api/comments/${answerId}/downvote`, {
+            const response = await fetch(`http://localhost:59535/api/comments/${answerId}/downvote`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -433,7 +433,7 @@ const Post = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:5167/api/questions/${postId}/best-answer/${answerId}`, {
+            const response = await fetch(`http://localhost:59535/api/questions/${postId}/best-answer/${answerId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

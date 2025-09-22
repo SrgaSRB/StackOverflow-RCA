@@ -1,22 +1,15 @@
-using Azure;
 using Microsoft.WindowsAzure.Storage.Table;
 using System;
 using System.Text.Json.Serialization;
 
 namespace Common.Models 
-{ 
+{
     public class User : TableEntity
     {
-        // Azure Table Storage required properties
-        public string PartitionKey { get; set; } = "";
-        public string RowKey { get; set; } = "";
-        
-        public DateTimeOffset? Timestamp { get; set; }
-        
-        [JsonIgnore] // Don't serialize ETag to avoid conflicts
-        public ETag ETag { get; set; }
+        public User()
+        {
+        }
 
-        // User properties
         public string FirstName { get; set; } = "";
         public string LastName { get; set; } = "";
         public string Username { get; set; } = "";

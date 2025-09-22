@@ -3,76 +3,160 @@
   "WorkspaceRootPath": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\stackoverflowserviceweb\\controllers\\healthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\controllers\\healthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\stackoverflowserviceweb\\app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\stackoverflowserviceweb\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\stackoverflowserviceweb\\services\\notificationqueueservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\stackoverflowserviceweb\\services\\notificationqueueservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\services\\notificationqueueservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE7C6BD7-6618-4B30-9243-C23A9CC776F7}|HealthMonitoringServiceWorker\\HealthMonitoringServiceWorker.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\healthmonitoringserviceworker\\healthcheckservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE7C6BD7-6618-4B30-9243-C23A9CC776F7}|HealthMonitoringServiceWorker\\HealthMonitoringServiceWorker.csproj|solutionrelative:healthmonitoringserviceworker\\healthcheckservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE7C6BD7-6618-4B30-9243-C23A9CC776F7}|HealthMonitoringServiceWorker\\HealthMonitoringServiceWorker.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\healthmonitoringserviceworker\\workerrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE7C6BD7-6618-4B30-9243-C23A9CC776F7}|HealthMonitoringServiceWorker\\HealthMonitoringServiceWorker.csproj|solutionrelative:healthmonitoringserviceworker\\workerrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE41F1C5-D79C-465E-BC28-4C399E0985E3}|SOCloudService\\SOCloudService.ccproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\ServiceDefinition.csdef||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{CE41F1C5-D79C-465E-BC28-4C399E0985E3}|SOCloudService\\SOCloudService.ccproj|solutionrelative:SOCloudService\\ServiceDefinition.csdef||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE41F1C5-D79C-465E-BC28-4C399E0985E3}|SOCloudService\\SOCloudService.ccproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\ServiceConfiguration.Cloud.cscfg||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{CE41F1C5-D79C-465E-BC28-4C399E0985E3}|SOCloudService\\SOCloudService.ccproj|solutionrelative:SOCloudService\\ServiceConfiguration.Cloud.cscfg||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE41F1C5-D79C-465E-BC28-4C399E0985E3}|SOCloudService\\SOCloudService.ccproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\ServiceConfiguration.Local.cscfg||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{CE41F1C5-D79C-465E-BC28-4C399E0985E3}|SOCloudService\\SOCloudService.ccproj|solutionrelative:SOCloudService\\ServiceConfiguration.Local.cscfg||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B2C1D85B-4C97-4340-A5DE-4546780CDAA0}|NotificationServiceWorker\\NotificationServiceWorker.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\notificationserviceworker\\healthserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B2C1D85B-4C97-4340-A5DE-4546780CDAA0}|NotificationServiceWorker\\NotificationServiceWorker.csproj|solutionrelative:notificationserviceworker\\healthserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\stackoverflowserviceweb\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\stackoverflowserviceweb\\controllers\\questionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\controllers\\questionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\stackoverflowserviceweb\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\stackoverflowserviceweb\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E188F22-E9CC-4029-A96E-C45D6D6AE511}|Common\\Common.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\common\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E188F22-E9CC-4029-A96E-C45D6D6AE511}|Common\\Common.csproj|solutionrelative:common\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E188F22-E9CC-4029-A96E-C45D6D6AE511}|Common\\Common.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\common\\models\\alertemail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E188F22-E9CC-4029-A96E-C45D6D6AE511}|Common\\Common.csproj|solutionrelative:common\\models\\alertemail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E188F22-E9CC-4029-A96E-C45D6D6AE511}|Common\\Common.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\common\\models\\notificationmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E188F22-E9CC-4029-A96E-C45D6D6AE511}|Common\\Common.csproj|solutionrelative:common\\models\\notificationmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E188F22-E9CC-4029-A96E-C45D6D6AE511}|Common\\Common.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\common\\models\\notificationlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E188F22-E9CC-4029-A96E-C45D6D6AE511}|Common\\Common.csproj|solutionrelative:common\\models\\notificationlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E188F22-E9CC-4029-A96E-C45D6D6AE511}|Common\\Common.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\common\\models\\healthcheck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E188F22-E9CC-4029-A96E-C45D6D6AE511}|Common\\Common.csproj|solutionrelative:common\\models\\healthcheck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\stackoverflowserviceweb\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE41F1C5-D79C-465E-BC28-4C399E0985E3}|SOCloudService\\SOCloudService.ccproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\ServiceConfiguration.Local.cscfg||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{CE41F1C5-D79C-465E-BC28-4C399E0985E3}|SOCloudService\\SOCloudService.ccproj|solutionrelative:SOCloudService\\ServiceConfiguration.Local.cscfg||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE41F1C5-D79C-465E-BC28-4C399E0985E3}|SOCloudService\\SOCloudService.ccproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\ServiceDefinition.csdef||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{CE41F1C5-D79C-465E-BC28-4C399E0985E3}|SOCloudService\\SOCloudService.ccproj|solutionrelative:SOCloudService\\ServiceDefinition.csdef||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CE41F1C5-D79C-465E-BC28-4C399E0985E3}|SOCloudService\\SOCloudService.ccproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj||{C1C21263-6FDE-4EC2-9D4C-2B238680F849}",
       "RelativeMoniker": "D:0:0:{CE41F1C5-D79C-465E-BC28-4C399E0985E3}|SOCloudService\\SOCloudService.ccproj|solutionrelative:StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj||{C1C21263-6FDE-4EC2-9D4C-2B238680F849}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\bin\\Debug\\ServiceDefinition.csdef||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SOCloudService\\bin\\Debug\\ServiceDefinition.csdef||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\stackoverflowserviceweb\\app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE7C6BD7-6618-4B30-9243-C23A9CC776F7}|HealthMonitoringServiceWorker\\HealthMonitoringServiceWorker.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\healthmonitoringserviceworker\\emailalertservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE7C6BD7-6618-4B30-9243-C23A9CC776F7}|HealthMonitoringServiceWorker\\HealthMonitoringServiceWorker.csproj|solutionrelative:healthmonitoringserviceworker\\emailalertservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\stackoverflowserviceweb\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\stackoverflowserviceweb\\webrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\webrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CE7C6BD7-6618-4B30-9243-C23A9CC776F7}|HealthMonitoringServiceWorker\\HealthMonitoringServiceWorker.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\healthmonitoringserviceworker\\healthcheckservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE7C6BD7-6618-4B30-9243-C23A9CC776F7}|HealthMonitoringServiceWorker\\HealthMonitoringServiceWorker.csproj|solutionrelative:healthmonitoringserviceworker\\healthcheckservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\stackoverflowserviceweb\\controllers\\questionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\controllers\\questionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflowService\\StackOverflow.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\stackoverflowservice\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflowService\\StackOverflow.csproj|solutionrelative:stackoverflowservice\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\stackoverflowserviceweb\\controllers\\commentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\controllers\\commentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflowService\\StackOverflow.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\stackoverflowservice\\controllers\\questionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflowService\\StackOverflow.csproj|solutionrelative:stackoverflowservice\\controllers\\questionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflowService\\StackOverflow.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\stackoverflowservice\\services\\questionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflowService\\StackOverflow.csproj|solutionrelative:stackoverflowservice\\services\\questionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflowService\\StackOverflow.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\stackoverflowservice\\controllers\\healthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflowService\\StackOverflow.csproj|solutionrelative:stackoverflowservice\\controllers\\healthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflowService\\StackOverflow.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\stackoverflowservice\\services\\notificationqueueservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflowService\\StackOverflow.csproj|solutionrelative:stackoverflowservice\\services\\notificationqueueservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflowService\\StackOverflow.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\stackoverflowservice\\controllers\\commentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflowService\\StackOverflow.csproj|solutionrelative:stackoverflowservice\\controllers\\commentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\stackoverflowserviceweb\\services\\voteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\services\\voteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E188F22-E9CC-4029-A96E-C45D6D6AE511}|Common\\Common.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\common\\models\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E188F22-E9CC-4029-A96E-C45D6D6AE511}|Common\\Common.csproj|solutionrelative:common\\models\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E188F22-E9CC-4029-A96E-C45D6D6AE511}|Common\\Common.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\common\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E188F22-E9CC-4029-A96E-C45D6D6AE511}|Common\\Common.csproj|solutionrelative:common\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\stackoverflowserviceweb\\dtos\\questiondetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\dtos\\questiondetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\stackoverflowserviceweb\\services\\questionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\services\\questionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\stackoverflowserviceweb\\services\\commentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\services\\commentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflowService\\StackOverflow.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\stackoverflowservice\\services\\voteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflowService\\StackOverflow.csproj|solutionrelative:stackoverflowservice\\services\\voteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflowService\\StackOverflow.csproj|c:\\users\\srdjan\\desktop\\projects\\stackoverflow-rca\\stackoverflow\\stackoverflowservice\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77892EE-F4E6-4C1C-9D9E-865C94F15BF8}|StackOverflowService\\StackOverflow.csproj|solutionrelative:stackoverflowservice\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE7C6BD7-6618-4B30-9243-C23A9CC776F7}|HealthMonitoringServiceWorker\\HealthMonitoringServiceWorker.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\healthmonitoringserviceworker\\workerrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE7C6BD7-6618-4B30-9243-C23A9CC776F7}|HealthMonitoringServiceWorker\\HealthMonitoringServiceWorker.csproj|solutionrelative:healthmonitoringserviceworker\\workerrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE41F1C5-D79C-465E-BC28-4C399E0985E3}|SOCloudService\\SOCloudService.ccproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\ServiceConfiguration.Cloud.cscfg||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{CE41F1C5-D79C-465E-BC28-4C399E0985E3}|SOCloudService\\SOCloudService.ccproj|solutionrelative:SOCloudService\\ServiceConfiguration.Cloud.cscfg||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\stackoverflowserviceweb\\controllers\\healthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\controllers\\healthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\stackoverflowserviceweb\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\stackoverflowserviceweb\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\bin\\Debug\\ServiceDefinition.csdef||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SOCloudService\\bin\\Debug\\ServiceDefinition.csdef||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE7C6BD7-6618-4B30-9243-C23A9CC776F7}|HealthMonitoringServiceWorker\\HealthMonitoringServiceWorker.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\healthmonitoringserviceworker\\emailalertservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE7C6BD7-6618-4B30-9243-C23A9CC776F7}|HealthMonitoringServiceWorker\\HealthMonitoringServiceWorker.csproj|solutionrelative:healthmonitoringserviceworker\\emailalertservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\stackoverflowserviceweb\\webrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{606F0057-765F-4CBC-A742-8775612AFACA}|StackOverflowServiceWeb\\StackOverflowServiceWeb.csproj|solutionrelative:stackoverflowserviceweb\\webrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -82,24 +166,154 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "WebApiConfig.cs",
-              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\App_Start\\WebApiConfig.cs",
-              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\App_Start\\WebApiConfig.cs",
-              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\App_Start\\WebApiConfig.cs",
-              "RelativeToolTip": "StackOverflowServiceWeb\\App_Start\\WebApiConfig.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAACAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "ServiceConfiguration.Local.cscfg",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\ServiceConfiguration.Local.cscfg",
+              "RelativeDocumentMoniker": "SOCloudService\\ServiceConfiguration.Local.cscfg",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\ServiceConfiguration.Local.cscfg",
+              "RelativeToolTip": "SOCloudService\\ServiceConfiguration.Local.cscfg",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABwAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-09-21T20:48:55.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AlertEmail.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\Common\\Models\\AlertEmail.cs",
+              "RelativeDocumentMoniker": "Common\\Models\\AlertEmail.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\Common\\Models\\AlertEmail.cs",
+              "RelativeToolTip": "Common\\Models\\AlertEmail.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T21:47:30.166Z",
+              "WhenOpened": "2025-09-21T22:22:43.693Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "NotificationMessage.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\Common\\Models\\NotificationMessage.cs",
+              "RelativeDocumentMoniker": "Common\\Models\\NotificationMessage.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\Common\\Models\\NotificationMessage.cs",
+              "RelativeToolTip": "Common\\Models\\NotificationMessage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T22:22:28.004Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "NotificationLog.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\Common\\Models\\NotificationLog.cs",
+              "RelativeDocumentMoniker": "Common\\Models\\NotificationLog.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\Common\\Models\\NotificationLog.cs",
+              "RelativeToolTip": "Common\\Models\\NotificationLog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T22:22:37.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "HealthCheck.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\Common\\Models\\HealthCheck.cs",
+              "RelativeDocumentMoniker": "Common\\Models\\HealthCheck.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\Common\\Models\\HealthCheck.cs",
+              "RelativeToolTip": "Common\\Models\\HealthCheck.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T22:22:40.596Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "QuestionsController.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Controllers\\QuestionsController.cs",
+              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\Controllers\\QuestionsController.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Controllers\\QuestionsController.cs",
+              "RelativeToolTip": "StackOverflowServiceWeb\\Controllers\\QuestionsController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwCsBAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T20:52:06.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "NotificationQueueService.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Services\\NotificationQueueService.cs",
+              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\Services\\NotificationQueueService.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Services\\NotificationQueueService.cs",
+              "RelativeToolTip": "StackOverflowServiceWeb\\Services\\NotificationQueueService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T20:51:26.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HealthServer.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\NotificationServiceWorker\\HealthServer.cs",
+              "RelativeDocumentMoniker": "NotificationServiceWorker\\HealthServer.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\NotificationServiceWorker\\HealthServer.cs",
+              "RelativeToolTip": "NotificationServiceWorker\\HealthServer.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAiwCAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T20:45:54.215Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "StackOverflowServiceWeb\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAWwDgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T22:34:55.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Services\\UserService.cs",
+              "RelativeToolTip": "StackOverflowServiceWeb\\Services\\UserService.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAWwEYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T22:08:01.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\Common\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Common\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\Common\\Models\\User.cs",
+              "RelativeToolTip": "Common\\Models\\User.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAYAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T01:08:14.82Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "ServiceDefinition.csdef",
               "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\ServiceDefinition.csdef",
               "RelativeDocumentMoniker": "SOCloudService\\ServiceDefinition.csdef",
@@ -108,136 +322,6 @@
               "ViewState": "AgIAAA8AAAAAAAAAAAAAACQAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000773|",
               "WhenOpened": "2025-09-21T20:48:59.856Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "WorkerRole.cs",
-              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\HealthMonitoringServiceWorker\\WorkerRole.cs",
-              "RelativeDocumentMoniker": "HealthMonitoringServiceWorker\\WorkerRole.cs",
-              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\HealthMonitoringServiceWorker\\WorkerRole.cs",
-              "RelativeToolTip": "HealthMonitoringServiceWorker\\WorkerRole.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAlwFMAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T20:47:35.537Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ServiceConfiguration.Cloud.cscfg",
-              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\ServiceConfiguration.Cloud.cscfg",
-              "RelativeDocumentMoniker": "SOCloudService\\ServiceConfiguration.Cloud.cscfg",
-              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\ServiceConfiguration.Cloud.cscfg",
-              "RelativeToolTip": "SOCloudService\\ServiceConfiguration.Cloud.cscfg",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABwAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-09-21T20:48:43.424Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "HealthCheckService.cs",
-              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\HealthMonitoringServiceWorker\\HealthCheckService.cs",
-              "RelativeDocumentMoniker": "HealthMonitoringServiceWorker\\HealthCheckService.cs",
-              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\HealthMonitoringServiceWorker\\HealthCheckService.cs",
-              "RelativeToolTip": "HealthMonitoringServiceWorker\\HealthCheckService.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAWwBkAAABVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T20:46:04.639Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "NotificationQueueService.cs",
-              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Services\\NotificationQueueService.cs",
-              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\Services\\NotificationQueueService.cs",
-              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Services\\NotificationQueueService.cs",
-              "RelativeToolTip": "StackOverflowServiceWeb\\Services\\NotificationQueueService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T20:51:26.782Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Global.asax.cs",
-              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Global.asax.cs",
-              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\Global.asax.cs",
-              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Global.asax.cs",
-              "RelativeToolTip": "StackOverflowServiceWeb\\Global.asax.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T21:26:03.488Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HealthController.cs",
-              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Controllers\\HealthController.cs",
-              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\Controllers\\HealthController.cs",
-              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Controllers\\HealthController.cs",
-              "RelativeToolTip": "StackOverflowServiceWeb\\Controllers\\HealthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T20:51:59.128Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "HealthServer.cs",
-              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\NotificationServiceWorker\\HealthServer.cs",
-              "RelativeDocumentMoniker": "NotificationServiceWorker\\HealthServer.cs",
-              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\NotificationServiceWorker\\HealthServer.cs",
-              "RelativeToolTip": "NotificationServiceWorker\\HealthServer.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACAAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T20:45:54.215Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Web.config",
-              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Web.config",
-              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\Web.config",
-              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Web.config",
-              "RelativeToolTip": "StackOverflowServiceWeb\\Web.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-09-21T21:13:07.559Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "EmailAlertService.cs",
-              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\HealthMonitoringServiceWorker\\EmailAlertService.cs",
-              "RelativeDocumentMoniker": "HealthMonitoringServiceWorker\\EmailAlertService.cs",
-              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\HealthMonitoringServiceWorker\\EmailAlertService.cs",
-              "RelativeToolTip": "HealthMonitoringServiceWorker\\EmailAlertService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T20:57:05.642Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ServiceConfiguration.Local.cscfg",
-              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\ServiceConfiguration.Local.cscfg",
-              "RelativeDocumentMoniker": "SOCloudService\\ServiceConfiguration.Local.cscfg",
-              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\ServiceConfiguration.Local.cscfg",
-              "RelativeToolTip": "SOCloudService\\ServiceConfiguration.Local.cscfg",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-09-21T20:48:55.776Z",
               "EditorCaption": ""
             },
             {
@@ -252,33 +336,130 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "packages.config",
-              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\packages.config",
-              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\packages.config",
-              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\packages.config",
-              "RelativeToolTip": "StackOverflowServiceWeb\\packages.config",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAAAwAAABXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-09-21T21:11:16.941Z",
+              "DocumentIndex": 13,
+              "Title": "WebApiConfig.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\App_Start\\WebApiConfig.cs",
+              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\App_Start\\WebApiConfig.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\App_Start\\WebApiConfig.cs",
+              "RelativeToolTip": "StackOverflowServiceWeb\\App_Start\\WebApiConfig.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAuwBMAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T21:47:30.166Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "ServiceDefinition.csdef",
-              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\bin\\Debug\\ServiceDefinition.csdef",
-              "RelativeDocumentMoniker": "SOCloudService\\bin\\Debug\\ServiceDefinition.csdef",
-              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\bin\\Debug\\ServiceDefinition.csdef",
-              "RelativeToolTip": "SOCloudService\\bin\\Debug\\ServiceDefinition.csdef",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000773|",
-              "WhenOpened": "2025-09-21T21:00:13.328Z",
+              "DocumentIndex": 14,
+              "Title": "Global.asax.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Global.asax.cs",
+              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\Global.asax.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Global.asax.cs",
+              "RelativeToolTip": "StackOverflowServiceWeb\\Global.asax.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T21:26:03.488Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "StackOverflowService\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "StackOverflowService\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T22:31:39.552Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "HealthCheckService.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\HealthMonitoringServiceWorker\\HealthCheckService.cs",
+              "RelativeDocumentMoniker": "HealthMonitoringServiceWorker\\HealthCheckService.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\HealthMonitoringServiceWorker\\HealthCheckService.cs",
+              "RelativeToolTip": "HealthMonitoringServiceWorker\\HealthCheckService.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAkwEIAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T20:46:04.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "NotificationQueueService.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\Services\\NotificationQueueService.cs",
+              "RelativeDocumentMoniker": "StackOverflowService\\Services\\NotificationQueueService.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\Services\\NotificationQueueService.cs",
+              "RelativeToolTip": "StackOverflowService\\Services\\NotificationQueueService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T22:13:34.081Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 17,
+              "Title": "CommentsController.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Controllers\\CommentsController.cs",
+              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\Controllers\\CommentsController.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Controllers\\CommentsController.cs",
+              "RelativeToolTip": "StackOverflowServiceWeb\\Controllers\\CommentsController.cs",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAEwJQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T22:25:55.365Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "QuestionsController.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\Controllers\\QuestionsController.cs",
+              "RelativeDocumentMoniker": "StackOverflowService\\Controllers\\QuestionsController.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\Controllers\\QuestionsController.cs",
+              "RelativeToolTip": "StackOverflowService\\Controllers\\QuestionsController.cs",
+              "ViewState": "AgIAAJQBAAAAAAAAAADwv74BAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T22:27:02.8Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "CommentsController.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\Controllers\\CommentsController.cs",
+              "RelativeDocumentMoniker": "StackOverflowService\\Controllers\\CommentsController.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\Controllers\\CommentsController.cs",
+              "RelativeToolTip": "StackOverflowService\\Controllers\\CommentsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T22:23:27.853Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Question.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\Common\\Models\\Question.cs",
+              "RelativeDocumentMoniker": "Common\\Models\\Question.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\Common\\Models\\Question.cs",
+              "RelativeToolTip": "Common\\Models\\Question.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T22:22:22.469Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "QuestionService.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\Services\\QuestionService.cs",
+              "RelativeDocumentMoniker": "StackOverflowService\\Services\\QuestionService.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\Services\\QuestionService.cs",
+              "RelativeToolTip": "StackOverflowService\\Services\\QuestionService.cs",
+              "ViewState": "AgIAAFQBAAAAAAAAAAAvwGoBAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T22:10:10.101Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "HealthController.cs",
               "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\Controllers\\HealthController.cs",
               "RelativeDocumentMoniker": "StackOverflowService\\Controllers\\HealthController.cs",
@@ -286,12 +467,181 @@
               "RelativeToolTip": "StackOverflowService\\Controllers\\HealthController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T20:51:18.35Z",
+              "WhenOpened": "2025-09-21T20:51:18.35Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Comment.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\Common\\Models\\Comment.cs",
+              "RelativeDocumentMoniker": "Common\\Models\\Comment.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\Common\\Models\\Comment.cs",
+              "RelativeToolTip": "Common\\Models\\Comment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T22:22:45.909Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "QuestionDetails.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\DTOs\\QuestionDetails.cs",
+              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\DTOs\\QuestionDetails.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\DTOs\\QuestionDetails.cs",
+              "RelativeToolTip": "StackOverflowServiceWeb\\DTOs\\QuestionDetails.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T22:13:12.441Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "QuestionService.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Services\\QuestionService.cs",
+              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\Services\\QuestionService.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Services\\QuestionService.cs",
+              "RelativeToolTip": "StackOverflowServiceWeb\\Services\\QuestionService.cs",
+              "ViewState": "AgIAAD4BAAAAAAAAAIAzwBQBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T22:12:51.249Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "VoteService.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Services\\VoteService.cs",
+              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\Services\\VoteService.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Services\\VoteService.cs",
+              "RelativeToolTip": "StackOverflowServiceWeb\\Services\\VoteService.cs",
+              "ViewState": "AgIAAM4AAAAAAAAAAAAuwNwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T22:09:45.11Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "VoteService.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\Services\\VoteService.cs",
+              "RelativeDocumentMoniker": "StackOverflowService\\Services\\VoteService.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\Services\\VoteService.cs",
+              "RelativeToolTip": "StackOverflowService\\Services\\VoteService.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAuwCcAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T22:08:20.123Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "CommentService.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Services\\CommentService.cs",
+              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\Services\\CommentService.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Services\\CommentService.cs",
+              "RelativeToolTip": "StackOverflowServiceWeb\\Services\\CommentService.cs",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAYwGMAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T22:01:29.444Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "StackOverflowService\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowService\\Services\\UserService.cs",
+              "RelativeToolTip": "StackOverflowService\\Services\\UserService.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAiwLgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T22:06:45.431Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "WorkerRole.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\HealthMonitoringServiceWorker\\WorkerRole.cs",
+              "RelativeDocumentMoniker": "HealthMonitoringServiceWorker\\WorkerRole.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\HealthMonitoringServiceWorker\\WorkerRole.cs",
+              "RelativeToolTip": "HealthMonitoringServiceWorker\\WorkerRole.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAuwE8AAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T20:47:35.537Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "ServiceConfiguration.Cloud.cscfg",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\ServiceConfiguration.Cloud.cscfg",
+              "RelativeDocumentMoniker": "SOCloudService\\ServiceConfiguration.Cloud.cscfg",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\ServiceConfiguration.Cloud.cscfg",
+              "RelativeToolTip": "SOCloudService\\ServiceConfiguration.Cloud.cscfg",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABwAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-09-21T20:48:43.424Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 33,
+              "Title": "HealthController.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Controllers\\HealthController.cs",
+              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\Controllers\\HealthController.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Controllers\\HealthController.cs",
+              "RelativeToolTip": "StackOverflowServiceWeb\\Controllers\\HealthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T20:51:59.128Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Web.config",
+              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\Web.config",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Web.config",
+              "RelativeToolTip": "StackOverflowServiceWeb\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-09-21T21:13:07.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "EmailAlertService.cs",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\HealthMonitoringServiceWorker\\EmailAlertService.cs",
+              "RelativeDocumentMoniker": "HealthMonitoringServiceWorker\\EmailAlertService.cs",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\HealthMonitoringServiceWorker\\EmailAlertService.cs",
+              "RelativeToolTip": "HealthMonitoringServiceWorker\\EmailAlertService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T20:57:05.642Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "packages.config",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\packages.config",
+              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\packages.config",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\packages.config",
+              "RelativeToolTip": "StackOverflowServiceWeb\\packages.config",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAAwAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-09-21T21:11:16.941Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "ServiceDefinition.csdef",
+              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\bin\\Debug\\ServiceDefinition.csdef",
+              "RelativeDocumentMoniker": "SOCloudService\\bin\\Debug\\ServiceDefinition.csdef",
+              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\SOCloudService\\bin\\Debug\\ServiceDefinition.csdef",
+              "RelativeToolTip": "SOCloudService\\bin\\Debug\\ServiceDefinition.csdef",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000773|",
+              "WhenOpened": "2025-09-21T21:00:13.328Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
               "Title": "WebRole.cs",
               "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\WebRole.cs",
               "RelativeDocumentMoniker": "StackOverflowServiceWeb\\WebRole.cs",
@@ -299,21 +649,7 @@
               "RelativeToolTip": "StackOverflowServiceWeb\\WebRole.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T20:58:41.126Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "QuestionsController.cs",
-              "DocumentMoniker": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Controllers\\QuestionsController.cs",
-              "RelativeDocumentMoniker": "StackOverflowServiceWeb\\Controllers\\QuestionsController.cs",
-              "ToolTip": "C:\\Users\\SRDJAN\\Desktop\\Projects\\StackOverflow-RCA\\StackOverflow\\StackOverflowServiceWeb\\Controllers\\QuestionsController.cs",
-              "RelativeToolTip": "StackOverflowServiceWeb\\Controllers\\QuestionsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T20:52:06.591Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-21T20:58:41.126Z"
             }
           ]
         }

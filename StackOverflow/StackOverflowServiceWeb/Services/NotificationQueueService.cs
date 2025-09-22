@@ -1,20 +1,26 @@
-﻿using Azure.Storage.Queues;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Queue;
+using System.Threading.Tasks;
 
 namespace StackOverflowServiceWeb.Services
 {
     public class NotificationQueueService
     {
 
-        private readonly QueueClient _queueClient;
+        private readonly CloudQueue _queue;
 
         public NotificationQueueService(string connectionString)
         {
-            _queueClient = new QueueClient(connectionString, "notifications");
-            _queueClient.CreateIfNotExists();
+            var account = CloudStorageAccount.Parse(connectionString);
+            var client = account.CreateCloudQueueClient();
+            _queue = client.GetQueueReference("notifications");
+            _queue.CreateIfNotExists();
+        }
+
+        public async Task SendNotificationAsync(string payload)
+        {
+            var msg = new CloudQueueMessage(payload);
+            await _queue.AddMessageAsync(msg);
         }
 
     }

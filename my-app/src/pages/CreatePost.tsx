@@ -26,7 +26,7 @@ const CreatePost = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:5167/api/questions', {
+            const response = await fetch('http://localhost:59535/api/questions', {
                 method: 'POST',
                 body: formData,
             });

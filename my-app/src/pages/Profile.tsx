@@ -170,7 +170,7 @@ const Profile = () => {
       }
 
       const response = await fetch(
-        `http://localhost:5167/api/questions/${questionId}`,
+        `http://localhost:59535/api/questions/${questionId}`,
         {
           method: "PUT",
           body: formData,
@@ -194,7 +194,7 @@ const Profile = () => {
     if (window.confirm("Are you sure you want to delete this question?")) {
       try {
         const response = await fetch(
-          `http://localhost:5167/api/questions/${questionId}?userId=${user.RowKey}`,
+          `http://localhost:59535/api/questions/${questionId}?userId=${user.RowKey}`,
           {
             method: "DELETE",
           }
@@ -218,7 +218,7 @@ const Profile = () => {
       if (user.RowKey) {
         try {
           const response = await fetch(
-            `http://localhost:5167/api/questions/user/${user.RowKey}`
+            `http://localhost:59535/api/questions/user/${user.RowKey}`
           );
           if (response.ok) {
             const data = await response.json();
@@ -236,7 +236,7 @@ const Profile = () => {
       if (user.RowKey) {
         try {
           const response = await fetch(
-            `http://localhost:5167/api/users/${user.RowKey}/stats`
+            `http://localhost:59535/api/users/${user.RowKey}/stats`
           );
           if (response.ok) {
             const data = await response.json();
@@ -259,7 +259,7 @@ const Profile = () => {
     if (user.RowKey) {
       try {
         const response = await fetch(
-          `http://localhost:5167/api/questions/user/${user.RowKey}`
+          `http://localhost:59535/api/questions/user/${user.RowKey}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -276,7 +276,7 @@ const Profile = () => {
     if (user.RowKey) {
       try {
         const response = await fetch(
-          `http://localhost:5167/api/users/${user.RowKey}/stats`
+          `http://localhost:59535/api/users/${user.RowKey}/stats`
         );
         if (response.ok) {
           const data = await response.json();
@@ -321,7 +321,7 @@ const Profile = () => {
         formDataImg.append("file", croppedImageFile);
 
         const res = await fetch(
-          `http://localhost:5167/api/users/${userId}/profile-picture`,
+          `http://localhost:59535/api/users/${userId}/profile-picture`,
           {
             method: "POST",
             body: formDataImg,
@@ -339,7 +339,7 @@ const Profile = () => {
 
       // Ažuriraj ostale podatke korisnika
       const response = await fetch(
-        `http://localhost:5167/api/users/${userId}`,
+        `http://localhost:59535/api/users/${userId}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

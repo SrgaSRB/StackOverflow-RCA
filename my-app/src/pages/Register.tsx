@@ -30,7 +30,7 @@ const Register = () => {
     const { confirmPassword, ...payload } = formData;
 
     try {
-      const response = await fetch('http://localhost:5167/api/users/register', {
+      const response = await fetch('http://localhost:59535/api/users/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

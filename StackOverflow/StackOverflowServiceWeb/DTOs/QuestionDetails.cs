@@ -16,6 +16,7 @@ namespace StackOverflow.DTOs
         public UserInfo User { get; set; }
         public int AnswersCount { get; set; }
         public List<Answer> Answers { get; set; } = new List<Answer>();
+        public bool HaveBestComment { get; set; } = false;
     }
 
     public class UserInfo

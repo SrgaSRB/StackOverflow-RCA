@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Security.Authentication;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,10 +23,21 @@ namespace NotificationServiceWorker
             {
                 var message = new MimeMessage();
 
-                message.From.Add(new MailboxAddress(
-                    CloudConfigurationManager.GetSetting("FromName"),
-                    CloudConfigurationManager.GetSetting("FromEmail")
-                ));
+                string fromEmail = CloudConfigurationManager.GetSetting("FromEmail");
+                if (string.IsNullOrEmpty(fromEmail))
+                {
+                    Trace.TraceError("FromEmail configuration is missing");
+                    return false;
+                }
+
+                string fromName = CloudConfigurationManager.GetSetting("FromName");
+                if (string.IsNullOrEmpty(fromName))
+                {
+                    Trace.TraceError("FromName configuration is missing");
+                    return false;
+                }
+
+                message.From.Add(new MailboxAddress(fromName, fromEmail));
 
                 message.To.Add(new MailboxAddress(toName, toEmail));
                 message.Subject = subject;
@@ -37,10 +50,14 @@ namespace NotificationServiceWorker
 
                 using (var client = new SmtpClient())
                 {
+                    client.CheckCertificateRevocation = false;
+
+                    client.SslProtocols = SslProtocols.Tls12;
+
                     await client.ConnectAsync(
-                        CloudConfigurationManager.GetSetting("SmtpServer"),
-                        int.Parse(CloudConfigurationManager.GetSetting("SmtpPort")),
-                        SecureSocketOptions.StartTls
+                        "smtp.gmail.com",
+                        465,
+                        SecureSocketOptions.SslOnConnect
                     );
 
                     await client.AuthenticateAsync(

@@ -13,6 +13,10 @@ namespace StackOverflow.Controllers
         {
             try
             {
+                int rand = new Random().Next(1, 5);
+                if(rand ==1) 
+                    throw new Exception("Simulated failure for health check");
+
                 return Ok();
             }
             catch (Exception ex)

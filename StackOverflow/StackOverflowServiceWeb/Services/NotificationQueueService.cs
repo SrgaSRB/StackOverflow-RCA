@@ -1,27 +1,29 @@
-﻿using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Queue;
+﻿using Azure.Storage.Queues;
+using Common.Models;
+using Newtonsoft.Json;
+using System.Threading;
 using System.Threading.Tasks;
 
-namespace StackOverflowServiceWeb.Services
+public sealed class NotificationQueueService
 {
-    public class NotificationQueueService
+    private readonly QueueClient _queue;
+
+    public NotificationQueueService(string connectionString)
     {
-
-        private readonly CloudQueue _queue;
-
-        public NotificationQueueService(string connectionString)
+        var opts = new QueueClientOptions(QueueClientOptions.ServiceVersion.V2021_02_12)
         {
-            var account = CloudStorageAccount.Parse(connectionString);
-            var client = account.CreateCloudQueueClient();
-            _queue = client.GetQueueReference("notifications");
-            _queue.CreateIfNotExists();
-        }
+            MessageEncoding = QueueMessageEncoding.Base64
+        };
 
-        public async Task SendNotificationAsync(string payload)
-        {
-            var msg = new CloudQueueMessage(payload);
-            await _queue.AddMessageAsync(msg);
-        }
+        _queue = new QueueClient(connectionString, "notifications", opts);
+        _queue.CreateIfNotExists(); 
+    }
 
+    public async Task SendNotificationAsync(NotificationMessage notification, CancellationToken ct = default)
+    {
+        var msg = JsonConvert.SerializeObject(notification);
+        await _queue.SendMessageAsync(msg);
+
+        await _queue.SendMessageAsync(msg, ct);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Common.Models;
 using StackOverflowServiceWeb.Services;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -271,8 +272,12 @@ namespace StackOverflowServiceWeb.Controllers
                 return BadRequest("UserId is required");
 
             var question = await _questionService.GetQuestionByIdAsync(questionId);
-            if (question == null) return NotFound();
-            if (question.UserId != request.UserId) return ResponseMessage(Request.CreateErrorResponse(System.Net.HttpStatusCode.Forbidden, "Only the question author can mark the best answer"));
+
+            if (question == null) 
+                return NotFound();
+
+            if (question.UserId != request.UserId) 
+                return ResponseMessage(Request.CreateErrorResponse(System.Net.HttpStatusCode.Forbidden, "Only the question author can mark the best answer"));
 
             var answer = await _commentService.GetCommentByIdAsync(answerId);
             if (answer == null || answer.QuestionId != questionId)
@@ -288,9 +293,14 @@ namespace StackOverflowServiceWeb.Controllers
                     QuestionId = questionId,
                     Timestamp = DateTime.UtcNow
                 };
-                //await _notificationQueueService.SendNotificationAsync(notification);
+
+                await _notificationQueueService.SendNotificationAsync(notification);
             }
-            catch { }
+            catch (Exception ex)
+            { 
+                Trace.TraceError("Error queueing notification: " + ex.Message);
+                return InternalServerError(new Exception("Error queueing notification: " + ex.Message));
+            }
 
             return Ok(new { message = "Best answer marked successfully" });
         }

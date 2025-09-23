@@ -18,6 +18,7 @@ interface QuestionDetails {
     User: UserInfo;
     AnswersCount: number;
     PictureUrl?: string;
+    HaveBestComment?: boolean;
 }
 
 interface VoteState {
@@ -32,6 +33,12 @@ const Dashboard = () => {
     const [popularQuestions, setPopularQuestions] = useState<QuestionDetails[]>([]);
     const [searchParams] = useSearchParams();
     const [questionVoteStates, setQuestionVoteStates] = useState<Record<string, VoteState>>({});
+
+    const [sortByMostVotes, setSortByMostVotes] = useState(false);
+    const [sortByLeastVotes, setSortByLeastVotes] = useState(false);
+    const [sortByDateOldest, setSortByDateOldest] = useState(false);
+    const [sortByDateNewest, setSortByDateNewest] = useState(true);
+
 
     useEffect(() => {
         const fetchQuestions = async () => {
@@ -266,11 +273,19 @@ const Dashboard = () => {
                         <div className="dashboard-filter-div">
                             <div className="form-block w-form">
                                 <form id="email-form-3">
-                                    <select id="field-3" name="field-3" data-name="Field 3" className="input w-select">
-                                        <option value="">Select one...</option>
-                                        <option value="First">First choice</option>
-                                        <option value="Second">Second choice</option>
-                                        <option value="Third">Third choice</option>
+                                    <select id="field-3" name="field-3" data-name="Field 3" className="input w-select"
+                                    onChange={(e) => {
+                                        const value = e.target.value;
+                                        setSortByMostVotes(value === "MostVotes");
+                                        setSortByLeastVotes(value === "LeastVotes");
+                                        setSortByDateNewest(value === "DateNewest");
+                                        setSortByDateOldest(value === "DateOldest");
+                                    }}
+                                    >
+                                        <option value="MostVotes">Most votes</option>
+                                        <option value="LeastVotes">Least votes</option>
+                                        <option value="DateNewest">Date (newest)</option>
+                                        <option value="DateOldest">Date (oldest)</option>
                                     </select>
                                 </form>
                             </div>
@@ -278,7 +293,20 @@ const Dashboard = () => {
                     </div>
                     <div className="dashboard-main-div">
                         <div className="dashboard-questions">
-                            {questions.map((question) => {
+                            {questions
+                            .sort((a, b) => {
+                                if (sortByMostVotes) {
+                                    return (b.TotalVotes) - (a.TotalVotes);
+                                } else if (sortByLeastVotes) {
+                                    return (a.TotalVotes) - (b.TotalVotes);
+                                } else if (sortByDateNewest) {
+                                    return new Date(b.CreatedAt).getTime() - new Date(a.CreatedAt).getTime();
+                                } else if (sortByDateOldest) {
+                                    return new Date(a.CreatedAt).getTime() - new Date(b.CreatedAt).getTime();
+                                }
+                                return 0;
+                            })
+                            .map((question) => {
                                 const voteState = questionVoteStates[question.QuestionId] || {
                                     upvotes: question.Upvotes || 0,
                                     downvotes: question.Downvotes || 0,
@@ -354,7 +382,7 @@ const Dashboard = () => {
                                                 <div>{new Date(question.CreatedAt).toLocaleDateString()}</div>
                                             </div>
                                         </div>
-                                        {question.AnswersCount > 0 && (
+                                        {question.HaveBestComment && (
                                             <div className="question-isanswered">
                                                 <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a84da09c4a82a45ae94301_checked%20(2).png"
                                                     loading="lazy" alt="" className="image-6" />

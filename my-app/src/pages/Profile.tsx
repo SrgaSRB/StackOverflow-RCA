@@ -91,7 +91,7 @@ const Profile = () => {
   const [originalFileName, setOriginalFileName] = useState("");
 
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [userStats, setUserStats] = useState<{answersCount: number} | null>(null);
+  const [userStats, setUserStats] = useState<{AnswersCount: number} | null>(null);
   const [showQuestionImageModal, setShowQuestionImageModal] = useState(false);
   const [selectedQuestionImageUrl, setSelectedQuestionImageUrl] = useState<
     string | null
@@ -240,7 +240,7 @@ const Profile = () => {
           );
           if (response.ok) {
             const data = await response.json();
-            setUserStats({ answersCount: data.answersCount });
+            setUserStats({ AnswersCount: data.AnswersCount });
           } else {
             console.error("Failed to fetch user stats");
           }
@@ -280,7 +280,7 @@ const Profile = () => {
         );
         if (response.ok) {
           const data = await response.json();
-          setUserStats({ answersCount: data.answersCount });
+          setUserStats({ AnswersCount: data.AnswersCount });
         }
       } catch (error) {
         console.error("Error refreshing user stats:", error);
@@ -624,10 +624,10 @@ const Profile = () => {
               ) : (
                 <div>
                   <div className="user-profile-user-fullname">
-                    {formData.firstName} {formData.lastName}
+                    {formData.FirstName} {formData.LastName}
                   </div>
                   <div className="user-profile-user-username">
-                    @{formData.username}
+                    @{formData.Username}
                   </div>
                   <button onClick={handleEdit}>Edit</button>
                 </div>
@@ -641,7 +641,7 @@ const Profile = () => {
                 className="image-5"
               />
               <div>
-                {formData.country}, {formData.city}, {formData.streetAddress}
+                {formData.Country}, {formData.City}, {formData.StreetAddress}
               </div>
             </div>
             <div className="user-profile-user-div">
@@ -653,9 +653,14 @@ const Profile = () => {
               />
               <div>
                 Member since{" "}
-                {formData.createdDate
-                  ? new Date(formData.createdDate).toLocaleDateString()
+                {formData.CreatedDate
+                  ? new Date(formData.CreatedDate).toLocaleDateString()
                   : ""}
+              </div>
+            </div>
+            <div className="user-profile-user-div">
+              <div>
+                {formData.Email}
               </div>
             </div>
             <div className="user-profile-user-q-a-block">
@@ -667,7 +672,7 @@ const Profile = () => {
               </div>
               <div className="user-profile-user-q-a-div">
                 <div className="user-profile-user-answers">
-                  {userStats?.answersCount || 0}
+                  {userStats?.AnswersCount || 0}
                 </div>
                 <div className="text-block-12">Answers</div>
               </div>
@@ -680,7 +685,7 @@ const Profile = () => {
                   <div>Questions ({questions.length})</div>
                 </div>
                 <div className="user-profile-main-q-a-tab-nav">
-                  <div>Answers ({userStats?.answersCount || 0})</div>
+                  <div>Answers ({userStats?.AnswersCount || 0})</div>
                 </div>
               </div>
             </div>

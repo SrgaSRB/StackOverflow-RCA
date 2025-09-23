@@ -4,12 +4,12 @@
     <Instances count="3" />
     <ConfigurationSettings>
       <Setting name="StorageConnectionString" value="UseDevelopmentStorage=true" />
-      <Setting name="SmtpServer" value="smtp.gmail.com" />
-      <Setting name="SmtpPort" value="587" />
-      <Setting name="SmtpUsername" value="your-email@gmail.com" />
-      <Setting name="SmtpPassword" value="your-app-password" />
-      <Setting name="FromEmail" value="noreply@stackoverflow.com" />
-      <Setting name="FromName" value="StackOverflow Notifications" />
+		<Setting name="SmtpServer" value="smtp.gmail.com" />
+		<Setting name="SmtpPort" value="587" />
+		<Setting name="SmtpUsername" value="sanjadrsprojekat@gmail.com" />
+		<Setting name="SmtpPassword" value="odlivfhwucbdvqgz" />
+		<Setting name="FromEmail" value="sanjadrsprojekat@gmail.com" />
+		<Setting name="FromName" value="StackOverflow Notifications" />
     </ConfigurationSettings>
   </Role>
   <Role name="HealthMonitoringServiceWorker">
@@ -20,9 +20,9 @@
       <Setting name="NotificationServiceUrl" value="https://example.com/notify" />
       <Setting name="SmtpServer" value="smtp.gmail.com" />
       <Setting name="SmtpPort" value="587" />
-      <Setting name="SmtpUsername" value="your-email@gmail.com" />
-      <Setting name="SmtpPassword" value="your-app-password" />
-      <Setting name="FromEmail" value="noreply@stackoverflow.com" />
+      <Setting name="SmtpUsername" value="sanjadrsprojekat@gmail.com" />
+      <Setting name="SmtpPassword" value="odlivfhwucbdvqgz" />
+      <Setting name="FromEmail" value="sanjadrsprojekat@gmail.com" />
       <Setting name="FromName" value="StackOverflow Notifications" />
       <Setting name="WebBaseUrl" value="http://localhost:59535" />
     </ConfigurationSettings>

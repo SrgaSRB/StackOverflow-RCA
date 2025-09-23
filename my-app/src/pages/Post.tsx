@@ -67,27 +67,19 @@ const Post = () => {
 
         const fetchQuestion = async () => {
             try {
-                console.log('Fetching question with ID:', postId);
                 const response = await fetch(`http://localhost:59535/api/questions/${postId}`);
-                console.log('Response status:', response.status);
-                console.log('Response headers:', response.headers);
 
                 if (response.ok) {
                     const data = await response.json();
                     console.log('Question data received:', data);
-                    console.log('Question user:', data.user);
-                    console.log('Question answers:', data.answers);
                     setQuestion(data);
-
+                    
                     // Set best answer ID
-                    setBestAnswerId(data.bestCommentId || null);
+                    setBestAnswerId(data.BestCommentId || null);
 
                     // Check if current user is the author of the question
-                    if (userId && data.user && data.user.username) {
-                        console.log('Current user username:', currentUserUsername);
-                        console.log('Question author username:', data.user.username);
-                        const isAuthor = currentUserUsername === data.user.username;
-                        console.log('Is question author:', isAuthor);
+                    if (userId && data.User && data.User.Username) {
+                        const isAuthor = currentUserUsername === data.User.Username;
                         setIsQuestionAuthor(isAuthor);
                     }
 
@@ -104,22 +96,22 @@ const Post = () => {
                         await fetchUserQuestionVote(userId);
                     }
 
-                    if (data.user && data.user.username) {
-                        await fetchAuthorQuestionsCount(data.user.username);
+                    if (data.User && data.User.Username) {
+                        await fetchAuthorQuestionsCount(data.User.Username);
                     }
 
-                    if (data.answers && data.answers.length > 0) {
+                    if (data.Answers && data.Answers.length > 0) {
                         const counts: Record<string, number> = {};
                         const voteStates: Record<string, VoteState> = {};
 
-                        for (const answer of data.answers) {
-                            if (answer.user && answer.user.username) {
-                                const count = await fetchAuthorQuestionsCount(answer.user.username, false);
-                                counts[answer.user.username] = count;
+                        for (const answer of data.Answers) {
+                            if (answer.User && answer.User.Username) {
+                                const count = await fetchAuthorQuestionsCount(answer.User.Username, false);
+                                counts[answer.User.Username] = count;
                             }
 
                             // Initialize answer vote state
-                            voteStates[answer.answerId] = {
+                            voteStates[answer.AnswerId] = {
                                 Upvotes: answer.Upvotes || 0,
                                 Downvotes: answer.Downvotes || 0,
                                 TotalVotes: answer.TotalVotes || 0,
@@ -128,7 +120,7 @@ const Post = () => {
 
                             // Load user's current vote for answer
                             if (userId) {
-                                await fetchUserAnswerVote(userId, answer.answerId);
+                                await fetchUserAnswerVote(userId, answer.AnswerId);
                             }
                         }
                         setAnswerAuthorsQuestionsCount(counts);
@@ -154,7 +146,7 @@ const Post = () => {
                     const data = await response.json();
                     setQuestionVoteState(prev => ({
                         ...prev,
-                        userVote: data.userVote
+                        UserVote: data.UserVote
                     }));
                 }
             } catch (error) {
@@ -171,7 +163,7 @@ const Post = () => {
                         ...prev,
                         [answerId]: {
                             ...prev[answerId],
-                            userVote: data.userVote
+                            UserVote: data.UserVote
                         }
                     }));
                 }
@@ -185,7 +177,7 @@ const Post = () => {
                 const response = await fetch('http://localhost:59535/api/questions');
                 if (response.ok) {
                     const allQuestions = await response.json();
-                    const userQuestions = allQuestions.filter((q: any) => q.user && q.user.username === username);
+                    const userQuestions = allQuestions.filter((q: any) => q.User && q.User.Username === username);
                     if (isPostAuthor) {
                         setAuthorQuestionsCount(userQuestions.length);
                     }
@@ -252,6 +244,11 @@ const Post = () => {
             return;
         }
 
+        if (bestAnswerId) {
+            alert("This question has a selected best answer, so voting is disabled.");
+            return;
+        }
+
         try {
             const response = await fetch(`http://localhost:59535/api/questions/${postId}/upvote`, {
                 method: 'POST',
@@ -264,12 +261,12 @@ const Post = () => {
             if (response.ok) {
                 const data = await response.json();
                 setQuestionVoteState({
-                    Upvotes: data.Upvotes,
-                    Downvotes: data.Downvotes,
-                    TotalVotes: data.TotalVotes,
-                    UserVote: data.UserVote
+                    Upvotes: data.upvotes,
+                    Downvotes: data.downvotes,
+                    TotalVotes: data.totalVotes,
+                    UserVote: data.userVote
                 });
-                setQuestion(prev => prev ? { ...prev, TotalVotes: data.TotalVotes } : null);
+                setQuestion(prev => prev ? { ...prev, TotalVotes: data.totalVotes } : null);
             } else {
                 console.error("Failed to upvote question");
             }
@@ -287,6 +284,11 @@ const Post = () => {
             return;
         }
 
+        if (bestAnswerId) {
+            alert("This question has a selected best answer, so voting is disabled.");
+            return;
+        }
+
         try {
             const response = await fetch(`http://localhost:59535/api/questions/${postId}/downvote`, {
                 method: 'POST',
@@ -299,12 +301,12 @@ const Post = () => {
             if (response.ok) {
                 const data = await response.json();
                 setQuestionVoteState({
-                    Upvotes: data.Upvotes,
-                    Downvotes: data.Downvotes,
-                    TotalVotes: data.TotalVotes,
-                    UserVote: data.UserVote
+                    Upvotes: data.upvotes,
+                    Downvotes: data.downvotes,
+                    TotalVotes: data.totalVotes,
+                    UserVote: data.userVote
                 });
-                setQuestion(prev => prev ? { ...prev, TotalVotes: data.TotalVotes } : null);
+                setQuestion(prev => prev ? { ...prev, TotalVotes: data.totalVotes } : null);
             } else {
                 console.error("Failed to downvote question");
             }
@@ -322,6 +324,11 @@ const Post = () => {
             return;
         }
 
+        if (bestAnswerId) {
+            alert("This question has a selected best answer, so voting is disabled.");
+            return;
+        }
+
         try {
             const response = await fetch(`http://localhost:59535/api/comments/${answerId}/upvote`, {
                 method: 'POST',
@@ -336,10 +343,10 @@ const Post = () => {
                 setAnswerVoteStates(prev => ({
                     ...prev,
                     [answerId]: {
-                        Upvotes: data.Upvotes,
-                        Downvotes: data.Downvotes,
-                        TotalVotes: data.TotalVotes,
-                        UserVote: data.UserVote
+                        Upvotes: data.upvotes,
+                        Downvotes: data.downvotes,
+                        TotalVotes: data.totalVotes,
+                        UserVote: data.userVote
                     }
                 }));
                 setQuestion(prev => {
@@ -349,7 +356,7 @@ const Post = () => {
                             ? { ...answer, TotalVotes: data.TotalVotes }
                             : answer
                     );
-                    return { ...prev, answers: updatedAnswers };
+                    return { ...prev, Answers: updatedAnswers };
                 });
             } else {
                 console.error("Failed to upvote answer");
@@ -368,6 +375,11 @@ const Post = () => {
             return;
         }
 
+        if (bestAnswerId) {
+            alert("This question has a selected best answer, so voting is disabled.");
+            return;
+        }
+
         try {
             const response = await fetch(`http://localhost:59535/api/comments/${answerId}/downvote`, {
                 method: 'POST',
@@ -382,10 +394,10 @@ const Post = () => {
                 setAnswerVoteStates(prev => ({
                     ...prev,
                     [answerId]: {
-                        Upvotes: data.Upvotes,
-                        Downvotes: data.Downvotes,
-                        TotalVotes: data.TotalVotes,
-                        UserVote: data.UserVote
+                        Upvotes: data.upvotes,
+                        Downvotes: data.downvotes,
+                        TotalVotes: data.totalVotes,
+                        UserVote: data.userVote
                     }
                 }));
                 setQuestion(prev => {
@@ -605,7 +617,7 @@ const Post = () => {
                                                 >
                                                     <img src="https://cdn.prod.website-files.com/68a76cfd4f8cbf65b7b894b5/68a786ab9ccef31e64f760b7_upload.png" loading="lazy" alt="Upvote" className="image-10" />
                                                 </div>
-                                                <div className="q-answer-votes">{answerVoteState.TotalVotes}</div>
+                                                <div className="q-answer-votes">{answerVoteState.Upvotes - answerVoteState.Downvotes}</div>
                                                 <div
                                                     className={`div-block-7 answer-div-downvote ${answerVoteState.UserVote === 'downvote' ? 'voted-down' : ''}`}
                                                     onClick={() => handleAnswerDownvote(answer.AnswerId)}

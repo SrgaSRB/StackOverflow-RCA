@@ -131,7 +131,7 @@ namespace NotificationServiceWorker
                 var allComments = await _dataService.GetCommentsForQuestionAsync(notification.QuestionId);
 
                 var userIds = allComments
-                    .Where(c => c.UserId != question.UserId && c.UserId != bestAnswer.UserId)
+                    .Where(c => c.UserId != question.UserId)
                     .Select(c => c.UserId)
                     .Distinct()
                     .ToList();

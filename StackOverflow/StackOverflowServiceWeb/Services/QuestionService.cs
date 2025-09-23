@@ -91,7 +91,8 @@ namespace StackOverflowServiceWeb.Services
                     User = user != null
                         ? new UserInfo { Username = user.Username, ProfilePictureUrl = user.ProfilePictureUrl, QuestionsCount = user.QuestionsCount }
                         : new UserInfo { Username = "Unknown" },
-                    AnswersCount = answersCount
+                    AnswersCount = answersCount,
+                    HaveBestComment = !string.IsNullOrEmpty(q.BestCommentId)
                 });
             }
 

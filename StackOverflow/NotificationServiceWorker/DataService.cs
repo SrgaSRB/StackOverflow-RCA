@@ -1,6 +1,5 @@
 ﻿using Common.Models;
 using Microsoft.Azure;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Queue;
 using Microsoft.WindowsAzure.Storage.Table;
@@ -8,8 +7,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace NotificationServiceWorker
@@ -41,16 +38,15 @@ namespace NotificationServiceWorker
             _tableClient = _storageAccount.CreateCloudTableClient();
             _queueClient = _storageAccount.CreateCloudQueueClient();
 
-            // Initialize tables
+            // tables
             _questionTable = _tableClient.GetTableReference("Questions");
             _commentTable = _tableClient.GetTableReference("Comments");
             _userTable = _tableClient.GetTableReference("Users");
             _notificationLogTable = _tableClient.GetTableReference("Notificationlogs");
 
-            // Initialize queue
+            //  queue
             _notificationQueue = _queueClient.GetQueueReference("notifications");
 
-            // Create if not exists
             _questionTable.CreateIfNotExists();
             _commentTable.CreateIfNotExists();
             _userTable.CreateIfNotExists();
